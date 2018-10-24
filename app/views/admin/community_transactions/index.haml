@@ -1,0 +1,42 @@
+- content_for :title_header do
+  %h1
+    = t("layouts.admin.admin")
+    = "-"
+    = t("admin.communities.transactions.transactions")
+
+= render :partial => "admin/left_hand_navigation", :locals => { :links => admin_links_for(@current_community) }
+
+.left-navi-section
+  %h2= t("admin.communities.transactions.transactions", community_name: community.name(I18n.locale))
+
+  #export-as-csv.right= link_to(" " + t("admin.communities.transactions.export_all_as_csv"), {action: :export}, {remote: true, class: icon_class("download")})
+
+  %span#admin_transactions_count= page_entries_info(transactions, :model => "Transaction").html_safe
+
+  %table#admin_transactions
+    %thead
+      %tr
+        %th= render partial: "layouts/sort_link", locals: { column: "listing", direction: sort_link_direction("listing"), title: t("admin.communities.transactions.headers.listing") }
+        %th=t("admin.communities.transactions.headers.status")
+        %th=t("admin.communities.transactions.headers.sum")
+        %th= render partial: "layouts/sort_link", locals: { column: "started", direction: sort_link_direction("started"), title: t("admin.communities.transactions.headers.started") }
+        %th= render partial: "layouts/sort_link", locals: { column: "last_activity", direction: sort_link_direction("last_activity"), title: t("admin.communities.transactions.headers.last_activity") }
+        %th=t("admin.communities.transactions.headers.initiated_by")
+        %th=t("admin.communities.transactions.headers.other_party")
+
+    %tbody
+      - transactions.each do |transaction|
+        %tr
+          - listing_title = transaction.listing_title || t("admin.communities.transactions.not_available")
+          %td=Maybe(transaction.listing).map { |listing| link_to_unless(listing.deleted, listing_title, listing_path(transaction.listing_id)) }.or_else(listing_title)
+          %td
+            = link_to person_transaction_path(person_id: @current_user.id, id: transaction.id) do
+              = t("admin.communities.transactions.status.#{transaction.payment_gateway}.#{transaction.status}")
+          %td=transaction.payment_total ? MoneyViewUtils.to_humanized(transaction.payment_total) : ""
+          %td=l(transaction.created_at, format: :short_date)
+          %td=l(transaction.last_activity, format: :short_date)
+          %td=Maybe(transaction.starter).map { |p| link_to_unless(p.deleted, PersonViewUtils.person_display_name(p, @current_community),person_path(p.username)) }.or_else("")
+          %td=Maybe(transaction.author).map { |p| link_to_unless(p.deleted, PersonViewUtils.person_display_name(p, @current_community), person_path(p.username)) }.or_else("")
+  .row
+    .col-12
+      = will_paginate transactions

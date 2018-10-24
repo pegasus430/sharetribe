@@ -1,0 +1,53 @@
+@import "mixins/all";
+
+#admin_testimonials {
+  tbody tr:nth-child(2n) {
+    border-bottom: 3px solid white;
+  }
+  td {
+    &.testimonial-title {
+      border-bottom: 3px solid white;
+    }
+    .testimonial-cell {
+      margin: auto;
+      .testimonial-icon {
+        position: relative;
+        font-size: 1.2em;
+        line-height: 1.2em;
+      }
+    }
+  }
+}
+#testimonial_popup {
+  @include media(desktop) {
+    min-width: 600px;
+  }
+}
+#testimonial-form {
+  .testimonial-cell {
+    margin: auto;
+    .testimonial-icon {
+      position: relative;
+      font-size: 3em;
+      line-height: 2em;
+      text-align: center;
+      width: auto;
+      cursor: pointer;
+      padding-top: 0.5em;
+    }
+  }
+  .testimonial-save {
+    text-align: center;
+    .button {
+      display: initial;
+    }
+  }
+  .testimonial-checkbox {
+    input {
+      margin-right: 10px;
+    }
+    span {
+      margin-left: 10px;
+    }
+  }
+}

@@ -1,0 +1,120 @@
+= render :partial => 'layouts/head'
+
+%body
+
+  #sidewinder-wrapper
+
+    -# Render railsContext here before any react component gets rendered
+    = prepend_render_rails_context("")
+
+    - is_homepage = params[:controller] == "homepage" && params[:action] == "index"
+    %noscript
+      .noscript-padding
+        -# Noscript content will be positioned here
+
+    - if display_onboarding_topbar?
+      - props = onboarding_topbar_props
+      - unless props[:next_step] == :all_done
+        - react_component_cache(name: "onboarding_topbar", props: props) do
+          = react_component("OnboardingTopBar", props: props, prerender: true)
+
+    - if FeatureFlagHelper.feature_enabled?(:topbar_v1)
+      - if(search_mode != :keyword || @view_type.eql?("map"))
+        - maps_key = MarketplaceHelper.google_maps_key(@current_community.id)
+        - key_param = maps_key ? "&key=#{maps_key}" : ""
+        = javascript_include_tag "//maps.googleapis.com/maps/api/js?libraries=places#{key_param}"
+      - if(@view_type.eql?("map"))
+        = javascript_include_tag "markerclusterer.js"
+      - props = topbar_props
+      - cache props do
+        = react_component("TopbarApp", props: props, prerender: true, id: 'topbar-container')
+    - else
+      = render partial: 'layouts/global_header', locals: header_props()
+
+    - if logged_in? && @display_expiration_notice
+      - if @current_user.has_admin_rights?(@current_community)
+        = render partial: "layouts/admin_expiration_notice", locals: {external_plan_service_login_url: admin_plan_path}
+      - else
+        = render partial: "layouts/expiration_notice", locals: {contact_owner_link: new_user_feedback_path}
+
+    - content_for(:page_content) do
+      %section.marketplace-lander
+        - if @big_cover_photo
+          .coverimage
+            %figure.marketplace-cover.fluidratio
+              .lander-content.marketplace-lander-content
+                = yield :title_header
+        - elsif !(is_homepage && FeatureFlagHelper.feature_enabled?(:topbar_v1))
+          .coverimage
+            %figure.marketplace-cover-small.fluidratio
+            .coverimage-fade{:class => yield(:coverfade_class)}
+              %figure.marketplace-cover-small-fade.fluidratio
+          .title-container
+            .title-header-wrapper
+              .marketplace-title-header
+                = yield :title_header
+
+      %article.page-content{class: is_homepage && !@big_cover_photo ? 'no-cover-photo' : ''}
+        .wrapper
+          = render :partial => "layouts/notifications"
+          = yield
+          - if display_branding_info?
+            = render partial: "layouts/non_whitelabel_branding", locals: {link_to_sharetribe: "https://www.sharetribe.com/?utm_source=#{@current_community.ident}.sharetribe.com&utm_medium=referral&utm_campaign=nowl-footer"}
+    -#
+      This is not pretty, but works.
+      On homepage, we want to wrap the whole page content (search bar and the "real" content) to a form, so that
+      pressing send from either search bar of filter list will send all the form fields
+
+    - if is_homepage
+      %form{method: "get", id: "homepage-filters"}
+        - # New top bar search params are in different form and they have to be retained here
+        - search_params = ["q", "lc", "ls", "boundingbox", "distance_max"]
+        - excluded_params = search_params unless FeatureFlagHelper.feature_enabled?(:topbar_v1)
+        - params.except("action", "controller", "view", "utf8", *excluded_params).each do |param, value|
+          - unless CustomFieldSearchParams.custom_field_search_param?(param) || param.match(/^price_/)
+            = hidden_field_tag param, value
+        = hidden_field_tag "view", @view_type
+        = content_for(:page_content)
+    - else
+      = content_for(:page_content)
+
+    -# Most of the JavaScript should be for performance reasons at the end of the body
+
+    -# load Facebook SDK for the whole page
+    = render :partial => "layouts/facebook_sdk"
+
+    -# Initialize global I18n variable and load translations there
+    :javascript
+      window.I18n = {};
+
+    = javascript_include_tag "i18n/#{I18n.locale}"
+
+    = javascript_include_tag 'application'
+
+    :javascript
+      window.ST.jsonTranslations = #{raw JSONTranslations.get(I18n.locale)}
+
+    :javascript
+      $(function() {
+        if ('touchAction' in document.body.style) {
+          document.body.style.touchAction = 'manipulation';
+        } else {
+          window.FastClick.attach(document.body, { excludeNode: '^pac-'} );
+        }
+      });
+
+    -# Disable animations on tests
+    - if Rails.env.test?
+      :javascript
+        $(function() {
+          $.transit.enabled = false;
+        });
+
+    = content_for :extra_javascript
+
+    :javascript
+      $(document).ready(function() { initialize_defaults("#{I18n.locale}"); #{yield :javascript} });
+
+    = render :partial => 'analytics/bottom_scripts'
+
+    = render :partial => "layouts/noscript"

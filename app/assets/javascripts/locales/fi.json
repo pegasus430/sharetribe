@@ -1,0 +1,30 @@
+{
+  "please_wait": "Odota hetki...",
+  "validation_messages": {
+    "accept": "Kuvatiedosto on vääräntyyppinen. Sallitut tiedostomuodot: JPG, PNG ja GIF.",
+    "creditcard": "Anna oikeantyyppinen luottokortin numero.",
+    "date": "Anna päivämäärä oikessa muodossa.",
+    "dateISO": "Anna päivämäärä oikeassa muodossa (ISO).",
+    "digits": "Tähän kenttään voit syöttää ainoastaan kirjaimia.",
+    "email": "Anna toimiva sähköpostiosoite.",
+    "equalTo": "Antamasi arvot eivät täsmää.",
+    "max": "Arvo voi olla enintään {0}.",
+    "maxlength": "Voit syöttää tähän kenttään maksimissaan {0} merkkiä.",
+    "min": "Arvon täytyy olla vähintään {0}.",
+    "minlength": "Syötä tähän kenttään vähintään {0} merkkiä.",
+    "number": "Annetun arvon pitää olla numero.",
+    "range": "Kentän arvon tulee olla välillä {0} ja {1}.",
+    "rangelength": "Merkkimäärän tulee olla välillä {0} ja {1}.",
+    "remote": "Kentän arvo on virheellinen.",
+    "required": "Tämä on pakollinen kenttä.",
+    "url": "Anna oikeanlainen URL-osoite.",
+    "address_validator": "Sijaintia ei löytynyt.",
+    "money": "Antamasi arvo ei kelpaa.",
+    "night_selected": "Sinun tulee valita ainakin yksi yö.",
+    "availability_range": "Valitsemasi aikajakso sisältää päiviä, jotka eivät ole saatavilla",
+    "min_bound": "Arvon täytyy olla pienempi kuin maksimiarvo ({0})",
+    "max_bound": "Arvon täytyy olla suurempi kuin minimiarvo ({0})",
+    "number_no_decimals": "Annetun arvon pitää olla kokonaisluku",
+    "number_decimals": "Syötä numero käyttäen pilkkua (,) tai pistettä (.) desimaalierottimena"
+  }
+}

@@ -1,0 +1,69 @@
+@import "mixins/all";
+@import "compass/css3/border-radius";
+
+input[type=text],
+input[type=password],
+input[type=number],
+textarea {
+  @include border-radius(em(5));
+  border: 2px solid $border;
+  min-height: 42px;
+  width: 100%;
+  padding: em(4) em(8);
+
+  @include media(tablet) {
+    margin: 0;
+    padding: em(8) em(11);
+  }
+}
+
+select {
+  @include border-radius(em(5));
+  border: 2px solid $border;
+  min-height: 42px;
+  padding: em(4) em(8);
+
+  @include media(tablet) {
+    margin: 0;
+    padding: em(8) em(11);
+  }
+}
+
+input.auto_width {
+  width:auto;
+}
+
+// Select tag in the middle of text. Add some spacing
+.inline-select {
+  margin-left: lines(0.25);
+  margin-right: lines(0.25);
+}
+
+.checkbox-container {
+  & > .light {
+    font-weight: 500;
+  }
+}
+.send-button-wrapper {
+  .send-button-loading {
+    float: left;
+    background-color: #c3c3c3;
+  }
+  & .send-button-loading-img {
+    float: left;
+    width: em(42);
+    height: em(42);
+    margin: lines(0.5) 0;
+    padding: lines(0.4);
+    border-radius: 6px;
+  }
+}
+
+// Select all / clear all links in a few admin pages
+.selection-options {
+  @include media(tablet) {
+    margin-top: lines(0.5);
+    margin-bottom: em(3);
+    float: right;
+  }
+}

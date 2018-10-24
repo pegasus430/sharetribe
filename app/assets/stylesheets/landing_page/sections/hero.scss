@@ -1,0 +1,429 @@
+@import "../mixins/all";
+
+/* ************************************************************************************ */
+/* Hero section                                                                         */
+/* ************************************************************************************ */
+
+// Media queries
+//
+// Some parts of the Hero component use different break-points:
+$mobile-landscape--hero: "(max-width: 479px) and (orientation: landscape)"; // same font-sizes as the mobile, but layout/grid structure from $tablet
+$tablet--hero: "(min-width: 480px) and (max-width: 767px)";
+
+.hero__section {
+  width: 100%;
+  @include viewport-unit(min-height, 80vh);
+  background-size: cover;
+  background-position: center;
+  @include prefix-val(display, flex);
+  @include prefix-prop(align-items, center);
+  @include dimensions__section--paddings;
+}
+
+.hero__section--light {
+  @extend .hero__section;
+  box-shadow: inset 0 0 0 999999px rgba(0, 0, 0, 0.3); /* is there any cleaner way? */
+}
+.hero__section--dark {
+  @extend .hero__section;
+  box-shadow: inset 0 0 0 999999px rgba(0, 0, 0, 0.5); /* is there any cleaner way? */
+}
+
+.hero__content {
+  margin: 0 auto;
+  padding: $dimension-mobile-margin;
+  @include viewport-unit(margin-top, -4.44vh); /* -50px, when content height is 900px, 80vh */
+}
+
+.hero__content-container {
+  text-align: center;
+
+  @media #{$mobile-landscape}, #{$tablet} {
+    max-width: 561px;
+  }
+
+  @media #{$desktop} {
+    max-width: 871px;
+  }
+}
+
+
+.hero__title {
+  /* Your marketplace tit: */
+  @include typography__regular;
+  color: #FFFFFF;
+
+  /* mobile */
+  font-size: 36px;
+  letter-spacing: -1.23px;
+  line-height: 42px;
+  margin-bottom: 24px;
+
+  @media #{$mobile-landscape} {
+    margin-bottom: 28px;
+  }
+
+  @media #{$tablet} {
+    font-size: 62px;
+    letter-spacing: -1.23px;
+    line-height: 68px;
+    margin-bottom: 28px;
+  }
+
+  @media #{$desktop} {
+    font-size: 64px;
+    letter-spacing: -1.5px;
+    line-height: 76px;
+    margin-bottom: 28px;
+  }
+}
+
+.hero__subtitle {
+  /* Paragraph. Etiam por: */
+  @include typography__medium;
+  color: #FFFFFF;
+  letter-spacing: 0px;
+
+  /* mobile */
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 36px;
+
+  @media #{$mobile-landscape} {
+    margin-bottom: 48px;
+  }
+
+  @media #{$tablet} {
+    font-size: 21px;
+    line-height: 32px;
+    margin-bottom: 48px;
+  }
+
+  @media #{$desktop} {
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 48px;
+  }
+}
+
+// Add small extra padding for the search bar
+.hero__search-bar-padding {
+  padding: 0 12px;
+}
+
+.hero__search-bar {
+  @include prefix-val(display, flex);
+  @include prefix-prop(flex-shrink, 1);
+  margin: 0 auto;
+  max-width: 532px;
+}
+
+.hero__search-bar--combined {
+  @extend .hero__search-bar;
+  flex-direction: column;
+
+  @media #{$mobile-landscape--hero}, #{$tablet--hero}, #{$tablet}, #{$desktop} {
+    flex-direction: row;
+  }
+}
+
+.hero__search-input-container {
+  @include prefix-val(display, flex);
+  width: 100%;
+  background-color: #FFF;
+
+  border-radius: 29.5px;
+  overflow: hidden; // add overflow hidden so that children's borders are also rounded
+
+  /* mobile */
+  @include prefix-prop(flex-direction, row);
+  padding: 0px 0px 0px 24px;
+
+  @media #{$mobile-landscape}, #{$tablet}, #{$desktop} {
+    border-radius: 29.5px 0px 0px 29.5px;
+  }
+}
+
+.hero__search-input-container--combined {
+  @extend .hero__search-input-container;
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+  flex-direction: column;
+
+  @media #{$mobile-landscape--hero}, #{$tablet--hero} {
+    background-color: #FFF;
+    border-radius: 29.5px;
+    padding: 0px 0px 0px 24px;
+    flex-direction: row;
+  }
+
+  @media #{$tablet}, #{$desktop} {
+    background-color: #FFF;
+    border-radius: 29.5px 0px 0px 29.5px;
+    padding: 0px 0px 0px 24px;
+    flex-direction: row;
+  }
+}
+
+.hero__search-input {
+  @include typography__medium;
+  order: 1;
+  margin: 0;
+  border: 0;
+  width: 100%;
+  color: #525961;
+
+  &:focus {
+    // The input element has already the blinking cursor
+    // indicating that the element is selected
+    outline: none;
+  }
+
+  font-size: 16px;
+  letter-spacing: 0px;
+  line-height: 32px;
+  padding: 8px 12px 8px 0px;
+
+  @media #{$mobile-landscape} {
+    padding: 14px 24px 14px 12px;
+  }
+
+  @media #{$tablet} {
+    font-size: 18px;
+    letter-spacing: 0px;
+    line-height: 32px;
+
+    padding: 14px 24px 14px 12px;
+  }
+
+  @media #{$desktop} {
+    font-size: 18px;
+    letter-spacing: 0px;
+    line-height: 32px;
+
+    padding: 14px 24px 14px 18px;
+  }
+}
+
+// Common styles for both search inputs, keyword and location search in combined mode
+//
+.hero__search-input--combined {
+  @extend .hero__search-input;
+  border-radius: 29.5px;
+  margin: 0 0 12px 0;
+  padding: 8px 24px 8px 24px;
+
+  @media #{$mobile-landscape--hero}, #{$tablet--hero} {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin: 8px 0px;
+  }
+
+  @media #{$desktop} {
+    font-size: 18px;
+    letter-spacing: 0px;
+    line-height: 32px;
+
+    padding: 0px 24px 0px 18px;
+    margin: 14px 0px;
+  }
+
+  @media #{$tablet} {
+    font-size: 18px;
+    letter-spacing: 0px;
+    line-height: 32px;
+
+    padding: 0px 12px;
+    margin: 14px 0px;
+  }
+}
+
+.hero__keyword-search-input--combined {
+  @extend .hero__search-input--combined;
+
+  @media #{$mobile-landscape--hero}, #{$tablet--hero} {
+    padding-right: 12px;
+    padding-left: 0px;
+  }
+}
+
+.hero__location-search-input--combined {
+  @extend .hero__search-input--combined;
+
+  @media #{$mobile-landscape--hero}, #{$tablet--hero} {
+    border-radius: 0;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  @media #{$mobile-landscape--hero}, #{$tablet--hero}, #{$tablet}, #{$desktop} {
+    border-radius: 0;
+    border-left: solid 1px #cccccc;
+  }
+}
+
+.hero__search-button {
+  border: 0;
+  padding: 0;
+  border-radius: 0px 29.5px 29.5px 0px;
+
+  padding: 14px 32px 14px 28px;
+
+  line-height: 32px;
+
+  @include typography__medium;
+  font-size: 18px;
+  color: #FFFFFF;
+  letter-spacing: 0px;
+
+  // Hover color is used to indicate tab focus.
+  // The hover color is set in the layout
+  outline: none;
+
+  @include enable-flex-shrink-fix;
+
+  &:hover {
+    @include hover-transition;
+  }
+
+  /* mobile */
+  display: none;
+
+  @media #{$mobile-landscape}, #{$tablet} {
+    display: block;
+  }
+
+  @media #{$desktop} {
+    display: block;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.hero__search-button--combined {
+  @extend .hero__search-button;
+  border-radius: 29.5px;
+  display: block;
+
+  @media #{$mobile-landscape--hero}, #{$tablet--hero} {
+    /* hero tablet */
+    display: none;
+    border-radius: 0px 29.5px 29.5px 0px;
+  }
+
+  @media #{$tablet}, #{$desktop} {
+    display: block;
+    border-radius: 0px 29.5px 29.5px 0px;
+  }
+
+}
+
+.hero__search-icon-svg {
+  display: block;
+
+  /* mobile */
+  width: 18px;
+  height: 18px;
+
+  @media #{$mobile-landscape}, #{$tablet} {
+    width: 22px;
+    height: 22px;
+  }
+
+  @media #{$desktop} {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+// Common styling for search icon
+.hero__search-icon--base {
+  @include enable-flex-shrink-fix;
+
+  order: 2;
+  background: #FFF;
+  border: 0;
+  cursor: pointer;
+
+  /* mobile */
+  padding: 15px 24px 15px 0px;
+
+  &:focus {
+    outline: none;
+  }
+
+  @media #{$tablet} {
+    order: 0;
+    padding: 19px 0px;
+  }
+
+  @media #{$desktop} {
+    order: 0;
+    padding: 19px 0px;
+  }
+}
+
+.hero__search-icon {
+  @extend .hero__search-icon--base;
+
+  @media #{$mobile-landscape} {
+    order: 0;
+    padding: 19px 0px;
+  }
+}
+
+.hero__search-icon--combined {
+  @extend .hero__search-icon--base;
+  display: none;
+
+  @media #{$mobile-landscape--hero} {
+    order: 0;
+    padding: 19px 0px;
+  }
+
+  @media #{$mobile-landscape--hero}, #{$tablet--hero}, #{$tablet}, #{$desktop} {
+    display: block;
+  }
+}
+
+.hero__signup-button {
+  color: #FFFFFF;
+
+  border-radius: 100px;
+  @include typography__bold;
+
+  /* mobile */
+  font-size: 18px;
+  letter-spacing: 0px;
+
+  padding: 18px 36px;
+
+  // Hover color is used to indicate tab focus.
+  // The hover color is set in the layout
+  outline: none;
+
+  &:hover {
+    @include hover-transition;
+  }
+
+  @media #{$mobile-landscape} {
+    padding: 21px 63px;
+  }
+
+  @media #{$tablet} {
+    font-size: 21px;
+    letter-spacing: 0px;
+
+    padding: 21px 63px;
+  }
+
+  @media #{$desktop} {
+    font-size: 21px;
+    letter-spacing: 0px;
+
+    padding: 21px 63px;
+  }
+}

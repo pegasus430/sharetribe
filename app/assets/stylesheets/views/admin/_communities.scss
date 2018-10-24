@@ -1,0 +1,82 @@
+@import "mixins/all";
+
+.edit-community-details-edit-link {
+  margin-bottom: lines(0.5);
+}
+
+.edit-community-details-field {
+  margin-bottom: lines(1);
+}
+
+.edit-community-details-field-title {
+  font-weight: bold;
+}
+
+.checkbox-container .settings-checkbox-label {
+  font-weight: 500;
+}
+
+.sort-text-wrapper {
+  margin-right: 1.5em;
+}
+.sort-text {
+  float: left;
+}
+.sort-arrow {
+  float:left;
+  font-size: em(12);
+  display: inline-block;
+  padding-left: 0.4em;
+}
+
+.sort-arrow-asc {
+  @extend .sort-arrow;
+}
+
+.sort-arrow-desc {
+  @extend .sort-arrow;
+}
+
+textarea.text_area_code {
+  font-size: 15px;
+  font-family: "Lucida Console", Monaco, monospace;
+  height: lines(7);
+}
+
+.checkbox-row-checkbox {
+  display: inline-block;
+  width: auto;
+}
+
+.checkbox-row-label {
+  display: inline-block;
+  width: auto;
+  font-weight: normal;
+  margin: 0 0 0 lines(0.25);
+}
+
+.checkbox-centered {
+  text-align: center;
+}
+.centered-column-title {
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+}
+
+.transaction-agreement-modal.disabled:not(.label) {
+  background-color: $highlight;
+}
+
+.member-banned {
+  a, span, .admin-members-can-post-listings, .admin-members-is-admin {
+    opacity: 0.5;
+  }
+}
+
+.button.search-button {
+  margin: 0px;
+  display: inline;
+  margin-right: 20px;
+}

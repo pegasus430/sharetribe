@@ -1,0 +1,2213 @@
+@import "compass/css3/box-sizing";
+@import "compass/utilities/general/clearfix";
+@import "compass/css3/text-shadow";
+@import "compass/css3/images";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "mixins/all";
+
+/**
+  This file is deprecated: Put your SCSS to views/ and partials/
+  and include them in application.scss.erb
+*/
+
+*, *:before, *:after {
+  @include box-sizing(border-box);
+}
+
+/**
+  Enable fast click:
+
+  For IE10, you can use -ms-touch-action: none to disable double-tap-to-zoom on certain elements
+  (like links and buttons) as described in this MSDN blog post.
+*/
+a, input, button {
+  -ms-touch-action: none !important;
+}
+
+/*
+  --------------------------
+  Typography and link styles
+  --------------------------
+*/
+
+body {
+  @include source-sans-pro;
+  @include normal-type;
+
+  @include media(tiny-mobile) {
+    // Zooms out on tiny screens
+    font-size: em(13);
+  }
+}
+
+.page-content {
+  padding-bottom: lines(3);
+  padding-top: lines(0.5);
+
+  &.no-cover-photo {
+    padding-top: lines(0.5);
+  }
+
+  p {
+    margin-bottom: lines(0.5);
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  br {
+    height: lines(0.5);
+  }
+
+  @include media(tablet) {
+    padding-top: lines(1);
+
+    &.no-cover-photo {
+      padding-top: 33px;
+    }
+  }
+
+}
+
+/*
+  ---------------------
+  Often used components
+  ---------------------
+*/
+
+@mixin photoshop-text-shadow ($angle: 0, $distance: 0, $spread: 0, $size: 0, $color: #000) {
+  // NOTE: $spread has no effect for text shadows
+  $angle: (180 - $angle) * pi() / 180;
+  $h-shadow: round(cos($angle) * $distance);
+  $v-shadow: round(sin($angle) * $distance);
+  $css-spread: $size * $spread/100;
+  $blur: ($size - $css-spread);
+
+  @include text-shadow($h-shadow $v-shadow $blur $color);
+}
+
+body {
+  background: $background;
+  color: $body;
+  height: auto; // fixes some height issues in the map view
+  //border: solid darken($highlight, 9%);
+  //border-width: 0 0 lines(1);
+}
+
+ul {
+  padding-left: lines(1);
+}
+
+.section {
+  padding: lines(0.5);
+  @include clearfix;
+  @include media(tablet) {
+    padding: lines(0) lines(0.5);
+  }
+  @include media(desktop) {
+    padding: lines(0) lines(0);
+  }
+}
+
+@mixin facebook-connect-button {
+  position: relative;
+  cursor: pointer;
+  color: white;
+  display: block;
+  text-align: left;
+  @include single-text-shadow;
+  background: #25567c;
+  min-height: 42px;
+  &:hover {
+    background: #6f99bc;
+  }
+  @include border-radius(em(5));
+
+  .fb-icon {
+    position: absolute;
+    @include big-type;
+    top: em(10);
+    left: em(7);
+  }
+
+  .fb-text {
+    padding: em(0) em(10) em(7) em(30);
+  }
+
+  @include media(tablet) {
+    .fb-icon {
+      @include large-type;
+      top: em(5);
+      left: em(5);
+    }
+    .fb-text {
+      padding: em(1) em(10) em(7) em(35);
+    }
+  }
+
+}
+
+.centered-section, .centered-section-wide, .centered-section-narrow, .left-navi-section {
+  margin-top: lines(0.25);
+
+  textarea {
+    min-height: lines(5);
+  }
+}
+
+.centered-section-narrow {
+  max-width: lines(15);
+}
+
+.centered-section {
+  max-width: lines(19);
+}
+
+.centered-section-wide {
+  max-width: lines(25);
+}
+
+// User for simple centered views, mostly with forms
+.centered-section, .centered-section-wide, .centered-section-narrow {
+  padding: lines(0.5);
+  margin-left: auto;
+  margin-right: auto;
+
+  form {
+    padding-bottom: lines(2);
+  }
+
+  a.fb-connect {
+    @include facebook-connect-button;
+    padding: em(10) 2% em(6) 2%;
+    width: 100%;
+    margin-bottom: lines(0.5);
+    margin-top: lines(1.5);
+  }
+
+  .jsmap {
+    display: block;
+    width: 100%;
+    height: lines(8);
+    margin-top: lines(0.5);
+  }
+
+  select.full-width {
+    display: block;
+    width: 100%;
+    margin-top: em(5);
+  }
+
+  @include media(desktop) {
+    padding: 0 lines(0.5);
+  }
+
+}
+
+// Used for views with left hand navigation
+.left-navi-section {
+  padding: lines(0.5) 0;
+
+  @include media(tablet) {
+    padding: 0 lines(0.5);
+    margin-left: lines(10.5);
+  }
+
+  @include media(desktop) {
+    padding: 0;
+  }
+
+  small {
+    display: inline;
+  }
+
+  .map {
+    display: block;
+    width: 100%;
+    height: lines(8);
+    margin-top: lines(0.5);
+  }
+
+}
+
+// Left hand navigation menu
+.left-navi {
+  $selected-highlight-padding: lines(0.25);
+  display: none;
+  // Add negative margin, which pulls the container up the amount of highlight padding.
+  // This ensures the texts are aligned.
+  margin-top: -1 * $selected-highlight-padding;
+
+  @include media(tablet) {
+    display: block;
+    position: absolute;
+    a {
+      position: relative;
+      padding: $selected-highlight-padding lines(0.5);
+      display: block;
+      font-weight: normal;
+      cursor: pointer;
+      @include border-radius(em(5));
+      width: lines(9.5);
+      min-height: em(38);
+    }
+    a.selected {
+      background: $highlight;
+      &:after {
+        display: block;
+        position: absolute;
+        right: lines(0.5); top: em(7);
+        content: "→";
+      };
+    }
+    .left-navi-link-text {
+      padding: 0 lines(1) 0 lines(1);
+    }
+
+    .left-navi-link-icon {
+      position: absolute;
+      top: em(8);
+    }
+  }
+}
+
+.avatar {
+  position: relative;
+  width: lines(1);
+
+  img {
+    width: 100%;
+    @include border-radius(em(5));
+  }
+}
+
+.icon {
+  @include big-type;
+  height: lines(1, 24);
+  overflow: hidden;
+  text-align: center;
+  display: block;
+  padding-top: lines(0.05);
+}
+
+.icon-with-text {
+  display: inline-block;
+  padding-right: em(4);
+
+  // ss-pika is not correctly aligned, thus some fine-tuning is needed
+  position: relative;
+  top: em(2);
+}
+.list-icon-margin { margin-top: em(3); }
+.text-with-icon { display: inline-block;}
+
+.icon-with-text-container {
+  position: relative;
+  display: inline-block;
+  margin-right: em(10);
+  text-align: left;
+  .icon-part {
+    position: absolute;
+    top: em(2);
+  }
+  .text-part {
+    padding-left: em(23);
+    min-height: em(30);
+  }
+}
+
+form {
+
+  .checkbox-container {
+    position: relative;
+
+    input[type=checkbox] {
+      position: absolute;
+      top: lines(0.5) + em(3);
+    }
+
+    input[type=radio] {
+      position: absolute;
+      top: lines(0.5)
+    }
+
+    label {
+      display: inline-block;
+      width: auto;
+      padding: 0 0 0 lines(1);
+      margin-top: lines(0.5) - em(3);
+      margin-bottom: em(3);
+      font-weight: 600;
+
+      &.disabled {
+        color: #c3c3c3;
+      }
+      &.error {
+        @include border-radius(em(5));
+        padding: em(5) em(10) em(10) em(10);
+        background: red;
+        color: $background;
+        display: block;
+        width: 100%;
+        margin: lines(0.5) 0 lines(0.5) 0;
+        position: relative;
+      }
+    }
+
+    label.radio {
+      margin-top: lines(0.5) - em(5);
+    }
+
+    a {
+      display: inline-block;
+    }
+
+  }
+
+  .select-tag-dropdown {
+    margin-bottom: lines(0.5);
+  }
+
+}
+
+.unwanted_text_field {
+  display:none;
+}
+
+.inline-label-container {
+  margin-top: lines(0.5);
+  margin-bottom: em(1);
+}
+
+.label {
+  width: 100%;
+  display: block;
+  margin-top: lines(0.5);
+  margin-bottom: em(3);
+  font-weight: 600;
+}
+
+label {
+  @extend .label;
+}
+
+label.inline {
+  width: auto;
+  display: inline;
+  margin-right: lines(0.5);
+}
+
+label.radiobutton {
+  display: inline;
+  margin-left: lines(0.25);
+  font-weight: 500;
+}
+
+.label-info {
+  display: inline;
+  color: $aside;
+  @include small-type;
+  cursor: pointer;
+}
+
+button, .button {
+  @include button($link);
+  padding-top: lines(0.375);
+  padding-bottom: lines(0.375);
+  height: auto;
+}
+
+.inline-button-container {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.cancel-button {
+  @include button($aside);
+  margin-left: lines(0.25);
+}
+
+.delete-button {
+  @include button(red);
+}
+
+.big-button {
+  @include big-button($link);
+}
+
+.inline-big-button {
+  @extend .big-button;
+  margin: 0 auto;
+}
+
+label.error {
+  @include border-radius(em(5));
+  padding: em(5) em(10) em(10) em(10);
+  background: red;
+  color: $background;
+  display: block;
+  width: 100%;
+  margin: lines(0.5) 0 lines(0.5) 0;
+  position: relative;
+  &:before {
+    content: "";
+    border: em(8) solid transparent;
+    border-bottom-color: red;
+    position: absolute;
+    left: em(18); top: em(-16);
+  }
+
+}
+
+// Notification that doesn't disappear
+.permanent-notification {
+  margin-bottom: lines(0.5);
+  @include small-type;
+  color: $aside;
+}
+
+// Creates some bottom padding for absolute-positioned views
+.bottom-margin {
+  display: none;
+
+  @include media(tablet) {
+    display: block;
+    position: absolute;
+    top: lines(28.5);
+    left: lines(30);
+    width: lines(12);
+    height: lines(5);
+  }
+}
+
+// Share type label
+.share-type-link {
+  @include share-type-link;
+}
+
+/*
+  ------------
+  Tribe header
+  ------------
+*/
+
+.tribe-actions {
+
+  background: $link;
+
+  // Hide texts in narrow viewports
+  .hidden {
+    display: none;
+  }
+
+  // Left-aligned links
+  a {
+    display: block;
+    float: left;
+    padding: em(8) em(7) em(12) em(9);
+    color: $emphasis;
+    height: em(24);
+    overflow: hidden;
+    color: $background;
+    &:hover {
+      background: darken($link, 5%);
+    }
+  }
+
+  a.selected-navi-link {
+    color: $body;
+    background: $background;
+  }
+
+  a.first-child {
+    margin-left: lines(0);
+  }
+
+  .about-toggle.toggled {
+    background: $emphasis;
+  }
+
+  @include media(tablet) {
+
+    // Tribe intro and search are always shown in wide viewports
+    // so these toggles get hidden
+    .about-toggle {
+      display: none;
+    }
+
+    .search-toggle {
+      display: none;
+    }
+
+    a {
+      padding: em(8) em(15) em(12) em(15);
+    }
+
+    a.first-child {
+      margin-left: lines(10.5);
+    }
+
+  }
+
+  @include media(desktop) {
+
+    // Show texts only in really wide viewports
+    .hidden {
+      display: inline-block;
+    }
+  }
+
+}
+
+/*
+  --------------------------------------
+  Common header (no tribe customization)
+  --------------------------------------
+*/
+
+.no-tribe-title {
+  color: $background;
+  position: absolute;
+  bottom: em(-4);
+  left: em(2);
+
+  @include source-sans-pro;
+  @include mega-type;
+  z-index: 0;
+  @include media(tablet) {
+    right: 0;
+    left: auto;
+    @include giga-type;
+  }
+}
+
+.no-tribe-section {
+  @include media(tablet) {
+    margin-top: lines(1);
+  }
+}
+
+/*
+  -----------
+  Lightbox
+  -----------
+*/
+
+.lightbox, .expiration-notice {
+  display: none;
+  position: relative;
+  margin: lines(10) auto;
+  max-width: lines(22);
+  padding: lines(1.25) lines(1);
+}
+
+.lightbox-content {
+  position: relative;
+  width: 100%;
+  background: $background;
+  padding: lines(1);
+  border-radius: 10px;
+
+  h2 {
+    margin-bottom: lines(0.25);
+  }
+
+  h3, h4 {
+    margin-top: lines(0.5);
+    margin-bottom: lines(0.25);
+  }
+
+  p {
+    margin-bottom: lines(0.5);
+  }
+
+  p, li {
+    @include small-type;
+  }
+
+  .consent {
+    margin-top: lines(2);
+  }
+
+  @include media(tablet) {
+    h2 {
+      @include big-type;
+    }
+    p, li {
+      @include normal-type;
+    }
+  }
+}
+
+.image-lightbox {
+  max-width: em(800);
+}
+
+.image-lightbox-content {
+  padding: lines(0.5);
+  img {
+    width: 100%;
+  }
+}
+
+a.lightbox-x {
+  width: lines(1.25);
+  height: lines(1.25);
+  padding: 15px 30px 30px 15px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #aaacad;
+  z-index: 1;
+
+  &:hover {
+    color: #919294;
+  }
+
+  @include media(tablet) {
+    width: lines(1.5);
+    height: lines(1.5);
+    padding: 25px 45px 45px 25px;
+    @include big-type;
+  }
+}
+
+/*
+  ------------------------
+  Noscript
+  ------------------------
+*/
+
+$noscript-height: lines(4);
+
+.noscript-padding {
+  height: $noscript-height;
+}
+
+.noscript {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: lines(0.5) lines(0);
+  height: $noscript-height;
+  background: $error-red;
+  color: white;
+
+  .wrapper {
+    &, h2, p {
+      background: $error-red;
+      color: white;
+    }
+  }
+}
+
+/*
+  ---------------------
+  Error page
+  ---------------------
+*/
+
+.error-page {
+  padding-top: lines(3);
+  p {
+    padding: lines(0.5) 0;
+  }
+  button {
+    padding: em(7) em(20) em(7) em(20);
+  }
+}
+
+/*
+  ----------
+  Homepage
+  ----------
+*/
+
+.app-store-badge {
+  display: none;
+  @include media(tablet) {
+    display: block;
+    margin-top: lines(0.75);
+    img {
+      width: 75%;
+    }
+  }
+}
+
+.private-listing-notification {
+  padding: 0 lines(0.75);
+  @include media(tablet) {
+    padding: 0;
+  }
+}
+
+.feed-actions {
+  background: $background;
+
+  .request-link {
+    display: block;
+    float: left;
+    padding: em(10) em(15) em(10) em(15);
+    color: $link;
+    &:hover { color: darken($link, 15%); }
+  }
+
+  @include media(tablet) {
+
+    .request-link {
+      @include big-button($link);
+      padding: em(8) em(8) em(10) em(8);
+      width: 100%;
+      margin: 0 0 lines(0.5) 0;
+      &:hover { color: $background; }
+    }
+
+  }
+
+}
+
+.feed-filters {
+  background: $emphasis;
+  padding: lines(0.5);
+  position: relative;
+
+  .filter-title {
+    display: none;
+  }
+
+  .feed-filter-dropdowns {
+    margin-top: lines(0.25);
+  }
+
+  @include media(tablet) {
+    background: $background;
+    padding: 0;
+
+    .filter-title {
+      margin-bottom: lines(0.25);
+      display: block;
+    }
+
+    .feed-filter-dropdowns {
+      margin-top: 0;
+      select {
+        margin-bottom: lines(0.25);
+      }
+    }
+
+    select, option {
+      //-webkit-appearance: none;
+      width: lines(11.4);
+    }
+
+  }
+
+}
+
+.feed-map-link {
+  position: relative;
+
+  a.map-link, .hidden-text {
+    display: none;
+  }
+
+  @include media(tablet) {
+    background: transparent;
+    padding: 0;
+
+    a.map-link {
+      display: inline;
+      cursor: pointer;
+      position: absolute;
+      top: lines(0); right: 0;
+      padding-top: em(9);
+      color: $body;
+      &:hover { color: $link; }
+      margin-right: lines(0.5);
+    }
+
+  }
+
+  @include media(desktop) {
+
+    // Show texts only in really wide viewports
+
+    .hidden-text {
+      margin-right: 0;
+      display: inline-block;
+    }
+  }
+
+}
+
+.feed-navigation {
+  background: $emphasis;
+
+  @include media(tablet) {
+    // Turns into a sidebar
+    float: left;
+    width: lines(11.5);
+
+    .toggle {
+      display: none;
+    }
+
+    .toggle-menu {
+      display: block;
+    }
+  }
+
+}
+
+.feed {
+
+  .map {
+    display: block;
+    width: 100%;
+    height: lines(12.5);
+  }
+
+  @include media(tablet) {
+    margin-left: lines(13.5);
+    .map {
+      height: lines(18);
+    }
+  }
+
+}
+
+.view-item {
+
+  .item-description {
+    @include media(tablet) {
+      padding-right: lines(16); // Makes horizontal space for image
+      min-height: lines(10); // Makes sure there's always enough vertical space for the image
+    }
+
+    p, li {
+      @include small-type;
+      @include media(small-tablet) {
+        @include normal-type;
+      }
+    }
+  }
+
+  .button {
+    margin: 0 0 lines(0.5) 0;
+    width: 100%;
+    display: block;
+
+    @include media(tablet) {
+      @include big-button($link);
+      margin: 0;
+      position: absolute;
+      right: 0; top: 0;
+      width: lines(11) - em(2);
+    }
+  }
+
+  .listing-icons {
+    padding-top: lines(0.5);
+    a {
+      color: $body;
+      &:hover { color: $link; }
+    }
+  }
+
+  .listing-departure-time {
+    padding: lines(0.25) 0 lines(0.5) 0;
+  }
+
+  .item-image {
+    position: relative;
+    float: right;
+    width: lines(4.5);
+    margin: 0 0 lines(0.5) lines(0.5);
+
+    img {
+      display: block;
+      max-width: 100%;
+      @include border-radius(em(5));
+    }
+
+    @include media(tablet) {
+      float: none;
+      margin: 0;
+      position: absolute;
+      right: lines(0); top: lines(4);
+      width: lines(15);
+      height: lines(11.25);
+      img {
+        width: lines(15);
+        height: lines(11.25);
+        max-width: lines(15);
+      }
+    }
+  }
+
+  .jsmap {
+    display: block;
+    width: 100%;
+    height: lines(8);
+    top: 0;
+
+    @include media(tablet) {
+      position: absolute;
+      right: lines(0); top: lines(17);
+      width: lines(15);
+      height: lines(10);
+    }
+  }
+
+  .upper-map {
+    @include media(tablet) {
+      top: lines(4);
+    }
+  }
+
+  .listing-author {
+    position: relative;
+    padding-top: lines(1);
+    min-height: lines(5);
+
+    h3 {
+      margin: 0;
+      padding: 0;
+      display: inline;
+    }
+
+    .listing-author-image {
+      padding: em(5) em(5) em(2) em(5);
+      background: $background;
+      position: absolute;
+      top: lines(1);
+      left: em(3);
+      @include border-radius(em(5));
+      @include box-shadow(rgba(0,0,0,0.2) 0 0 em(3) em(2));
+      width: lines(2);
+
+      img {
+        @include border-radius(em(5));
+        width: 100%;
+      }
+    }
+
+    .listing-author-description {
+      padding-left: lines(3.25);
+
+      .icon-with-text, .text-with-icon {
+
+      }
+
+      .icon-with-text {
+        margin-top: 0;
+        @include small-type;
+      }
+
+      .text-with-icon {
+        margin-top: em(4);
+        @include small-type;
+      }
+
+    }
+
+    @include media(tablet) {
+      padding-top: lines(1.25);
+
+      .listing-author-image {
+        width: lines(4.5);
+        padding: em(5) em(5) em(2) em(5);
+      }
+
+      .listing-author-description {
+        padding-left: lines(6);
+        .icon-with-text {
+          margin-top: em(2);
+          @include normal-type;
+        }
+
+        .text-with-icon {
+          margin-top: 0;
+          @include normal-type;
+        }
+      }
+
+    }
+
+  }
+
+  .social {
+    position: relative;
+    padding-top: lines(0.5);
+
+    .fb-like-container {
+      position: absolute;
+    }
+
+    .tweet-button-container {
+      padding-left: lines(8.5);
+    }
+
+  }
+
+  .discussion {
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: lines(0.25);
+      display: inline-block;
+    }
+
+    .follow-links {
+      display: inline-block;
+      margin-left: lines(0.5);
+    }
+
+    .comment {
+      position: relative;
+      border-top: 1px dotted $border;
+      padding: lines(0.25) lines(1) lines(0.25) lines(1.5);
+
+      .avatar {
+        position: absolute;
+        left: 0; top: lines(0.5);
+        img {
+          @include border-radius(em(5));
+        }
+      }
+
+      h3, small {
+        display: inline;
+      }
+
+      small {
+        color: $aside;
+      }
+
+      .comment-content, .comment-icon {
+        @include small-type;
+        @include media(small-tablet) {
+          @include normal-type;
+        }
+      }
+
+      .comment-icons {
+        padding-top: lines(0.25);
+        padding-bottom: lines(0.25);
+      }
+
+      .comment-icon {
+        display: inline-block;
+        margin-right: lines(0.5);
+      }
+
+    }
+
+    .comment-form {
+      border-top: 1px dotted $border;
+      padding-top: lines(0.5);
+      position: relative;
+
+      textarea {
+        width: 95%;
+        min-height: lines(4);
+      }
+
+    }
+
+    @include media(tablet) {
+      padding-top: lines(1.5);
+
+      h2 {
+        @include big-type;
+      }
+
+      .comment {
+        padding: lines(0.5) lines(1) lines(0.25) lines(2.5);
+
+        .avatar {
+          width: lines(2);
+        }
+
+        h3 {
+          margin: 0;
+        }
+      }
+
+      .comment-form {
+        textarea {
+          width: 100%;
+          min-height: lines(6);
+        }
+      }
+    }
+  }
+}
+
+.overflow-allowed {
+  overflow: visible;
+}
+
+.view-profile {
+
+  .profile-description {
+
+    .profile-details {
+      min-height: lines(5);
+    }
+
+    p, li {
+      @include small-type;
+      @include media(small-tablet) {
+        @include normal-type;
+      }
+    }
+
+    @include media(tablet) {
+      padding-right: lines(14); // Makes horizontal space for image
+
+      .profile-details {
+        min-height: 0;
+      }
+    }
+  }
+
+  .button {
+    margin: 0 0 lines(0.5) 0;
+    width: 100%;
+    display: block;
+
+    @include media(tablet) {
+      @include big-button($link);
+      margin: 0;
+      position: absolute;
+      right: 0; top: 0;
+      width: lines(8.5) + em(5);
+    }
+  }
+
+  .profile-image {
+    position: relative;
+    float: right;
+    width: lines(4.5);
+    height: lines(4.5);
+    margin: 0 0 lines(0.5) lines(0.5);
+
+    img {
+      display: block;
+      width: lines(4.5);
+      height: lines(4.5);
+      @include border-radius(em(5));
+    }
+
+    @include media(tablet) {
+      float: none;
+      margin: 0;
+      position: absolute;
+      right: lines(0); top: lines(4);
+      width: lines(12);
+      height: lines(12);
+      img {
+        width: lines(12);
+        max-width: lines(12);
+        height: lines(12);
+      }
+    }
+  }
+
+  .profile-icons {
+    padding-top: lines(0.5);
+  }
+
+  .jsmap {
+    display: block;
+    width: 100%;
+    height: lines(8);
+    margin-top: lines(0.5);
+
+    @include media(tablet) {
+      margin-top: 0;
+      margin-bottom: lines(2);
+      position: absolute;
+      right: lines(0); top: lines(17.5);
+      width: lines(12);
+      height: lines(10);
+    }
+  }
+
+  .action-link {
+    display: block;
+    width: 100%;
+    margin-right: lines(0.5);
+    cursor: pointer;
+
+    @include media(tablet) {
+      position: absolute;
+      right: 0; top: lines(17.5);
+      width: lines(10.5);
+      text-align: left;
+      padding-bottom: lines(0.25);
+    }
+
+  }
+
+  .add-profile-picture-link {
+    display: none;
+    @include media(tablet) {
+      cursor: pointer;
+      position: absolute;
+      right: 0;
+      margin: 0;
+      width: lines(10);
+      padding: lines(0.5) lines(1);
+      display: block;
+      top: lines(15);
+      color: $background;
+      background: $link;
+      @include border-bottom-radius(em(5));
+      &:hover {
+        color: $background;
+        background: darken($link, 10%);
+      }
+    }
+  }
+}
+
+.community-customization-wrapper img {
+  max-width: 100%;
+}
+
+/*
+  ----------------
+  Login form
+  ----------------
+*/
+
+.login-form {
+
+  .facebook-account-info {
+    color: $body;
+    position: relative;
+    display: block;
+    width: 100%;
+    @include border-radius(em(5));
+    border: 1px solid $border;
+    margin-bottom: lines(0.25);
+    .link-icon {
+      position: absolute;
+      top: em(8);
+      left: em(12);
+    }
+    .link-text {
+      margin-left: em(40);
+      margin-right: lines(1.5);
+      padding: em(6) 0 em(10) 0;
+    }
+  }
+
+}
+
+#password_forgotten {
+  display: none;
+}
+
+/*
+  ----------------
+  Signup form
+  ----------------
+*/
+
+/*
+  ----------------
+  New message form
+  ----------------
+*/
+
+.title-label {
+  font-weight: 600;
+}
+
+/*
+  ----------------
+  New feedback form
+  ----------------
+*/
+
+.new-feedback-form {
+  padding-top: lines(1);
+  @include media(tablet) {
+    padding-top: 0;
+  }
+}
+
+/*
+  ----------------
+  New listing form
+  ----------------
+*/
+
+.new-listing-form, .edit-listing-form {
+
+  h2 {
+    margin-top: lines(0.5);
+  }
+
+  a.select {
+    position: relative;
+    display: block;
+    width: 100%;
+    @include border-radius(em(5));
+    border: 2px solid $border;
+    min-height: 42px;
+    &:hover {
+      background: $highlight;
+      cursor: pointer;
+    }
+    margin-bottom: lines(0.25);
+    .link-text {
+      margin-left: em(15);
+      padding: em(6) 0 em(8) 0;
+    }
+  }
+
+  a.selected {
+    background: $highlight;
+    position: relative;
+  }
+
+  select.listing_datetime_select {
+    margin-left: lines(0.25);
+  }
+
+  .selected-group, .option-group {
+
+    .hidden {
+      display: none;
+    }
+
+  }
+
+}
+
+.price-title-field {
+  max-width: lines(8);
+}
+
+.price-field {
+  max-width: lines(5);
+}
+
+.price-currency {
+  margin-left: lines(0.25);
+  display: inline;
+  @include big-type;
+}
+
+.quantity-field {
+  max-width: lines(7);
+}
+
+.quantity-description {
+  margin: 0 lines(0.25);
+  display: inline;
+}
+
+.delivery-options-container{
+  margin-top: lines(0.5);
+}
+
+.delivery-title {
+  font-weight: 600;
+}
+
+.shipping-options-label {
+  font-weight: normal;
+  display: inline;
+  margin-right: lines(0.5);
+}
+
+.delivery-row-low {
+  position: relative;
+  padding-top: em(9);
+  padding-bottom: em(9);
+}
+
+.delivery-row-tall {
+  position: relative;
+}
+
+.delivery-checkbox {
+  position: absolute;
+  top: em(9);
+}
+
+.delivery-left-field {
+  padding-left: lines(1);
+}
+
+.shipping-price-container {
+  display: table;
+  width: 100%;
+  margin-bottom: 0.75em;
+}
+
+.delivery-row {
+  display: table-row;
+}
+
+.delivery-label-cont {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.delivery-input-cont {
+  display: table-cell;
+  width: em(155);
+}
+
+input[type=text].delivery-price-field {
+  float: right;
+  width: em(100);
+}
+
+.delivery-currency {
+  float: right;
+  line-height: 42px; /*input height is 42px*/
+}
+
+/*
+  -----------
+  Inbox
+  -----------
+*/
+
+.conversation-status {
+
+  .status-links {
+    display: inline-block;
+  }
+
+  .inbox-horizontally-aligned-status {
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 25px;
+  }
+
+  .inbox-horizontally-aligned-link {
+    display: inline-block;
+  }
+
+  .accept, .confirm, .accept_preauthorized {
+    @include button(lighten($green, 40%));
+    margin-right: lines(0.5);
+    color: $green;
+    &:hover {
+      color: lighten($green, 10%);
+      background: lighten($green, 50%);
+      border-color: lighten($green, 10%);
+    }
+  }
+
+  .reject, .cancel, .reject_preauthorized {
+    @include button(lighten($red, 40%));
+    margin-right: lines(0.5);
+    color: $red;
+    &:hover {
+      color: lighten($red, 10%);
+      background: lighten($red, 50%);
+      border-color: lighten($red, 10%);
+    }
+  }
+
+}
+
+/*
+  ------------------------
+  Transaction confirmation
+  ------------------------
+*/
+
+.conversation-status-form {
+
+  .conversation-action-description {
+    padding: lines(0.25) 0;
+  }
+
+  .conversation-totals {
+    background-color: $highlight;
+    padding: lines(0.5);
+    margin-bottom: lines(0.5);
+  }
+  .conversation-per-unit-wrapper,
+  .conversation-booking-wrapper,
+  .conversation-quantity-wrapper,
+  .conversation-sum-wrapper,
+  .conversation-service-fee-wrapper,
+  .conversation-total-wrapper,
+  .conversation-shipping-price-wrapper,
+  .conversation-stripe-fee-wrapper {
+    @include clearfix;
+  }
+  .conversation-per-unit-label,
+  .conversation-booking-label,
+  .conversation-quantity-label,
+  .conversation-sum-label,
+  .conversation-service-fee-label,
+  .conversation-total-label,
+  .conversation-shipping-price-label,
+  .conversation-stripe-fee-label {
+    float: left;
+  }
+
+  .conversation-per-unit-value,
+  .conversation-booking-value,
+  .conversation-quantity-value,
+  .conversation-sum-value,
+  .conversation-service-fee-value,
+  .conversation-total-value,
+  .conversation-shipping-price-value,
+  .conversation-stripe-fee-value {
+    float: right;
+    margin-right: lines(0.25);
+  }
+  .conversation-total-paypal-value {
+    float: right;
+  }
+  .conversation-total-wrapper {
+    font-weight: bold;
+  }
+}
+
+/*
+  ------------------------
+  Initiate Transaction
+  ------------------------
+*/
+
+.initiate-transaction-totals {
+    background-color: $highlight;
+    padding: lines(0.5);
+    margin-bottom: lines(0.5);
+}
+
+.initiate-transaction-per-unit-wrapper,
+.initiate-transaction-booking-wrapper,
+.initiate-transaction-quantity-wrapper,
+.initiate-transaction-sum-wrapper,
+.initiate-transaction-shipping-price-wrapper,
+.initiate-transaction-stripe-fee-wrapper,
+.initiate-transaction-total-wrapper {
+    @include clearfix;
+}
+
+.initiate-transaction-per-unit-label,
+.initiate-transaction-booking-label,
+.initiate-transaction-quantity-label,
+.initiate-transaction-sum-label,
+.initiate-transaction-shipping-price-label,
+.initiate-transaction-stripe-fee-label,
+.initiate-transaction-total-label {
+    float: left;
+}
+
+.initiate-transaction-per-unit-value,
+.initiate-transaction-booking-value,
+.initiate-transaction-quantity-value,
+.initiate-transaction-sum-value,
+.initiate-transaction-shipping-price-value,
+.initiate-transaction-stripe-fee-value,
+.initiate-transaction-total-value {
+    float: right;
+    margin-right: lines(0.25);
+}
+
+.initiate-transaction-total-wrapper {
+    font-weight: bold;
+}
+
+/*
+  ------------------------
+  Shipping address
+  ------------------------
+*/
+
+.shipping-address-container {
+    background-color: $highlight;
+    padding: lines(0.5);
+    margin-bottom: lines(0.5);
+    margin-top: lines(0.5);
+}
+
+.shipping-address-name {
+    font-weight: bold;
+}
+
+/*
+  ----------------
+  About
+  ----------------
+*/
+
+.about-section {
+  h3 {
+    padding-top: lines(0.25);
+    padding-bottom: lines(0.25);
+  }
+
+  // Pushes content after about-section (mainly branding footer) down,
+  // so that it doesn't overlap in any case with the left hand
+  // navigation
+  @include media(tablet){
+    min-height: 250px;
+  }
+}
+
+/*
+  -----------------------------------------------
+  New testimonial form, conversation status form
+  -----------------------------------------------
+*/
+
+.testimonial-form, .conversation-status-form, .payment-form {
+
+  a.hidden, div.hidden {
+    display: none;
+  }
+
+  span.currency-symbol {
+    display: none;
+  }
+
+  .payment-row-headings {
+    display: none;
+  }
+
+  .payment-row {
+    padding: lines(0.125) lines(0.5) lines(0.5) lines(0.5);
+  }
+
+  .grey {
+    background: $highlight;
+    @include border-radius(em(5));
+  }
+
+  .conversation-price {
+    margin-top: lines(0.75);
+    margin-bottom: lines(0.25);
+  }
+
+  @include media(tablet) {
+
+    .payment-row-headings {
+      display: block;
+      margin-bottom: lines(0.375);
+      padding-bottom: lines(0.25);
+    }
+
+    .bottom-border {
+      border-bottom: 1px solid $body;
+    }
+
+    .payment-row {
+      margin-bottom: lines(0.5);
+      padding: lines(0.5) lines(0.5) lines(0.5) lines(0.5);
+    }
+
+    .payment-row-heading {
+      display: inline-block;
+      font-weight: bold;
+    }
+
+    .payment-row-title-heading {
+      width: lines(10);
+      margin-left: lines(0.5);
+    }
+
+    .payment-row-sum-heading {
+      width: lines(4);
+      margin-left: lines(0.5);
+    }
+
+    .payment-row-vat-heading {
+      width: lines(2);
+      margin-left: lines(0.5) + em(12);
+    }
+
+    .payment-row-total-heading {
+      text-align: center;
+      width: lines(4.5);
+      margin-left: lines(0.5) + em(15);
+    }
+
+    .payment-row-label {
+      display: none;
+    }
+
+    .payment-row-field {
+      display: inline-block;
+    }
+
+    .payment-row-title-field {
+      width: lines(10);
+    }
+
+    .payment-row-sum-field {
+      width: lines(4);
+      margin-left: lines(0.5);
+    }
+
+    span.currency-symbol {
+      display: inline;
+    }
+
+    .payment-row-vat-field {
+      width: lines(2);
+      margin-left: lines(0.5);
+    }
+
+    .total-label {
+      display: inline-block;
+      text-align: center;
+      width: lines(4);
+      margin-left: lines(0.5);
+    }
+
+    .payment-row-title-text {
+      width: lines(10);
+      margin-left: lines(0.5);
+    }
+
+    .payment-row-sum-text {
+      width: lines(4);
+      margin-left: lines(0.5);
+    }
+
+    .payment-row-vat-text {
+      width: lines(2);
+      margin-left: lines(0.5) + em(12);
+    }
+
+    .payment-row-total-text {
+      text-align: center;
+      width: lines(4);
+      margin-left: lines(0.5);
+    }
+
+    .payment-text-row {
+      padding: lines(0) lines(0.5) lines(0.5) lines(0.5);
+    }
+
+    .payment-row-text {
+      display: inline-block;
+    }
+
+    .payment-sum-row {
+      font-weight: bold;
+    }
+
+  }
+}
+
+/*
+  ----------------------------------
+  New email to all community members
+  ----------------------------------
+*/
+
+.new-member-email-form {
+  .permanent-notification {
+    margin-bottom: 0;
+  }
+}
+
+/*
+  ----------------------------------
+  Payments
+  ----------------------------------
+*/
+
+.payment-form {
+
+  small {
+    margin-top: lines(0.5);
+  }
+
+  .payment-form-label {
+    font-weight: bold;
+    display: inline-block;
+    width: lines(6);
+  }
+
+  .send-button {
+    padding-top: lines(0.25);
+  }
+
+}
+
+.paypal-loading {
+  width: 360px;
+  height: 150px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin: -50px -170px;
+  text-align: center;
+}
+.paypal-loading-title {
+  font-size: 150%;
+  margin-bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+.paypal-loading-desc {
+  width: 100%;
+  text-align: center;
+}
+.paypal-loading-spinner {
+  display: inline-block;
+  margin-top: 12px;
+}
+
+/*
+  --------------------------
+  Common stuff (new layout)
+  --------------------------
+*/
+
+/* Colors */
+$light_grey: #fdfbfb;
+$network-green: #00a26c;
+
+@mixin action-button($color) {
+  @include border-radius(em(5));
+  @include normal-type;
+
+  color: $background;
+  background: $color;
+  border: 3px solid darken($color, 15%);
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  vertical-align: top;
+  padding: em(8) em(13) em(11) em(13);
+
+  &:hover {
+    background: darken($color, 5%);
+    color: $background;
+    border-color: darken($color, 20%);
+  };
+
+  @include media(tablet) {
+    @include big-type;
+    padding: em(11) em(16) em(14) em(16);
+    width: auto;
+  }
+}
+
+/* Calculate fluid ratio based on two dimensions (width/height) */
+@mixin fluid-ratio($large-size, $small-size) {
+  $width-large: nth($large-size, 1);
+  $width-small: nth($small-size, 1);
+  $height-large: nth($large-size, 2);
+  $height-small: nth($small-size, 2);
+  $slope: ($height-large - $height-small) / ($width-large - $width-small);
+  $height: $height-small - $width-small * $slope;
+
+  padding-top: $slope * 100%;
+  height: $height;
+
+  background-size: cover;
+  -moz-background-size: cover;  /* Firefox 3.6 */
+  background-position: center;  /* Internet Explorer 7/8 */
+}
+
+/* User both for marketplace and network landers */
+
+.coverimage {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+figure.fluidratio {
+  position: relative;
+  display: block;
+  height: lines(4.3);
+  background-size: cover;
+  -moz-background-size: cover;  /* Firefox 3.6 */
+  background-position: center;  /* Internet Explorer 7/8 */
+  background-position: center center;
+}
+
+.mobile {
+  display: block;
+  @include media(tablet) {
+    display: none;
+  }
+}
+
+.desktop {
+  display: none;
+  @include media(tablet) {
+    display: block;
+  }
+}
+
+/*
+  Lander
+*/
+
+.network-header-content-container {
+  position: relative;
+}
+
+.marketplace-lander {
+  position: relative;
+
+  figure.marketplace-cover {
+    background-image: url(image-path($cover-photo-url));
+    height: auto;
+    background-size: cover;
+  }
+
+  figure.marketplace-cover-small {
+    background-image: url(image-path($small-cover-photo-url));
+    height: em($small-cover-photo-mobile-height);
+    @include media(tablet) {
+      @include fluid-ratio(em(1920) em($small-cover-photo-height), em(300) em($small-cover-photo-height));
+    }
+  }
+
+  .coverimage-fade {
+    position: absolute;
+    top: lines(0);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba($highlight, 0.9);
+
+    &.without-text {
+      background: rgba($highlight, 0.625);
+    }
+  }
+
+  figure.marketplace-cover-small-fade {
+    height: em($small-cover-photo-mobile-height, 16);
+    @include media(tablet) {
+      @include fluid-ratio(em(1920) em($small-cover-photo-height), em($small-cover-photo-height) em($small-cover-photo-height));
+    }
+  }
+
+  .marketplace-lander-content {
+    padding: 5em 1em;
+    text-align: center;
+  }
+
+  .marketplace-lander-content-title {
+    margin-bottom: 0;
+    margin-top: 0;
+    position: relative;
+    padding: 0;
+    color: $slogancolor;
+    @include larger-type;
+    line-height: em(18);
+    @include media(tablet) {
+      padding: 0 lines(1);
+      @include huge-type;
+      line-height: em(15);
+    }
+  }
+
+  .marketplace-lander-content-description {
+      color: $descriptioncolor;
+  }
+
+  .title-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .title-header-wrapper {
+    @include wrapper;
+    max-width: lines(42);
+    background: transparent;
+    width: 100%;
+    height: 100%;
+  }
+
+  .marketplace-title-header {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+
+    display: table;
+
+    h1 {
+      color: $light-body;
+      @include normal-type;
+      font-weight: bold;
+      line-height: lines(0.8);
+
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+
+      @include media(large-mobile) {
+        @include big-type;
+      }
+
+      @include media(tablet) {
+        text-align: left;
+        @include large-type;
+      }
+    }
+  }
+
+  p {
+    margin-top: lines(0.5);
+    color: $background;
+    @include normal-type;
+    font-weight: 500;
+    @include text-shadow(2px, 2px, 3px, rgba(black, 0.5));
+    @include media(tablet) {
+      margin-top: lines(1);
+    }
+  }
+
+  input[type=text] {
+    @include normal-type;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    vertical-align: top;
+    padding: em(11) em(11) em(11) em(11);
+    width: 100%;
+  }
+
+  button.action-button {
+    @include cover-photo-button($link);
+    border: 0;
+    @include media(tablet) {
+      margin: 0 0 0 lines(0.5);
+    }
+  }
+
+  .search-form {
+    margin-top: lines(1);
+    @include media(tablet) {
+      margin-top: lines(2.5);
+    }
+  }
+
+  .search-form-input {
+    vertical-align: top;
+    display: inline;
+  }
+
+  .browse-view-search-form {
+    width: 100%;
+    padding-top: lines(0.5);
+
+    input[type=text] {
+      @include normal-type;
+      vertical-align: top;
+      margin-right: em(-4);
+      padding: 0 em(15);
+      width: 73%;
+      display: inline;
+      line-height: 40px;
+      height: 42px;
+    }
+
+    button.action-button {
+      display: inline;
+      vertical-align: top;
+      padding: em(8);
+      margin: 0 0 0 3%;
+      width: 24%;
+      margin-right: em(-4);
+      border-width: 0;
+      padding: 3px 0 0 0;
+      line-height: 38px;
+      height: 42px;
+    }
+
+    @include media(tablet) {
+      padding: lines(1) 0;
+    }
+  }
+
+  @include media(tablet) {
+
+
+    .marketplace-lander-content-title {
+      margin-bottom: 0;
+      margin-top: 0;
+      @include huge-type;
+      line-height: em(13);
+    }
+
+    p {
+      @include large-type;
+      margin: lines(0.5) auto;
+      max-width: lines(15);
+    }
+
+    input[type=text] {
+      @include big-type;
+      padding: em(11) em(14) em(11) em(14);
+      width: lines(15);
+    }
+
+    button.action-button {
+      width: lines(4);
+      padding: em(14) em(16) em(11) em(16);
+      @include big-type;
+    }
+
+    .search-form-text-field {
+      width: lines(10);
+    }
+
+    .browse-view-search-form {
+      $search-bar-height: 48px;
+
+      input[type=text] {
+        @include normal-type;
+        width: 77%;
+        line-height: $search-bar-height;
+        height: $search-bar-height;
+      }
+
+      button.action-button {
+        margin-left: 1%;
+        width: 22%;
+        line-height: $search-bar-height - 2px; // -2 for finetuning vertical centering
+        height: $search-bar-height;
+      }
+
+    }
+
+  }
+
+  @include media(desktop) {
+    .marketplace-lander-content-title {
+      margin-bottom: 0;
+      margin-top: 0;
+      @include mega-type;
+      line-height: em(15);
+    }
+  }
+}
+.text-center {
+  text-align: center;
+}
+.ui-tooltip {
+  background-color: #ffffff;
+}

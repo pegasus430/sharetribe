@@ -1,0 +1,39 @@
+%div{:style => "min-width:100%"}
+  %table{:cellpadding => "0", :cellspacing => "0", :border => "0", :align => "center", :style => "text-align:center;margin:0;padding:0;width:100%!important;line-height:100%!important;background: #ebebeb;"}
+    %tbody
+      %tr
+        %td
+          %table{:cellpadding=> "0", :cellspacing => "0", :border => "0", :align => "center", :style => "text-align:center"}
+            %tr
+              %td{:style => "width:100%;max-width:602px", :valign => "top"}
+                %table{:align => "center", :border => "0", :cellpadding => "0", :cellspacing => "0", :style => "background:#fff;"}
+                  %tbody
+                    %tr
+                      %td{:width => "5%"}
+                      %td{:valign => "top", :width => "90%"}
+                        %h1{:style => "font-family:Helvetica Neue, Helvetica, Arial, sans-serif;font-weight:400;font-size:18px;margin-top:20px;margin-bottom:5px; padding: 20px; background: #ebebeb;text-align: left;line-height:22px;"}
+                          %span{:style => "color:#464646;"}
+                            = t("emails.community_updates.update_mail_title", :title_link => link_to(@title_link_text, search_url(@url_params))).html_safe
+                        %div{:style => "font-family:Helvetica Neue, Helvetica, Arial, sans-serif;font-size:16px;line-height:22px; padding: 10px 0;text-align:left;"}
+                          %p
+                            = t("emails.newsletter.hi", :name => link_to(PersonViewUtils.person_display_name_for_type(@recipient, "first_name_only"), person_url(@recipient, @url_params))).html_safe
+                          %p
+                            = t("emails.community_updates.intro_paragraph", :community_link => link_to(t("emails.community_updates.intro_paragraph_link_text", :community_name => @community.full_name(I18n.locale)), search_url(@url_params)), :time_since_last_update => @time_since_last_update).html_safe
+                      %td{:width => "5%"}
+                    %tr
+                      %td{:width => "5%"}
+                      %td{:style => "text-align:left", :valign => "top", :width => "90%"}
+                        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "border-bottom: 1px solid #ededed;", :width => "100%"}
+                          %tbody
+                            %tr
+                              %td
+                                = render :partial => "community_update_listing", :collection => @listings, :as => :listing
+
+                            %tr
+
+                              = render :partial => "person_mailer/action_button", :locals => { :text => t("homepage.index.post_new_listing"), :url => new_request_without_locale_url(@url_params.merge({:type => "offer"})), :align => "center"}
+                      %td{:width => "5%"}
+            %tr
+              %td{:style => "text-align: left;width:100%;max-width:602px;padding: 5px 30px;"}
+                %p{:style => "margin-top:10px;margin-bottom:5px;font-family:helvetica,arial,sans-serif;font-size:12px;color:#464646;"}
+                  = t("emails.community_updates.reduce_email_footer_text", :settings_link => link_to(t("emails.community_updates.settings_link_text"), notifications_person_settings_url(@recipient, @url_params)), :unsubscribe_link => link_to(t("emails.community_updates.unsubscribe_link_text"), unsubscribe_person_settings_url(@recipient, @url_params.merge({:email_type => "community_updates", auth: unsubscribe_token})))).html_safe

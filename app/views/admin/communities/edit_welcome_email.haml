@@ -1,0 +1,236 @@
+= render :partial => "admin/left_hand_navigation", :locals => { :links => admin_links_for(@current_community) }
+
+- content_for :extra_javascript do
+  :javascript
+    $(document).ready(function() {
+      window.ST.initializeSenderEmailForm(#{Maybe(user_defined_address).map { |a| HashUtils.camelize_keys(a) }.or_else(nil).to_json.html_safe}, "#{status_check_url}", "#{resend_url}");
+    });
+
+- content_for :title_header do
+  %h1
+    = t("layouts.admin.admin")
+    = "-"
+    = t("admin.left_hand_navigation.emails_title")
+
+.left-navi-section
+  - if show_branding_info || !can_set_sender_address
+    .row
+      .col-12
+
+        .alert-box-warning
+          %p
+            %span.alert-box-icon<>
+              = icon_tag("alert", ["icon-fix"])
+            %span<
+              = t("admin.communities.outgoing_email.white_label_offer", upgrade_pro_plan_link: link_to(t("admin.communities.outgoing_email.upgrade_plan_link"), admin_plan_path)).html_safe
+
+  .row
+    .col-12
+      - contact_support_link = link_to t("admin.communities.outgoing_email.contact_support_link_text"), "mailto:#{support_email}", "data-uv-trigger" => "contact"
+
+      %h2= t("admin.communities.outgoing_email.title")
+
+      %p= t("admin.communities.outgoing_email.info")
+
+      %p
+        = link_to(t("admin.communities.outgoing_email.read_more"), "#{knowledge_base_url}/configuration-and-how-to/how-to-define-your-own-address-as-the-sender-of-all-outgoing-emails")
+
+  - content_for(:sender_address_preview) do
+    - if sender_address[:type] == :default
+      = t("admin.communities.outgoing_email.sender_address_default", sender_address: sender_address[:display_format])
+    - else
+      = t("admin.communities.outgoing_email.sender_address", sender_address: sender_address[:display_format])
+
+  - content_for(:resend_link) do
+    = link_to(t("admin.communities.outgoing_email.resend_link"), nil, class: "js-sender-address-resend-verification")
+
+  - if user_defined_address.nil? || (!ses_in_use && !Rails.env.test?)
+    -# SES not in use, or the marketplace uses default sender address
+    .row
+      .col-12
+        .sender-address-preview
+          %span
+            = content_for(:sender_address_preview)
+
+  - elsif [:none, :requested, :expired].include?(user_defined_address[:verification_status])
+    -# Custom sender address is set, but not yet verified
+    .row.js-status-loading
+      .col-12
+        = image_tag("ajax-loader-grey.gif", class: "sender-address-status-loading-spinner")
+
+    .js-loaded-sender-address-status.hidden
+      .row
+        .col-12
+          .sender-address-preview
+            %span.js-sender-address-preview-current.hidden
+              = content_for(:sender_address_preview)
+            %span.js-sender-address-preview-new.hidden
+              = t("admin.communities.outgoing_email.sender_address", sender_address: user_defined_address[:display_format])
+
+      - content_for(:verification_status) do
+        %span.status-verified.js-status-verified.hidden
+          = t("admin.communities.outgoing_email.status_verified")
+        %span.status-resent.js-status-resent.hidden
+          = t("admin.communities.outgoing_email.status_resent", email: user_defined_address[:email], resend_link: content_for(:resend_link)).html_safe
+        %span.status-requested.js-status-requested.hidden
+          - content_for(:time_ago_placeholder) do
+            %span.js-sender-address-verification-sent-time-ago<>
+          = t("admin.communities.outgoing_email.status_requested", email: user_defined_address[:email], resend_link: content_for(:resend_link), time_ago: content_for(:time_ago_placeholder)).html_safe
+        %span.status-error.js-status-error.hidden
+          = t("admin.communities.outgoing_email.status_error")
+        %span.status-expired.js-status-expired.hidden
+          = t("admin.communities.outgoing_email.status_expired", email: user_defined_address[:email], resend_link: content_for(:resend_link)).html_safe
+
+      .row
+        .col-12
+          = t("admin.communities.outgoing_email.status", status: content_for(:verification_status)).html_safe
+
+      .row.js-verification-email-from.hidden
+        .col
+          %span.sender-address-verification-from
+            = t("admin.communities.outgoing_email.verification_sent_from", verification_sender_name: "Amazon Web Services")
+          = t("admin.communities.outgoing_email.follow_the_instructions")
+
+      .row.js-if-you-need-to-change.hidden
+        .col-12
+          = t("admin.communities.outgoing_email.need_to_change", contact_support_link: contact_support_link).html_safe
+
+  - else
+    -# Verified!
+    .row
+      .col-12
+        .sender-address-preview
+          %span
+            = content_for(:sender_address_preview)
+    .row
+      .col-12
+        - content_for(:status_verified) do
+          %span.status-verified
+            = t("admin.communities.outgoing_email.status_verified");
+        = t("admin.communities.outgoing_email.status", status: content_for(:status_verified)).html_safe
+        - if can_set_sender_address && user_defined_address.present?
+          - change_name_link = link_to  t("admin.communities.outgoing_email.change_sender_name"), '#', id: 'show-change-sender-name-form'
+          - change_email_link = link_to  t("admin.communities.outgoing_email.change_sender_email"), '#', id: 'show-change-sender-email-form'
+          =t("admin.communities.outgoing_email.change_sender_prompt", change_name_link: change_name_link, change_email_link: change_email_link).html_safe
+          - content_for :extra_javascript do
+            :javascript
+              $("#show-change-sender-name-form").click(function(){
+                $("#change-sender-name-form").show();
+                return false;
+              });
+              $("#show-change-sender-email-form").click(function(){
+                $("#change-sender-email-form").show();
+                return false;
+              });
+
+    - if can_set_sender_address && user_defined_address.present?
+      #change-sender-name-form.hidden
+        .row
+          .col-12
+            %h3= t("admin.communities.outgoing_email.set_sender_name")
+
+        = form_tag(post_sender_address_url, method: :post) do
+          .row
+            .col-12
+              %label.sender-address-label= t("admin.communities.outgoing_email.sender_name_label")
+              %input.js-sender-name-input{name: "name", type: :text, value: user_defined_address[:name], placeholder: t("admin.communities.outgoing_email.sender_name_placeholder")}
+              = hidden_field_tag :email, user_defined_address[:email]
+          .row
+            %button= t("admin.communities.outgoing_email.set_sender_name")
+
+      #change-sender-email-form.hidden
+        .row
+          .col-12
+            %h3= t("admin.communities.outgoing_email.set_sender_address")
+
+        = form_tag(post_sender_address_url, method: :post, class: "js-sender-email-form") do
+          .row
+            .col-6
+              %label.sender-address-label= t("admin.communities.outgoing_email.sender_name_label")
+              %input.js-sender-name-input{name: "name", type: :text, value: user_defined_address[:name], placeholder: t("admin.communities.outgoing_email.sender_name_placeholder")}
+            .col-6
+              %label.sender-address-label= t("admin.communities.outgoing_email.sender_email_label")
+              %input.js-sender-email-input{name: "email", type: :text, value: user_defined_address[:email], placeholder: t("admin.communities.outgoing_email.sender_email_placeholder")}
+
+          .js-sender-address-preview-container.sender-address-preview-container.hidden
+            .row
+              .col-12
+                .sender-address-preview
+                  = t("admin.communities.outgoing_email.this_is_how_it_will_look")
+                  %span.js-sender-address-preview-values
+            .row.js-sender-address-preview-container.sender-address-preview-container.hidden
+              .col-12
+                .alert-box-warning
+                  %p
+                    %span.alert-box-icon<>
+                      = icon_tag("alert", ["icon-fix"])
+                    %span
+                      = t("admin.communities.outgoing_email.amazon_ses_notification", email_sender: "Amazon Web Services", email_subject: "Amazon SES Address Verification Request")
+          .row
+            %button= t("admin.communities.outgoing_email.send_verification_button")
+
+    - else
+      .row
+        .col-12
+          = t("admin.communities.outgoing_email.need_to_change", contact_support_link: contact_support_link).html_safe
+
+  - if user_defined_address.nil?
+    .row
+      .col-12
+        %h3= t("admin.communities.outgoing_email.set_sender_address")
+
+    - disabled_attr = can_set_sender_address ? nil : :disabled
+    - disabled_class = can_set_sender_address ? "" : "sender-address-disabled"
+
+    = form_tag(post_sender_address_url, method: :post, class: "js-sender-email-form") do
+      .row
+        .col-6
+          %label.sender-address-label= t("admin.communities.outgoing_email.sender_name_label")
+          %input.js-sender-name-input{name: "name", type: :text, placeholder: t("admin.communities.outgoing_email.sender_name_placeholder"), disabled: disabled_attr, class: disabled_class}
+        .col-6
+          %label.sender-address-label= t("admin.communities.outgoing_email.sender_email_label")
+          %input.js-sender-email-input{name: "email", type: :text, placeholder: t("admin.communities.outgoing_email.sender_email_placeholder"), disabled: disabled_attr, class: disabled_class}
+
+      .js-sender-address-preview-container.sender-address-preview-container.hidden
+        .row
+          .col-12
+            .sender-address-preview
+              = t("admin.communities.outgoing_email.this_is_how_it_will_look")
+              %span.js-sender-address-preview-values
+        .row.js-sender-address-preview-container.sender-address-preview-container.hidden
+          .col-12
+            .alert-box-warning
+              %p
+                %span.alert-box-icon<>
+                  = icon_tag("alert", ["icon-fix"])
+                %span
+                  = t("admin.communities.outgoing_email.amazon_ses_notification", email_sender: "Amazon Web Services", email_subject: "Amazon SES Address Verification Request")
+      .row
+        %button{disabled: disabled_attr, class: disabled_class}= t("admin.communities.outgoing_email.send_verification_button")
+
+  %h2= t(".welcome_email_content", :community_name => @community.name(I18n.locale))
+  %p= t(".welcome_email_content_description", :send_test_message_link => t(".send_test_message"))
+  %a{:id => "edit_link", :href => "/editor" + request.path, :data => { :save_url => mercury_update_path }}
+    .icon-with-text-container
+      = icon_tag("edit", ["icon-part"])
+      .text-part= t(".edit_message")
+
+  %a{:href => test_welcome_email_admin_community_path(@community)}
+    .icon-with-text-container
+      = icon_tag("mail", ["icon-part"])
+      .text-part= t(".send_test_message")
+  %p ***
+  .welcome-email-editor-background
+    %p= t("emails.common.hey", :name => PersonViewUtils.person_display_name_for_type(@recipient, "first_name_only"))
+    #welcome_email_content{:data => {:mercury => "full"}}
+      - if @community_customization && @community_customization.welcome_email_content
+        = @community_customization.welcome_email_content.html_safe
+      - else
+        = render :partial => "admin/communities/default_welcome_email"
+    -if show_branding_info
+      - sharetribe_link = link_to("Sharetribe", link_to_sharetribe)
+      - learn_more = link_to(t("layouts.branding.learn_more"), link_to_sharetribe)
+      .info-text-container
+        =t("layouts.branding.powered_by", sharetribe_link: sharetribe_link).html_safe
+        =t("layouts.branding.create_own", learn_more: learn_more).html_safe
+

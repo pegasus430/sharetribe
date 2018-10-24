@@ -1,0 +1,63 @@
+/*
+  Vertical centering using "ghost" element
+  Use for: Centering blocks with unknown height/width
+
+  http://css-tricks.com/centering-in-the-unknown/
+*/
+@mixin vertical-centering-container {
+  // Set font-size to 0 to remove the small gap between
+  // inline-block elements
+  //
+  // Android pre Jellybean has an ugly bug, which prevents font-size 0 technique from
+  // removing the spaces between inline-blocks.
+  .no-androidprejellybean & {
+    font-size: 0;
+  }
+
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+
+    // Android pre Jellybean has an ugly bug, which prevents font-size 0 technique from
+    // removing the spaces between inline-blocks.
+    .androidprejellybean & {
+      margin-right: -0.25em;
+    }
+  }
+}
+
+@mixin vertical-centering-content {
+  // Reset font-size
+  //
+  // Android pre Jellybean has an ugly bug, which prevents font-size 0 technique from
+  // removing the spaces between inline-blocks.
+  .no-androidprejellybean & {
+    font-size: #{$font-size}px;
+  }
+
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+}
+
+@mixin vertical-centering-text-content {
+  @include vertical-centering-content;
+  margin-left: -0.25em; // Adjust for spacing. Needed if we're centering text
+}
+
+/*
+  Vertical centering using tables
+  Use for: Center multiline text
+
+  http://css-tricks.com/vertically-center-multi-lined-text/
+*/
+@mixin vertical-centering-table-container {
+  display: table;
+}
+
+@mixin vertical-centering-table-content {
+  display: table-cell;
+  vertical-align: middle;
+}

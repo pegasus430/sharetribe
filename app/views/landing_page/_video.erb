@@ -1,0 +1,130 @@
+<% content_for :video_css, flush: false do %>
+  .<%= section_id %>__video__youtube-player-container--aspect-ratio {
+    width: 100%;
+    padding-bottom: <%= (100.to_f / s["width"].to_f * s["height"].to_f) %>%;
+  }
+<% end %>
+
+<section id="<%= section_id%>" class="video__youtube-player-mask">
+  <div class="video__youtube-player-container--centering">
+    <div class="<%= section_id %>__video__youtube-player-container--aspect-ratio video__youtube-player-container--aspect-ratio">
+      <div id="<%= section_id %>__video__youtube-player" class="video__youtube-player"></div>
+      <div id="<%= section_id%>__video__youtube-overlay" class="video__youtube-overlay video__youtube-overlay--inactive video__youtube-overlay--hover-animation"></div>
+      <div id="<%= section_id%>__video__youtube-controls" class="video__youtube-controls">
+        <svg id="<%= section_id %>__video__youtube-watch-video-icon" class="video__youtube-watch-video-icon" width="63" height="63" viewBox="47 -1 63 63" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke="#FFF" stroke-width="2"><path d="M108 30c0 16.57-13.433 30-30 30-16.57 0-30-13.43-30-30S61.43 0 78 0c16.567 0 30 13.43 30 30z"/><path d="M68.87 41.74V18.26L92.347 30z"/></g></svg>
+        <span id="<%= section_id %>__video__youtube-watch-video-text" class="video__youtube-watch-video-text"><%= s["text"] %></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% autoplay = !!s["autoplay"] %>
+<% autoplaymuted = s["autoplay"] =~ /mute/ %>
+<% content_for :youtube_ready_js, flush: false do %>
+ (function() {
+
+   var mask = document.getElementById("<%= section_id%>");
+   var overlay = document.getElementById("<%= section_id%>__video__youtube-overlay");
+   var controls = document.getElementById("<%= section_id %>__video__youtube-controls");
+   var inactive = true;
+
+   var player = new YT.Player('<%= section_id %>__video__youtube-player', {
+     videoId: '<%= s["youtube_video_id"] %>',
+     playerVars: {
+       controls: 0,
+       modestbranding: 1,
+       rel: 0,
+       showinfo: 0,
+       autoplay: <%= autoplay ? 1 : 0 %>,
+       loop: 1,
+       playlist: '<%= s["youtube_video_id"] %>'
+     },
+     events: {
+       onReady: onReady,
+       onStateChange: onStateChange
+     }
+   });
+
+   // Event listeners
+   function onReady() {
+     <% if autoplay %>
+       hideOverlay();
+       if (currentBrowserName == 'Safari') {
+         activate();
+         player.playVideo();
+       }
+     <% end %>
+     <% if autoplaymuted %>
+       player.mute();
+     <% else %>
+       inactive = false;
+     <% end %>
+
+     Modernizr.on('videoautoplay', function(result) {
+       if(!result) {
+         <% if autoplay && !autoplaymuted %>
+           player.unMute();
+         <% end %>
+       }
+     });
+   }
+
+   function onStateChange(e) {
+     var ended = 0;
+     if (e.data == ended) {
+       inactivate();
+     }
+   }
+
+   // UI
+   function hideOverlay() {
+     mask.style.maxHeight = "none";
+     overlay.classList.remove("video__youtube-overlay--inactive");
+     overlay.classList.add("video__youtube-overlay--active");
+     controls.style.opacity = 0;
+   }
+
+   function showOverlay() {
+     mask.style.maxHeight = "75vh";
+     overlay.classList.remove("video__youtube-overlay--active");
+     overlay.classList.add("video__youtube-overlay--inactive");
+     controls.style.opacity = 1;
+   }
+
+   // Player controls
+   function activate() {
+     player.seekTo(0, true);
+     player.unMute();
+     hideOverlay();
+     inactive = false;
+   }
+
+   function inactivate() {
+     player.mute();
+     showOverlay();
+     inactive = true;
+   }
+
+   var playing = <%= autoplay ? 'true' : 'false' %>;
+
+   function togglePlayback() {
+     if(playing) {
+       player.pauseVideo();
+       showOverlay();
+     } else {
+       player.playVideo();
+       hideOverlay();
+     }
+     playing = !playing;
+   }
+
+   overlay.addEventListener("click", function() {
+     if(inactive) {
+       activate();
+     } else {
+       togglePlayback();
+     }
+   });
+
+ })();
+<% end %>

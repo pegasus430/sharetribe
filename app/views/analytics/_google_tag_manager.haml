@@ -1,0 +1,40 @@
+:plain
+  var dataLayer = dataLayer || [];
+  function _gtm_identify(dl, info ){
+    if (info.community_id) {
+      dl.push({
+        event: "identify",
+        id: "mp-" + info.community_id + "-admin",
+        communityAdminEmail: info.community_admin_email,
+      });
+    }
+
+    dl.push({
+      event: 'feature flags',
+      featureFlags: info.feature_flags
+    });
+
+  };
+
+  <!-- Google Tag Manager -->
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','#{APP_CONFIG.google_tag_manager_key}');
+  <!-- End Google Tag Manager -->
+
+  window.ST = window.ST || {};
+  window.ST.gtmPush = function(data){
+    window.dataLayer = window.dataLayer || [];
+    if (Array.isArray(data)) {
+      Array.prototype.push.apply(window.dataLayer, data);
+    } else {
+      window.dataLayer.push(data);
+    }
+  };
+
+  onDocumentReady(function() {
+    ST.analytics.initGoogleTagManager();
+  });
+

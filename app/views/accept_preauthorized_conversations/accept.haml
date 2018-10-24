@@ -1,0 +1,168 @@
+- content_for :title_header do
+  %h1= t("layouts.no_tribe.inbox")
+
+- content_for :extra_javascript do
+  :javascript
+    (function() {
+      var btn = $('#send_testimonial_button');
+
+      btn.click(function() {
+        disable_and_submit("#accept-reject-form", $("#accept-reject-form"), "false", '#{I18n.locale}');
+      })
+
+      ST.initializeRadioButtons({
+        buttons: [".js-accept-radio-button", ".js-reject-radio-button"],
+        input: ".js-accept-status",
+        callback: function(selector) {
+          switch(selector) {
+            case ".js-accept-radio-button": btn.text('#{t("conversations.accept.accept")}'); break;
+            case ".js-reject-radio-button": btn.text('#{t("conversations.accept.decline")}'); break;
+          }
+        }
+      })
+    })();
+.conversation-status-form.centered-section
+  %h2= t("conversations.accept.details")
+
+  %h3= link_to_unless listing.deleted?, listing.title, listing
+
+  - if @transaction.starter
+    %p= t("conversations.accept.order_by",
+          orderer_link: link_to_unless(@transaction.starter.deleted?, PersonViewUtils.person_display_name(@transaction.starter, @current_community), @transaction.starter)).html_safe
+
+  .conversation-price-info
+    .conversation-totals
+      - if @transaction.booking
+        - booking = @transaction.booking
+        - if booking.per_hour?
+
+          .conversation-per-unit-wrapper
+            %span.conversation-per-unit-label
+              = t("transactions.initiate.price_per_hour")
+            %span.conversation-per-unit-value
+              = MoneyViewUtils.to_humanized(listing.price)
+
+          .conversation-booking-wrapper
+            %span.conversation-booking-label
+              = t('transactions.initiate.booked_hours_label', count: booking.duration)
+            %span.conversation-booking-value
+              = l booking.start_time.to_date, format: :long_with_abbr_day_name
+              = '-'
+              = t("transactions.initiate.start_end_time",
+                start_time: l(booking.start_time, format: :hours_only),
+                end_time: l(booking.end_time, format: :hours_only))
+              = t("transactions.initiate.duration_in_hours", count: booking.duration)
+        - else
+          - unit_type_day = @transaction.unit_type == :day
+          .conversation-per-unit-wrapper
+            %span.conversation-per-unit-label
+              - if unit_type_day
+                = t("transactions.initiate.price_per_day")
+              - else
+                = t("transactions.initiate.price_per_night")
+            %span.conversation-per-unit-value
+              = MoneyViewUtils.to_humanized(listing.price)
+
+          .conversation-booking-wrapper
+            %span.conversation-booking-label
+              - if unit_type_day
+                = use_new_translation("transactions.initiate.booked_days_label", count: booking.duration).or_fallback_to("transactions.initiate.booked_days")
+              - else
+                = use_new_translation("transactions.initiate.booked_nights_label", count: booking.duration).or_fallback_to("transactions.initiate.booked_nights")
+            %span.conversation-booking-value
+              = l booking.start_on, format: :long_with_abbr_day_name
+              = "-"
+              - if unit_type_day
+                = l (booking.end_on - 1.day), format: :long_with_abbr_day_name
+                = "(#{pluralize(booking.duration, t("listing_conversations.preauthorize.day"), t("listing_conversations.preauthorize.days"))})"
+              - else
+                = l booking.end_on, format: :long_with_abbr_day_name
+                = "(#{pluralize(booking.duration, t("listing_conversations.preauthorize.night"), t("listing_conversations.preauthorize.nights"))})"
+
+      - elsif @transaction.listing_quantity > 1
+        .conversation-per-unit-wrapper
+          %span.conversation-per-unit-label
+            = t("transactions.price_per_quantity", unit_type: ListingViewUtils.translate_unit(listing.unit_type, listing.unit_tr_key))
+          %span.conversation-per-unit-value
+            = MoneyViewUtils.to_humanized(listing.price)
+        .conversation-quantity-wrapper
+          %span.conversation-quantity-label
+            = ListingViewUtils.translate_quantity(listing.unit_type, listing.unit_selector_tr_key) || t("conversations.accept.quantity_label")
+          %span.conversation-quantity-value
+            = @transaction.listing_quantity
+
+      .conversation-sum-wrapper
+        %span.conversation-sum-label
+          = t("conversations.accept.sum_label")
+        %span.conversation-sum-value
+          = MoneyViewUtils.to_humanized(sum)
+      .conversation-service-fee-wrapper
+        %span.conversation-service-fee-label
+          = t("conversations.accept.service_fee_label")
+        %span.conversation-service-fee-value
+          = "-#{MoneyViewUtils.to_humanized(fee)}"
+
+      - if @transaction.shipping_price
+        .conversation-shipping-price-wrapper
+          %span.conversation-shipping-price-label
+            = t("conversations.accept.shipping_price_label")
+          %span.conversation-shipping-price-value
+            = MoneyViewUtils.to_humanized(@transaction.shipping_price)
+
+      - if @transaction.payment_gateway == :paypal || @transaction.payment_gateway == :stripe
+        - if gateway_fee.present? && gateway_fee > 0
+          .conversation-stripe-fee-wrapper
+            %span.conversation-stripe-fee-label
+              = t("conversations.accept.stripe-fee_label")
+            %span.conversation-stripe-fee-value
+              = "-#{MoneyViewUtils.to_humanized(gateway_fee)}"
+
+        .conversation-total-wrapper
+          %span.conversation-total-label
+            = t("conversations.accept.total_label")
+          %span.conversation-total-paypal-value
+            = t("conversations.accept.total_value_#{@transaction.payment_gateway}", seller_gets: MoneyViewUtils.to_humanized(seller_gets))
+
+      - else
+        .conversation-total-wrapper
+          %span.conversation-total-label
+            = t("conversations.accept.you_will_get_label")
+          %span.conversation-total-value
+            = MoneyViewUtils.to_humanized(seller_gets)
+
+    - if @transaction.payment_gateway == :paypal
+      %p
+        = t("conversations.accept.paypal_fee_info", fee_info_link_id: "paypal_fee_info_link").html_safe
+
+      = render layout: "layouts/lightbox", locals: { id: "paypal_fee_info_content"} do
+        %h2= t("common.paypal_fee_info.title")
+        - text_with_line_breaks_html_safe do
+          - link_to_paypal = link_to(t("common.paypal_fee_info.link_to_paypal_text"), paypal_fees_url, target: "_blank")
+          = t("common.paypal_fee_info.body_text_accept", link_to_paypal: link_to_paypal, paypal_commission: paypal_commission).html_safe
+
+      - content_for :extra_javascript do
+        :javascript
+          $('#paypal_fee_info_link').click(function() { $('#paypal_fee_info_content').lightbox_me({centered: true, zIndex: 1000000}); });
+
+
+  = render partial: "transactions/shipping_address", locals: { shipping_address: @transaction.shipping_address }
+
+  = form_for form, :url => form_action, :html => { id: "accept-reject-form", :method => "put" } do |form|
+
+    %input.js-accept-status{type: :hidden, name: "transaction[status]", value: preselected_action == "accept" ? "paid" : "rejected"}
+
+    %a.radio-button-positive.js-accept-radio-button{ data: { :"radio-button-value" => "paid" }, class: preselected_action == "accept" ? "radio-button-selected" : "" }
+      .radio-button-icon{class: icon_for("accepted")}
+      .radio-button-label= t("conversations.accept.accept_request")
+    %a.radio-button-negative.js-reject-radio-button{ data: { :"radio-button-value" => "rejected" }, class: preselected_action == "reject" ? "radio-button-selected" : "" }
+      .radio-button-icon{class: icon_for("rejected")}
+      .radio-button-label= t("conversations.accept.reject_request")
+
+    %div
+      = fields_for "transaction[message_attributes]", Message.new do |message_form|
+        = message_form.label :content, t("conversations.new.message"), :class => "input"
+        = message_form.text_area :content, :class => "text_area", :placeholder => t("conversations.accept.optional_message")
+        = message_form.hidden_field :sender_id, :value => @current_user.id
+
+      - initial_send_label = preselected_action == "accept" ? t('conversations.accept.accept') : t('conversations.accept.decline')
+      = form.button initial_send_label, :class => "send_button", :id => "send_testimonial_button"

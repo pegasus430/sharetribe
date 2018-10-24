@@ -1,0 +1,224 @@
+.topbar {
+  display: flex;
+  flex-direction: row;
+  height: var(--Topbar_mobileHeight);
+  padding: var(--Topbar_mobilePadding);
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--colorBackground);
+  border-bottom: 1px solid var(--Topbar_borderColor);
+  font-size: var(--Topbar_fontSize);
+  font-family: var(--Topbar_fontFamily);
+
+  @media (--medium-viewport) {
+    height: var(--Topbar_tabletHeight);
+    padding: var(--Topbar_tabletPadding);
+  }
+
+  @media (--large-viewport) {
+    height: var(--Topbar_height);
+    padding: var(--Topbar_padding);
+  }
+
+  /* Base style overrides to reset styles coming from the old SASS styles. */
+  box-sizing: border-box;
+
+  & * {
+    box-sizing: border-box;
+  }
+
+  & input[type='search'] {
+    -webkit-appearance: none; /* stylelint-disable-line property-no-vendor-prefix */
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      display: none;
+    }
+  }
+
+  & form,
+  & input,
+  & button,
+  & svg {
+    font-family: var(--Topbar_fontFamily);
+  }
+
+  & input {
+    font-size: var(--Topbar_inputFontSizeMobile);
+
+    @media (--large-viewport) {
+      font-size: var(--Topbar_fontSize);
+    }
+  }
+
+  & button {
+    border-radius: 0;
+  }
+
+  /* End of base style overrides. */
+
+  & .topbarLogo {
+    max-height: var(--Topbar_logoMaxHeightMobile);
+    max-width: 70%;
+
+    & span {
+      @media (max-width: 320px) {
+        /* Height fix for the smaller font in tiny viewport. */
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (--medium-viewport) {
+      min-width: var(--Topbar_logoMinWidth);
+      max-height: var(--Topbar_logoMaxHeightTablet);
+      max-width: 38%;
+    }
+
+    @media (--large-viewport) {
+      max-height: var(--Topbar_logoMaxHeight);
+      max-width: 18em;
+    }
+  }
+
+  & .textLogo {
+    min-width: 0;
+  }
+
+  & .topbarMenu {
+    display: none;
+  }
+
+  & .topbarMobileMenu {
+    display: block;
+  }
+
+  & .notificationBadge {
+    min-width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    box-shadow: none;
+    margin-left: 10px;
+  }
+
+  & .notificationBadgeCount {
+    font-size: var(--Topbar_fontSize);
+    padding-top: 0;
+  }
+
+  @media (--large-viewport) {
+    & .topbarMenu {
+      display: block;
+    }
+
+    & .topbarMobileMenu {
+      display: none;
+    }
+  }
+
+  & .topbarLanguageMenuLabel {
+    font-size: var(--Menu_fontSizeSmall);
+    padding: var(--Topbar_paddingLanguageMenuVertical) 0;
+  }
+
+  & > * {
+    @media (--medium-viewport) {
+      margin-right: var(--Topbar_mobileItemSpacing);
+    }
+
+    @media (--large-viewport) {
+      margin-right: var(--Topbar_itemSpacing);
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  & > .topbarAvatarDropdown {
+    padding: var(--Topbar_avatarMobilePadding);
+    font-family: var(--Topbar_fontFamily);
+    align-self: flex-start;
+    display: none;
+
+    @media (--medium-viewport) {
+      display: flex;
+      width: var(--Topbar_avatarMediumSize);
+      padding: var(--Topbar_avatarTabletPadding);
+    }
+
+    @media (--large-viewport) {
+      width: var(--Topbar_avatarSize);
+      padding: var(--Topbar_avatarPadding);
+    }
+  }
+
+  & > .topbarListingButton {
+    display: none;
+
+    @media (--medium-viewport) {
+      display: inline-block;
+    }
+  }
+}
+
+.topbarMenuSpacer {
+  display: none;
+  margin: 0;
+
+  @media (--large-viewport) {
+    flex-grow: 1;
+    display: block;
+  }
+}
+
+.topbarMediumSpacer {
+  display: none;
+
+  @media (--medium-viewport) {
+    display: block;
+    flex-grow: 1;
+  }
+
+  @media (--large-viewport) {
+    display: none;
+  }
+}
+
+.topbarMobileSearchPlaceholder {
+  width: var(--SearchBar_mobileHeight);
+
+  @media (--medium-viewport) {
+    display: none;
+  }
+}
+
+.topbarMobileMenu {
+  font-size: var(--Topbar_fontSizeMobile);
+  margin-right: 0;
+}
+
+.topbarAvatarDropdownPlaceholder {
+  margin: var(--Topbar_avatarMobilePadding);
+  width: var(--Topbar_avatarSize);
+  height: var(--Topbar_avatarSize);
+  display: none;
+
+  @media (--medium-viewport) {
+    display: initial;
+  }
+
+  @media (--large-viewport) {
+    margin: var(--Topbar_avatarPadding);
+  }
+}
+
+.topbarLinks {
+  display: none;
+
+  @media (--large-viewport) {
+    display: block;
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "please_wait": "Een ogenblik geduld...",
+  "validation_messages": {
+    "accept": "Het bestand moet een GIF-, JPG- of PNG-bestand zijn.",
+    "creditcard": "Vul alstublieft een geldig creditcard nummer in.",
+    "date": "Vul alstublieft een geldige datum in.",
+    "dateISO": "Vul alstublieft een geldige datum (ISO) in.",
+    "digits": "Vul alleen cijfers in alstublieft.",
+    "email": "Vul een geldig e-mail adres in alstublieft.",
+    "equalTo": "Vul dezelfde waarde opnieuw in alstublieft.",
+    "max": "Vul alstublieft een waarde kleiner of gelijk aan {0} in.",
+    "maxlength": "Vul alstublieft niet meer dan {0} tekens in.",
+    "min": "Vul alstublieft een waarde groter of gelijk aan {0} in.",
+    "minlength": "Vul minimaal {0} tekens in alstublieft .",
+    "number": "Vul alstublieft een geldig nummer in.",
+    "range": "Vul alstublieft een waarde in tussen {0} en {1}.",
+    "rangelength": "Vul alstublieft een waarde in tussen {0} en {1} karakters.",
+    "remote": "Corrigeer dit veld alstublieft.",
+    "required": "Dit veld is verplicht.",
+    "url": "Vul een geldige URL in alstublieft.",
+    "address_validator": "De locatie is niet gevonden.",
+    "money": "Vermeld de juiste valuta alstublieft.",
+    "night_selected": "Je moet ten minste één nacht selecteren",
+    "availability_range": "De geselecteerde reeks bevat data die niet beschikbaar zijn",
+    "min_bound": "Vul alstublieft een waarde in die kleiner is dan ({0})",
+    "max_bound": "Vul alstublieft een waarde in die groter is dan ({0})",
+    "number_no_decimals": "Vul alstublieft een waarde zonder decimalen in.",
+    "number_decimals": "Vul een waarde in met punt (.) of comma (,) voor het aangeven van decimalen."
+  }
+}

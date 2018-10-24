@@ -1,0 +1,29 @@
+- content_for :javascript do
+  initialize_confirmation_pending_form("#{I18n.locale}","#{email_not_accepted_message}");
+
+- email_to_confirm = @current_user.latest_pending_email_address(@current_community)
+- contact_support_link = link_to t("sessions.confirmation_pending.contact_support_link_text"), "mailto:#{support_email}"
+- admin_dashboard_link = link_to t("sessions.confirmation_pending.admin_dashboard_link_text"), admin_getting_started_guide_path
+
+- if @current_user.has_admin_rights?(@current_community)
+  %h2= t("sessions.confirmation_pending.account_confirmation_instructions_title_admin")
+  %p= t("sessions.confirmation_pending.before_full_access_you_need_to_confirm_email")
+  %p= t("sessions.confirmation_pending.before_confirmation_only_access_admin_dashboard", {admin_dashboard_link: admin_dashboard_link}).html_safe
+  %p= t("sessions.confirmation_pending.account_confirmation_instructions_admin", {email_address: "<b>#{email_to_confirm}</b>", support_link: contact_support_link}).html_safe
+- else
+  %p= t("sessions.confirmation_pending.account_confirmation_instructions")
+
+%br/
+
+%p
+  = form_for(Person, :as => "person", :url => confirmation_path(:locale => I18n.locale), :html => { :method => :put, :id => "resend_email_confirmation"} ) do |form|
+    .form_field_container
+      = form.button t("sessions.confirmation_pending.resend_confirmation_instructions"), :class => "resend_email_confirmation_button send_button"
+%p
+  = t("sessions.confirmation_pending.your_current_email_is", :email => email_to_confirm).html_safe
+  = link_to t('sessions.confirmation_pending.change_email'), "#", :id => "mistyped_email_link", :class => "green_part_link"
+  #password_forgotten
+
+    = form_for(Person, :as => "person", :url => confirmation_path(:locale => I18n.locale), :html => { :method => :put, :id => "change_mistyped_email_form"} ) do |form|
+      .form_field_container
+        = render :partial => "sessions/change_mistyped_email", :locals => {:email_to_confirm => email_to_confirm}

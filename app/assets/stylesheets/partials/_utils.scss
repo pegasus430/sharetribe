@@ -1,0 +1,50 @@
+@import "mixins/all";
+@import "compass/utilities/general/clearfix";
+
+.relative {
+  position: relative;
+}
+
+/**
+  Use icon-fix to correctly vertical align SS-pika icons (2px)
+*/
+.icon-fix {
+  @include icon-fix;
+}
+
+.icon-fix-rel {
+  @include icon-fix-rel;
+}
+
+/**
+  Use icon-fix to correctly vertical align SS-pika icons (3px)
+*/
+.icon-fix-more {
+  @include icon-fix-more;
+}
+
+.hidden {
+  display: none;
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+/**
+  Use disabled link or icon
+*/
+.disabled {
+  &, &:hover {
+    color: $border;
+    cursor: default;
+  }
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}

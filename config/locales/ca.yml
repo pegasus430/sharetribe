@@ -1,0 +1,2464 @@
+ca:
+  number:
+    currency:
+      format:
+        separator: ~
+        delimiter: ~
+        format: "%u%n"
+  admin:
+    categories:
+      edit:
+        edit_listing_category: ~
+      index:
+        listing_categories: ~
+        create_a_new_category: ~
+        remove_category_confirmation: ~
+        saving_order: ~
+        save_order_successful: ~
+        save_order_error: ~
+      new:
+        new_listing_category: ~
+      form:
+        category_name:
+          category_title: ~
+        category_parent:
+          category_parent: ~
+          no_parent: ~
+        category_transaction_types:
+          transaction_types: ~
+          transaction_types_description: ~
+          select_all: ~
+          clear_all: ~
+        buttons:
+          save: ~
+          cancel: ~
+      remove:
+        remove_category: ~
+        remove_category_name: ~
+        warning_remove_effects: ~
+        select_new_category: ~
+        buttons:
+          remove: ~
+          cancel: Canceŀla
+    communities:
+      edit_details:
+        community_details: ~
+        community_look_and_feel: ~
+        edit_community: ~
+        enabled_languages: ~
+        enabled_languages_description: ~
+        default_language: ~
+        language_selection_disabled: ~
+        community_name: ~
+        edit_community_name_description: ~
+        community_slogan: ~
+        edit_community_slogan_description: ~
+        community_description: ~
+        edit_community_description_description: ~
+        community_search_placeholder: ~
+        edit_community_search_placeholder_description: ~
+        private_community_homepage_content: ~
+        edit_private_community_homepage_content_description: ~
+        update_information: ~
+        invite_people: ~
+        edit_signup_info: ~
+        edit_signup_info_description: ~
+        edit_info: ~
+        see_how_it_looks_like: ~
+        verification_to_post_listings_info_content: ~
+        verification_to_post_listings_info_content_description: ~
+        verification_to_post_listings_info_content_default: ~
+        contact_admin_link_text: ~
+        save: ~
+        transaction_agreement: ~
+        transaction_agreement_checkbox: ~
+        transaction_agreement_checkbox_header: ~
+        transaction_agreement_checkbox_label_description: ~
+        transaction_agreement_text_header: ~
+        transaction_agreement_description: ~
+      edit_look_and_feel:
+        edit_community_look_and_feel: ~
+        community_logo: ~
+        community_logo_icon: "Logo per a xarxes socials i dispositius mòbils"
+        community_cover_photo: ~
+        small_community_cover_photo: ~
+        favicon: Favicon
+        favicon_info_text: ~
+        community_custom_color1: ~
+        community_slogan_color: ~
+        community_slogan_color_instructions_text: ~
+        community_description_color: ~
+        community_description_color_instructions_text: ~
+        new_listing_button_custom_color: ~
+        logo_instructions_text_with_dimensions: ~
+        logo_instructions_text_with_dimensions_no_placing: ~
+        logo_icon_instructions_text_with_dimensions: ~
+        logo_icon_instructions_text_with_dimensions_no_placing: ~
+        cover_photo_visibility: ~
+        cover_photo_instructions_text_with_dimensions: ~
+        small_cover_photo_visibility: ~
+        small_cover_photo_instructions_text_with_dimensions: ~
+        main_content_width: ~
+        custom_color1_instructions_text: ~
+        new_listing_button_instructions_text: ~
+        default_browse_view: ~
+        default_browse_view_instructions_text: ~
+        grid: Graella
+        list: Llista
+        map: Mapa
+        name_display_type: ~
+        name_display_type_instructions_text: ~
+        full_name: ~
+        first_name_with_initial: ~
+        first_name_only: ~
+        invalid_color_code: ~
+        custom_head_script: ~
+        custom_head_script_instructions_text: ~
+        current_image: ~
+      edit_text_instructions:
+        edit_text_instructions: ~
+      edit_welcome_email:
+        welcome_email_content: ~
+        welcome_email_content_description: ~
+        edit_message: ~
+        send_test_message: ~
+      outgoing_email:
+        title: ~
+        info: ~
+        read_more: ~
+        sender_address: ~
+        sender_address_default: ~
+        need_to_change: ~
+        contact_support_link_text: ~
+        set_sender_address: ~
+        sender_name_label: ~
+        sender_name_placeholder: ~
+        sender_email_label: "Correu electrònic"
+        sender_email_placeholder: ~
+        amazon_ses_notification: ~
+        this_is_how_it_will_look: ~
+        send_verification_button: ~
+        change_sender_email: ~
+        successfully_saved: ~
+        successfully_saved_name: ~
+        set_sender_name: ~
+        change_sender_name: ~
+        change_sender_prompt: ~
+        status: ~
+        status_verified: ~
+        status_error: ~
+        status_requested: ~
+        status_expired: ~
+        status_resent: ~
+        resend_link: ~
+        invalid_email_error: ~
+        invalid_email_domain: ~
+        invalid_email_domain_read_more_link: ~
+        unknown_error: ~
+        white_label_offer: ~
+        upgrade_plan_link: ~
+        verification_sent_from: ~
+        follow_the_instructions: ~
+      getting_started:
+        getting_started: ~
+      available_languages:
+        en: ~
+        en-AU: ~
+        en-GB: ~
+        fr: Francès
+        fr-CA: ~
+        es: ~
+        es-ES: Castellà
+        pt-PT: ~
+        pt-BR: ~
+        nb: ~
+        sv: Suec
+        da-DK: Danès
+        fi: Finlandès
+        ru: Rus
+        de: Alemany
+        el: Grec
+        nl: Holandès
+        tr-TR: Turc
+        zh: Xinès
+        ja: Japonès
+        it: Italià
+      settings:
+        settings: ~
+        general: ~
+        access: ~
+        join_with_invite_only: ~
+        users_can_invite_new_users: ~
+        private: ~
+        require_verification_to_post_listings: ~
+        search_preferences: ~
+        default_search_type: ~
+        keyword_search: ~
+        keyword_and_location_search: ~
+        location_search: ~
+        select_distance_unit: ~
+        km: km
+        miles: milles
+        show_only_nearby: ~
+        listing_preferences: ~
+        transaction_preferences: ~
+        show_listing_publishing_date: ~
+        show_category_in_listing_list: ~
+        listing_comments_in_use: ~
+        email_preferences: ~
+        automatic_newsletters: ~
+        email_admins_about_new_members: ~
+        google_analytics_key: ~
+        twitter_handle: ~
+        update_settings: ~
+        automatically_confirmed_no_escrow: ~
+        automatically_confirmed_no_escrow_stripe_info: ~
+        automatic_newsletter_frequency: ~
+        newsletter_daily: ~
+        newsletter_weekly: ~
+        delete_marketplace_title: ~
+        type_marketplace_domain: ~
+        type_marketplace_domain_placeholder: ~
+        once_you_delete: ~
+        are_you_sure: ~
+        i_understand_button: ~
+        last_community_updates: ~
+        you_will_be_redirected_to: ~
+        delete_this_marketplace: ~
+        payment_preferences: ~
+      manage_members:
+        manage_members: ~
+        email: ~
+        name: ~
+        display_name: ~
+        join_date: ~
+        admin: Admin
+        posting_allowed: ~
+        ban_user: ~
+        saving_user_status: Desant...
+        save_user_status_successful: ~
+        export_all_as_csv: "Exportar-ho tot com CSV"
+        save_user_status_error: ~
+        ban_user_confirmation: ~
+        unban_user_confirmation: ~
+        ban_me_error: ~
+        search: ~
+        search_by_name_email: ~
+        reset_search: ~
+        for_search_terms: ~
+        this_makes_the_user_an_admin: ~
+      new_layout:
+        new_layout: ~
+        description_roadmap_new: ~
+        enabled_for_you: ~
+        enabled_for_all: ~
+        new_topbar: ~
+        searchpage: ~
+      social_media:
+        social_media: ~
+        twitter_handle: ~
+        twitter_handle_info_text: ~
+        twitter_handle_info_text_with_instructions: ~
+        twitter_instructions_link_text: ~
+        twitter_handle_placeholder: ~
+        invalid_twitter_handle: ~
+        facebook_connect: Facebook
+        facebook_connect_info_text: ~
+        facebook_connect_info_text_with_instructions: ~
+        facebook_instructions_link_text: ~
+        facebook_connect_id: ~
+        invalid_facebook_connect_id: ~
+        facebook_connect_secret: ~
+        invalid_facebook_connect_secret: ~
+        enable_facebook_login: ~
+        save: ~
+      analytics:
+        analytics: ~
+        google_analytics_key: ~
+        google_analytics_key_info_text: ~
+        google_analytics_key_info_text_with_instructions: ~
+        google_analytics_instructions_link_text: ~
+        sharetribe_analytics: ~
+        sharetribe_analytics_info_text_with_instructions: ~
+        sharetribe_analytics_instructions_link_text: ~
+        end_user_analytics: ~
+        save: ~
+      menu_links:
+        menu_links: ~
+        save: ~
+        add_menu_link: ~
+        title_placeholder: ~
+        url_placeholder: ~
+        title: ~
+        language: ~
+        url: ~
+        empty: ~
+        max_number_of_links: ~
+        all: ~
+        max_number_of_links_info: ~
+        about_page: "sobre la pàgina"
+      topbar:
+        topbar: ~
+        new_listing_button_label: ~
+        invalid_post_listing_button_label: ~
+      transactions:
+        export_all_as_csv: "Exportar-ho tot com CSV"
+        processing_export: ~
+        transactions: ~
+        headers:
+          conversation: ~
+          listing: ~
+          status: ~
+          sum: ~
+          started: ~
+          last_activity: ~
+          initiated_by: ~
+          other_party: ~
+        status:
+          conversation: Conversa
+          free: ~
+          pending: ~
+          preauthorized: ~
+          accepted: ~
+          rejected: ~
+          paid: Pagat
+          confirmed: ~
+          canceled: ~
+          initiated: ~
+          pending_ext: ~
+          none:
+            free: ~
+          paypal:
+            free: ~
+            pending: ~
+            preauthorized: ~
+            accepted: ~
+            rejected: ~
+            paid: Pagat
+            confirmed: Confirmat
+            canceled: ~
+            initiated: ~
+            pending_ext: ~
+          stripe:
+            free: ~
+            pending: ~
+            preauthorized: ~
+            accepted: ~
+            rejected: ~
+            paid: ~
+            confirmed: ~
+            canceled: ~
+            initiated: ~
+            pending_ext: ~
+        not_available: "No disponible"
+      conversations:
+        conversations: "Visualitzar converses"
+        headers:
+          started_from: "Iniciat des de"
+          status: Estat
+          started: Iniciat
+          last_activity: "Última activitat"
+          initiated_by: "Iniciat per"
+          other_party: "Altre participant"
+        participants: "Conversa: %{starter} amb %{author}"
+        profile: "Perfil del %{author}"
+      testimonials:
+        testimonials: ~
+        no_testimonials_found: ~
+        displaying_xx_reviews: ~
+        headers:
+          transaction: ~
+          author: ~
+          receiver: ~
+          status: ~
+          grade: ~
+          note: ~
+        status:
+          waiting: ~
+          skipped: ~
+          published: ~
+      listings:
+        listings: ~
+        headers:
+          title: ~
+          author: ~
+          created: ~
+          updated: ~
+          category: ~
+          status: ~
+        open: ~
+        closed: ~
+        expired: ~
+      user_fields:
+        user_fields: ~
+    custom_fields:
+      edit:
+        edit_listing_field: ~
+      edit_price:
+        description: ~
+        edit_price_field: ~
+        show_price_filter_homepage: ~
+        price_min: ~
+        price_max: ~
+      edit_location:
+        edit_location_field: ~
+        this_field_is_required: ~
+      edit_expiration:
+        edit_expiration_field: ~
+        enable: ~
+      form:
+        field_required:
+          this_field_is_required: ~
+          this_field_is_required_checkbox: ~
+        search_filter:
+          search_filter: ~
+          date_cant_be_filtered: ~
+          text_cant_be_filtered: ~
+      index:
+        listing_fields: ~
+        listing_fields_help: ~
+        add_new_field: ~
+        remove_field_confirmation: ~
+        cancel: ~
+        save: ~
+        field_title: ~
+        field_type: ~
+        categories: ~
+        select_all: ~
+        clear_all: ~
+        options: Opcions
+        add_option: ~
+        saving_order: ~
+        save_order_successful: ~
+        save_order_error: ~
+        select_one: ~
+        continue: Continuar
+        minimum_value: ~
+        maximum_value: ~
+        allow_decimals: ~
+      new:
+        new_listing_field: ~
+      field_types:
+        text: Text
+        number: ~
+        dropdown: ~
+        checkbox_group: ~
+        date: Data
+        file: ~
+        location: ~
+    person_custom_fields:
+      saving_failed: ~
+      index:
+        user_fields: ~
+        field_title: ~
+        field_type: ~
+        add_new_field: ~
+        save: ~
+        cancel: ~
+        minimum_value: ~
+        maximum_value: ~
+        allow_decimals: ~
+        add_option: ~
+      new:
+        new_user_field: ~
+      form:
+        field_required:
+          this_field_is_required: ~
+          this_field_is_required_checkbox: ~
+          this_field_is_public: ~
+      edit:
+        edit_user_field: ~
+    emails:
+      new:
+        send_email_to_members: ~
+        send_email_to_members_title: ~
+        send_email: ~
+        send_email_or: o
+        send_test_email: ~
+        test_sent: ~
+        send_email_article_title: ~
+        send_email_article_text: ~
+        recipients:
+          title: ~
+          options:
+            all_users: ~
+            with_listing: ~
+            with_listing_no_payment: ~
+            with_payment_no_listing: ~
+            no_listing_no_payment: ~
+        email_subject: ~
+        email_content: ~
+        email_content_placeholder: "Què vols dir als teus usuaris?"
+        email_language: ~
+        any_language: "Qualsevol idioma"
+        message_will_be_sent_only_to_people_with_this_language: ~
+        email_sent: ~
+        to_improve_email_deliverability: ~
+        email_subject_text: ~
+        firstname_cannot_be_removed: ~
+        hello_firstname: ~
+        hello_firstname_text: ~
+    left_hand_navigation:
+      general: General
+      users_and_transactions: ~
+      configure: ~
+      emails_title: ~
+      subscription: ~
+      preview: ~
+    listing_shapes:
+      availability_title: Disponibilitat
+      read_more: ~
+      read_more_availability_management: ~
+      allow_providers_to_manage_availability: ~
+      per_hour_availability: ~
+      per_day_availability: "Disponibilitat \"per dia\""
+      per_night_availability: "Disponibilitat \"per nit\""
+      pricing_units_disabled_info: ~
+      can_not_find_name: ~
+      index:
+        listing_shapes: ~
+        description: ~
+        read_more_about_order_types: ~
+        add_new_shape: ~
+        select_template: ~
+        all_categories: ~
+        no_categories: ~
+        category_count: ~
+        header:
+          listing_shape_name: ~
+          listing_shape_categories: ~
+        order:
+          saving_order: ~
+          save_order_successful: ~
+          save_order_error: ~
+      templates:
+        selling_products: ~
+        renting_products: ~
+        offering_services: ~
+        giving_things_away: ~
+        requesting: ~
+        announcement: ~
+        custom: ~
+      new:
+        create_listing_shape: ~
+        create: ~
+        cancel: ~
+        create_success: ~
+        create_failure: ~
+      edit:
+        edit_listing_shape: ~
+        update: Desar
+        cancel: Cancel·lar
+        update_success: ~
+        update_failure: ~
+        delete: ~
+        can_not_delete_last: ~
+        can_not_delete_only_one_in_categories: ~
+      listing_shape_name: Nom
+      listing_shape_name_placeholder: ~
+      action_button_label: ~
+      action_button_placeholder: ~
+      successfully_closed: ~
+      successfully_deleted: ~
+      pricing_and_checkout_title: ~
+      online_payments_label: ~
+      shipping_label: "Permetre als venedors definir una tarifa d'enviament"
+      price_label: ~
+      units_title: ~
+      units_desc: ~
+      units:
+        piece: "Per peça"
+        hour: "Per hora"
+        day: "Per dia"
+        night: "Per nit"
+        week: "Per setmana"
+        month: ~
+      can_not_find: ~
+      add_custom_unit: ~
+      delete_custom_unit: ~
+      custom_unit_form:
+        title: ~
+        label_heading: ~
+        selector_label_heading: ~
+        label_placeholder: ~
+        selector_placeholder: ~
+        per: Per
+        unit_type:
+          heading: "Tipus d'unitat"
+          quantity_label: ~
+          time_label: ~
+    paypal_accounts:
+      marketplace_paypal_integration: ~
+      preferences_updated: ~
+      contact_support_link_text: "Contactar amb suport"
+      integration_info_text: ~
+      link_paypal_personal_account_label: ~
+      link_paypal_personal_account: ~
+      link_stripe_personal_account: ~
+      link_paypal_and_stripe_personal_account: ~
+      personal_payment_preferences_link_text: ~
+      read_more_about_paypal: ~
+      edit_payment_settings: ~
+      supported_currencies_information_text: ~
+      currency_change_warning_text: ~
+      marketplace_currency_label: ~
+      minimum_listing_price_label: ~
+      transaction_fee_label: ~
+      minimum_transaction_fee_label: ~
+      save_settings: ~
+      minimum_listing_price_below_tx_fee: ~
+      minimum_listing_price_below_min: ~
+    payment_preferences:
+      title: ~
+      general_settings: ~
+      connect_a_payment_provider: ~
+      contact_support: ~
+      no_payments_link_text: ~
+      your_country: ~
+      you_cannot_use_online_payments: ~
+      which_to_choose: ~
+      you_can_use_stripe_or_paypal: ~
+      you_can_use_stripe_only: ~
+      read_more_stripe: ~
+      you_can_use_paypal_only: ~
+      read_more_paypal: ~
+      read_more_about_paypal_and_stripe: ~
+      general_settings_updated: ~
+      transaction_fee_settings_updated: ~
+      choose_popup_text: ~
+      invalid_api_keys: ~
+      missing_api_keys: ~
+      stripe_verified: ~
+      change_settings: ~
+      configure_stripe: ~
+      configure_paypal: ~
+      transaction_fee_settings: ~
+      transaction_fee_save: Desa
+      stripe_fee: ~
+      stripe_fee_notice: ~
+      fee_should_be_less_than_minimum_price: ~
+      confirm_disable: ~
+      stripe_connected:
+        title: ~
+        disable: ~
+        disabled: ~
+        enable: ~
+      paypal_connected:
+        title: ~
+        disable: ~
+        disabled: ~
+        enable: ~
+      cannot_enable_gateway: ~
+      cannot_disable_gateway: ~
+      stripe_form:
+        add_your_api_keys: ~
+        how_to_get_these: ~
+        publishable_key_example: ~
+        secret_key_example: ~
+        save_api_keys: ~
+        invalid_secret: ~
+        invalid_publishable: ~
+      index:
+        header: ~
+        info: ~
+        active: ~
+        gateway: ~
+        process: ~
+        commission: ~
+        minimum_price: ~
+        minimum_fee: ~
+        api_verified: ~
+        actions: Accions
+        payments_not_enabled: ~
+    transaction_types:
+      sell: ~
+      sell_w_online_payment: ~
+      sell_wo_online_payment: ~
+      rent: ~
+      rent_w_online_payment: ~
+      rent_wo_online_payment: ~
+      give: ~
+      lend: ~
+      swap: ~
+      service: ~
+      service_w_online_payment: ~
+      service_wo_online_payment: ~
+      request: ~
+      inquiry: ~
+      share_for_free: ~
+      default_action_button_labels:
+        sell: ~
+        rent: ~
+        request: ~
+        offer: ~
+        inquiry: ~
+  common:
+    edit_page: ~
+    default_community_slogan: ~
+    default_community_description: ~
+    cancel: Cancel·la
+    fields_that_are_mandatory: "Els camps marcats amb (*) són obligatoris"
+    or: o
+    password: Contrasenya
+    service_name: "%{service_name}"
+    share_types:
+      request: ~
+      offer: ~
+      borrow: préstecs
+      buy: comprar
+      give_away: regalar
+      lend: prestant
+      receive: regalar
+      rent: lloguer
+      rent_out: lloga
+      sell: vendre
+      offer_to_swap: ~
+      request_to_swap: ~
+      share_for_free: ~
+      accept_for_free: ~
+    categories:
+      item: ~
+      favor: ~
+      rideshare: ~
+      housing: ~
+      tools: ~
+      sports: Esports
+      music: ~
+      books: "Llibres i revistes"
+      games: "Jocs i joguines"
+      furniture: Mobles
+      outdoors: ~
+      food: ~
+      electronics: ~
+      pets: ~
+      film: ~
+      clothes: ~
+      garden: Jardí
+      travel: Viatge
+      other: Altre
+    username: Usuari
+    username_or_email: ~
+    what_is_this: "Què és això?"
+    removed_user: ~
+    payment_fee_info:
+      title: ~
+      stripe: ~
+      paypal: ~
+      info: ~
+    paypal_fee_info:
+      title: ~
+      body_text: ~
+      body_text_accept: ~
+      link_to_paypal_text: ~
+    stripe_fee_info:
+      title: ~
+      body_text: ~
+      link_to_stripe_text: aquí
+  conversations:
+    accept:
+      details: ~
+      order_by: ~
+      accept_offer: "Acceptar l'oferta"
+      accept_request: ~
+      reject_offer: "Aquesta vegada no"
+      reject_request: "Aquesta vegada no"
+      close_listing: "Tancar la llista %{listing_title_link}"
+      update_later: "Deixar la llista oberta"
+      optional_message: "Missatge opcional"
+      price_to_pay: "Preu total a pagar"
+      accept: Acceptar
+      decline: Declinar
+      quantity_label: ~
+      sum_label: ~
+      service_fee_label: ~
+      you_will_get_label: ~
+      total_label: ~
+      total_value: ~
+      total_value_paypal: ~
+      total_value_stripe: "%{seller_gets}"
+      paypal_fee_info: ~
+      payment_fee_info: ~
+      shipping_price_label: ~
+      stripe-fee_label: ~
+    confirm:
+      confirm_description: ~
+      cancel_description: ~
+      cancel_payed_description: ~
+      canceling_payed_transaction: ~
+      confirm: ~
+      cancel: ~
+      continue: ~
+      give_feedback_to: ~
+      do_not_give_feedback: ~
+    details:
+      day: ~
+      days: dies
+      price_per_day: ~
+    index:
+      loading_more_messages: "Carregant més missatges"
+      message_partitive: missatge
+      messages_partitive: missatges
+      no_received_messages: "No hi ha missatges rebuts"
+      no_sent_messages: "No hi ha missatges enviats"
+    conversation:
+      accepted_request: ~
+      accepted_offer: "Oferta acceptada"
+      rejected_request: "Sol·licitud rebutjada."
+      rejected_offer: "Oferta rebutjada"
+      confirmed_request: ~
+      confirmed_offer: ~
+      canceled_request: ~
+      canceled_offer: "Oferta cancel·lada"
+      message_from: ~
+      about_listing: ~
+      free_message: ~
+      message_content_not_available: ~
+    message:
+      accepted_request: ~
+      received_payment: ~
+      accepted_offer: ~
+      rejected_request: ~
+      rejected_offer: ~
+      confirmed_request: ~
+      confirmed_offer: ~
+      canceled_request: ~
+      canceled_offer: ~
+      paid: ~
+      payment_preauthorized: ~
+      stripe:
+        held_payment: ~
+        confirmed_request: ~
+    new:
+      message: Missatge
+      message_to: "Missatge a %{author_name}"
+      optional_message_to: ~
+      send_message: ~
+      send: Envia
+      this_message_is_private: "Aquest missatge és privat entre tu i %{person}."
+      you_will_get_notified_of_acceptance: ~
+      you_will_get_notified: ~
+      title: Títol
+      send_message_to_user: ~
+      about_listing: ~
+      author_has_to_accept_request: ~
+    show:
+      in_response_to_listing: ~
+      message_sent_by: ~
+      message_sent_to: ~
+      send_reply: "Envia resposta"
+      write_a_reply: "Escriu una resposta:"
+      conversation_about_listing: ~
+      conversation_with_user: "Amb %{person}"
+      conversation_with: ~
+      last_message_at: ~
+      price: ~
+      sum: ~
+      total: "Total: %{total}"
+    status:
+      payment_errored: ~
+      payment_errored_starter: ~
+      payment_errored_author: ~
+      cancel_payed_transaction: ~
+      feedback_given: "Suggerència enviada"
+      feedback_skipped: "Suggerència omesa"
+      give_feedback: "Fes una suggerència"
+      offer_accepted: "Oferta acceptada"
+      offer_rejected: "Oferta rebutjada"
+      offer_canceled: ~
+      offer_confirmed: ~
+      offer_paid: ~
+      offer_preauthorized: ~
+      offer_waiting_for_payment: ~
+      pay: ~
+      preauthorized: ~
+      paid: ~
+      pending_external:
+        paypal:
+          multicurrency: ~
+          verify: ~
+          intl: ~
+      waiting_for_current_user_to_deliver_listing: ~
+      waiting_for_listing_author_to_deliver_listing: ~
+      request_accepted: "Sol·licitud acceptada"
+      request_rejected: "Sol·licitud rebutjada"
+      request_confirmed: ~
+      request_canceled: ~
+      request_paid: ~
+      request_preauthorized: ~
+      skip_feedback: "Omet la suggeència"
+      waiting_for_listing_author_to_accept_offer: ~
+      waiting_for_listing_author_to_accept_request: ~
+      waiting_for_you_to_accept_request: ~
+      waiting_confirmation_from_requester: ~
+      waiting_confirmation_from_you: ~
+      waiting_payment_from_requester: ~
+      waiting_payment_from_you: ~
+      waiting_feedback_from_you: ~
+      pending_external_inbox:
+        paypal:
+          multicurrency: ~
+          intl: ~
+          unknown_reason: ~
+          verify: ~
+      stripe:
+        waiting_confirmation_from_requester: ~
+    status_link:
+      accept_offer: "Acceptar l'oferta"
+      accept_request: "Acceptar sol·licitud"
+      reject_offer: "Rebutjar oferta"
+      reject_request: "Rebutjar la sol·licitud"
+      accept_preauthorized_offer: "Acceptar l'oferta"
+      accept_preauthorized_request: ~
+      reject_preauthorized_offer: "Aquesta vegada no"
+      reject_preauthorized_request: "Aquesta vegada no"
+      confirm: ~
+      cancel: ~
+  feedback:
+    feedback_subject: ~
+    feedback_body: ~
+    unlogged_user: "Usuari desconnectat"
+    anonymous_user: "Usuari anònim"
+  community_memberships:
+    access_denied:
+      access_denied: ~
+      you_are_banned_in_this_community: ~
+      contact_page_link: ~
+    new:
+      welcome_fb_user: "Benvingut a %{service_name}, %{name}!"
+      fb_join_accept_terms: ~
+      join_community: ~
+      you_can_join: ~
+      you_can_join_email_confirmation: ~
+      you_can_join_email_confirmation_multiple_addresses: ~
+      you_can_join_with_invite_only: ~
+      if_want_to_view_content: ~
+      log_out: ~
+      join_community_button: ~
+    give_consent:
+      invitation_code_invalid_or_used: ~
+      email_not_allowed: ~
+      email_not_available: ~
+      consent_not_given: ~
+  emails:
+    accept_reminder:
+      remember_to_accept_offer: "Recorda acceptar o rebutjar una oferta de %{sender_name}"
+      remember_to_accept_request: "Recorda acceptar o rebutjar una sol·licitud de %{sender_name}"
+      you_can_accept_or_reject_offer_at: "Pots acceptar o rebutjar l'oferta a"
+      you_can_accept_or_reject_request_at: "Pots acceptar o rebutjar la sol·licitud a"
+      you_have_not_yet_accepted_or_rejected_offer: "Encara no has acceptat o rebutjat l'oferta %{title} rebuda el %{date}."
+      you_have_not_yet_accepted_or_rejected_request: "Encara no has acceptat o rebutjat la sol·licitud %{title} rebuda el %{date}."
+      show_thread: ~
+    branding:
+      powered_by: ~
+      create_own: ~
+      learn_more: ~
+    confirm_reminder:
+      you_have_not_yet_confirmed_or_canceled_request: ~
+      remember_to_confirm_request: ~
+      if_will_not_happen_you_should_cancel: ~
+      cancel_it_link_text: ~
+      automatic_confirmation: ~
+    payment_settings_reminder:
+      remember_to_add_payment_details: ~
+      you_have_added_listing_with_payment: ~
+      please_go_to_payment_settings: ~
+      payment_settings_link: ~
+    transaction_confirmed:
+      here_is_a_message_from: ~
+      request_marked_as_confirmed: ~
+      request_marked_as_canceled: ~
+      has_marked_request_as_confirmed: ~
+      has_marked_request_as_canceled: ~
+      giving_feedback_is_good_idea: ~
+      give_feedback_to: ~
+      stripe:
+        has_marked_request_as_confirmed: ~
+    transaction_automatically_confirmed:
+      subject: ~
+      we_have_marked_request_as_confirmed: ~
+    booking_transaction_automatically_confirmed:
+      subject: ~
+      we_have_marked_request_as_confirmed: ~
+    automatically_confirmed_footer:
+      giving_feedback_is_good_idea: ~
+      give_feedback_to: ~
+      show_thread: ~
+    confirmation_instructions:
+      confirmation_instructions_signature: "Salutacions cordials,<br/>L'equip de Kassi"
+      need_to_confirm: "Abans d'utilitzar Kassi has de confirmar el teu correu electrònic al següent enllaç:"
+      confirmation_link_text: "Confirmar el meu compte"
+      or_paste_link: ~
+    common:
+      hey: "Hola %{name},"
+      kassi_team: "L'equip de %{service_name}"
+      thanks: "Gràcies,"
+      dont_want_to_receive_these_emails: ~
+      edit_your_email_settings_here: ~
+      message_not_displaying_correctly: ~
+      view_it_in_your_browser: ~
+      or: o
+      unsubscribe_from_these_emails_info: ~
+      unsubscribe_from_these_emails: ~
+      unsubscribe_from_invitation_emails_info: ~
+      unsubscribe_from_invitation_emails: ~
+    conversation_status_changed:
+      has_accepted_your_offer: "%{accepter} ha acceptat la teva oferta %{listing}."
+      has_accepted_your_request: "%{accepter} ha acceptat la teva sol·licitud %{listing}."
+      has_rejected_your_offer: "%{accepter} ha rebutjat la teva oferta considerant la sol·licitud %{listing}"
+      has_rejected_your_request: "%{accepter} ha rebutjat la vostra sol·licitud %{listing}"
+      view_thread: ~
+      your_offer_was_accepted: "L'oferta ha estat acceptada"
+      your_offer_was_rejected: "L'oferta ha estat rebutjada."
+      your_request_was_accepted: "La teva sol·licitud ha estat acceptada"
+      your_request_was_rejected: "La teva sol·licitud ha estat rebutjada"
+      you_can_now_pay_to: ~
+      pay_now: ~
+      remember_to_confirm: ~
+    invitation_to_kassi:
+      hi: Hola!
+      you_have_been_invited_to_kassi: "%{inviter} t'ha convidat a utilitzar el servei web Kassi de la comunitat %{community}"
+      here_is_a_message_from: "Tens un missatge personal de %{inviter}:"
+      join_now: ~
+      invitation_code: ~
+    new_comment:
+      has_commented_your_listing_in_kassi: ~
+      view_comment: ~
+      you_have_a_new_comment: "%{author} ha comentat la teva llista en %{service_name}"
+      listing_you_follow_has_a_new_comment: "%{author} ha comentat un anunci que segueixes a Kassi"
+      has_commented_listing_you_follow_in_kassi: ~
+    new_message:
+      view_message: ~
+      has_sent_you_a_message_in_kassi: "%{sender} t'ha enviat un missatge en %{service_name}."
+      you_have_a_new_message: "Tens un nou missatge en %{service_name} de %{sender_name}"
+    new_payment:
+      new_payment: ~
+      price_per_unit_type: "Preu per %{unit_type}"
+      quantity: ~
+      you_have_received_new_payment: ~
+      listing_per_unit_title: ~
+    payment_receipt_to_seller:
+      payment_gateway_fee: ~
+      shipping_total: ~
+      product: ~
+      price_payer_paid: ~
+      service_fee: ~
+      you_will_get: ~
+      new_payment: ~
+      price_per_unit_type: ~
+      quantity: ~
+      you_have_received_new_payment: ~
+      stripe:
+        you_have_received_new_payment: ~
+    payment_receipt_to_payer:
+      receipt_of_payment: ~
+      you_have_made_new_payment: ~
+      product: ~
+      price_per_unit_type: ~
+      duration: ~
+      quantity: ~
+      subtotal: ~
+      total: ~
+      price: ~
+      service_fee: ~
+      stripe_gateway_fee: ~
+      paypal_gateway_fee: ~
+      money_will_be_transferred: ~
+    paypal_new_payment:
+      paypal_gateway_fee: ~
+      shipping_total: ~
+    braintree_new_payment:
+      product: ~
+      price_payer_paid: ~
+      service_fee: ~
+      you_will_get: ~
+    receipt_to_payer:
+      receipt_of_payment: "Rebut de pagament"
+      you_have_made_new_payment: ~
+      product: ~
+      price_per_unit_type: "Preu per %{unit_type}"
+      duration: ~
+      quantity: ~
+      subtotal: ~
+      total: ~
+      price: ~
+      service_fee: ~
+      stripe_gateway_fee: ~
+      paypal_gateway_fee: ~
+      money_will_be_transferred: ~
+      listing_per_unit_title: ~
+      stripe:
+        you_have_made_new_payment: ~
+    new_testimonial:
+      has_given_you_feedback_in_kassi: "%{name} t'ha fet un suggeriment en %{service_name}"
+      you_can_give_feedback_to: "Encara no has fet un suggeriment a %{name}."
+      view_feedback: ~
+    new_update_to_listing:
+      listing_you_follow_has_been_updated: "La llista que segueixes ha estat actualitzada"
+      has_updated_listing_you_follow_in_kassi: ~
+      view_changes: ~
+    community_updates:
+      added_offer: ~
+      added_request: ~
+      added_listing: ~
+      update_mail_title: ~
+      title_link_text: ~
+      intro_paragraph: ~
+      intro_paragraph_link_text: ~
+      reduce_email_footer_text: ~
+      settings_link_text: ~
+      unsubscribe_link_text: ~
+    newsletter:
+      hi: "Hola %{name},"
+      newest_offers: "Que ofereix la gent?"
+      newest_requests: "Que necessita la gent?"
+      text_version_text: "Tens alguna cosa que la resta puguin necessitar? O necessites alguna cosa que altra gent pugui tenir? Afegeix una oferta o sol·licitud, o revisa tot allò que s'ofereix a %{url}"
+    reset_password_instructions:
+      change_my_password: "Canviar la meva clau"
+      reset_password_instructions: ~
+    testimonial_reminder:
+      remember_to_give_feedback_to: "Recordatori: Recorda fer un suggeriment a %{name}"
+      you_have_not_given_feedback_yet: "Encara no has fet un suggeriment a %{name} sobre l'esdeveniment '%{event}'. Recorda fer un suggeriment de com %{given_name} va actuar a l'esdeveniment."
+    transaction_preauthorized:
+      subject: "%{requester} està interessat i ha autoritzat el pagament de %{listing_title} publicat en %{service_name}"
+      transaction_requested_by_user: "Bona notícia! %{requester} està interessat en \"%{listing_title}\" i ha autoritzat el pagament."
+      you_have_time_to_accept: ~
+      if_you_do_accept: ~
+      if_you_do_accept_stripe: ~
+      if_you_do_not_accept: ~
+      click_here_to_reply: ~
+    transaction_preauthorized_reminder:
+      subject: ~
+      remember_to_accept: ~
+      one_day_left: ~
+      click_here_to_reply: ~
+    welcome_email:
+      welcome_email_subject: "Benvingut a %{service_name}"
+      welcome_to_marketplace: ~
+      love_marketplace_crew: ~
+      welcome_email_footer_text: ~
+      settings_link_text: ~
+    new_listing_by_followed_person:
+      subject: ~
+      has_posted_a_new_listing: ~
+      you_are_receiving_this_because: ~
+      view_listing: ~
+    new_member_notification:
+      new_member_has_joined: ~
+      this_is_automatic_message: ~
+      person_name: ~
+      person_email: ~
+  error_messages:
+    booking:
+      booking_failed_payment_voided: ~
+      double_booking_payment_voided: ~
+    onboarding:
+      server_rendering: ~
+    listings:
+      departure_time: "L'hora de sortida ha de ser entre la data actual i un any a partir d'avui."
+      share_type: "Has de seleccionar almenys una de les caselles anteriors."
+      valid_until: "La data ha de ser entre la data actual i un any a partir d'avui."
+      price: ~
+      minimum_price: "El preu mínim és %{minimum_price} %{currency}."
+    testimonials:
+      you_must_explain_not_neutral_feedback: "Si desitges fer un suggeriment no neutral, has de raonar-lo."
+      you_must_select_a_grade: "Recorda avaluar als usuaris clicant en una de les icones de sobre (pot veure les explicacions de cada icona passant el ratolí per sobre d'elles)"
+    transaction_agreement:
+      required_error: ~
+    paypal:
+      transaction_cannot_complete: ~
+      buyer_cannot_pay_error: ~
+      pending_review_error: ~
+      seller_express_checkout_disabled: ~
+      generic_error: ~
+      cancel_error: ~
+      accept_authorization_error: ~
+      reject_authorization_error: ~
+    stripe:
+      generic_error: ~
+      accept_authorization_error: ~
+      reject_authorization_error: ~
+  error_pages:
+    back_to_kassi_front_page: "Tornar a la pàgina principal"
+    error_404:
+      if_you_believe: "Si creus que l'adreça és correcta i hauria de funcionar, llavors, si us plau, ajuda'ns a trobar l'error fent-nos saber en el següent formulari quina adreça ha causat l'error i què hauria d'aparèixer a la pàgina."
+      page_can_not_be_found: "Pàgina no trobada."
+      page_you_requested_can_not_be_found: "Pàgina no trobada. Esteu segurs de que l'adreça està correctament escrita?"
+    error_404_title: "pàgina no trobada"
+    error_410:
+      page_removed: ~
+      page_you_requested_has_been_removed: ~
+      page_removed_reason: ~
+    error_410_title: ~
+    error_500:
+      temporary_unavailable: ~
+      unable_to_process: ~
+      we_hate_this: ~
+      refer_to_error_id: ~
+    error_500_title: "La pàgina no s'ha carregat"
+    error_description: "Descripció de l'error"
+    no_javascript:
+      javascript_is_disabled_in_your_browser: "Javascript està inhabilitat en el teu navegador"
+      kassi_does_not_currently_work_without_javascript: "Malauradament %{service_name} no funciona correctament sense javascript. Intenta activar javascript en les opcions del navegador i torna a carregar la pàgina."
+      contact_us: ~
+      send_feedback: "Enviar missatge"
+      your_feedback_to_admins: "El teu missatge al equip de %{service_name}"
+    send: Enviar
+    your_email_address: "La teva direcció de correu electrònic"
+  errors:
+    messages:
+      invalid_date: ~
+      invalid_time: ~
+      invalid_datetime: ~
+      is_at: ~
+      before: ~
+      on_or_before: ~
+      after: ~
+      on_or_after: ~
+      positive_number: ~
+  event_feed_events:
+    accept:
+      has_accepted_lend_item: ~
+      has_accepted_borrow_item: ~
+      has_accepted_rent_out_item: ~
+      has_accepted_rent_item: ~
+      has_accepted_give_away_item: ~
+      has_accepted_receive_item: ~
+      has_accepted_sell_item: ~
+      has_accepted_buy_item: ~
+      has_accepted_trade_item: ~
+      has_accepted_sell_housing: ~
+      has_accepted_buy_housing: ~
+      has_accepted_rent_out_housing: ~
+      has_accepted_rent_housing: ~
+      has_accepted_favor: ~
+      has_accepted_rideshare: ~
+    join:
+      joined_kassi: ~
+    login:
+      logged_in_to_kassi: ~
+    comment:
+      commented: ~
+      offer_partitive: ~
+      request_partitive: ~
+  header:
+    about: Sobre
+    home: Inici
+    members: ~
+    new_listing: "Nova llista"
+    mobile_version: "Versió mòbil"
+    offers: Ofertes
+    requests: Sol·licituds
+    search_kassi: "Cerca %{service_name}"
+    create_new_marketplace: ~
+    contact_us: ~
+    profile: ~
+    manage_listings: ~
+    invite: ~
+    login: ~
+    signup: ~
+    menu: ~
+  homepage:
+    additional_private_listings_slate:
+      additionally_one_private_offer_exists: "A més hi a <b>aquesta altra oferta</b>,"
+      additionally_one_private_request_exists: "A més hi a <b>aquesta altra sol·licitud</b>,"
+      additionally_some_private_offers_exist: "A més hi han <b>%{number_of_listings} altres ofertes</b>,"
+      additionally_some_private_requests_exist: "A més hi han <b>%{number_of_listings} altres sol·licituds</b>,"
+    blank_slate:
+      add_first: Afegeix-ne!
+      but_that_is_visible_only_to_registered_members: "però això només és visible per als membres registrats."
+      but_those_are_visible_only_to_registered_members: "però aquests només són visibles per als membres registrats."
+      create_new_account_for_yourself: "Crea un compte nou"
+      examples_of_what_you_could_offer_to_others: "Què pots oferir als altres?"
+      examples_of_what_you_could_request_to_others: "Què pots demanar als altres?"
+      favor_offer_list: "Assistència informàtica, costura de roba, mecànica de bicicletes, llibres"
+      favor_request_list: "Cura de nens, classes de piano, passejar gossos, tallar la gespa"
+      favors_to_offer: "Ajuda: "
+      favors_to_request: "Ajuda: "
+      item_offer_list: "Eines, equip esportiu, disfresses, material de càmping"
+      item_request_list: "Eines, material esportiu, disfresses, material de càmping"
+      items_to_offer: "Coses per regalar: "
+      items_to_request: "Coses per prestar: "
+      log_in: Entra!
+      no_offers_visible_unless_logged_in: "Els articles, serveis o viatges compartits no són visibles pels usuaris no registrats."
+      no_open_offers_currently: "No hi ha ofertes de productes, serveis o viatges compartits."
+      no_open_requests_currently: "No hi ha sol·licituds de productes, serveis o viatges compartits."
+      no_requests_visible_unless_logged_in: "Els articles, serveis o viatges compartits no són visibles pels usuaris no registrats."
+      one_private_offer_exists: "Ja existeix <b>una oferta</b>,"
+      one_private_request_exists: "Ja existeix <b>una sol·licitud</b>,"
+      ride_offer: "Porta els nens d'altres famílies als seus extra-escolars"
+      ride_request: "Viatge compartit a la feina"
+      some_private_offers_exist: "Ja hi han <b>%{number_of_listings} ofertes</b>,"
+      some_private_requests_exist: "Ja hi han <b>%{number_of_listings} sol·licituds</b>,"
+    custom_filters:
+      update_view: ~
+      min: ~
+      max: ~
+    event_feed:
+      latest_events: ~
+    grid_item:
+      processing_uploaded_image: ~
+    index:
+      no_listings_with_your_search_criteria: ~
+      no_listings_notification: ~
+      add_listing_link_text: "Afegir una nova llista"
+      open_listing: ~
+      open_listings: "obrir llistes"
+      private_listing_notification_log_in: "Inicia sessió"
+      is: és
+      are: ~
+      what_do_you_need: ~
+      post_new_listing: ~
+      are_offering: ofereixen
+      add_news_item: "Afegeix un article"
+      lend_rent_help_carpool: "Ven, regala, ajuda, comparteix el cotxe"
+      loading_more_content: "S'estan carregant més continguts"
+      more_events: "Més esdeveniments..."
+      news: Notícies
+      no_news: "No hi ha cap notícia"
+      more_news: "Més notícies"
+      or: i
+      or_see_what_the_others: "...o mira el que la resta"
+      recent_events: "Esdeveniments recents"
+      requesting: necessiten
+      tell_it_here: "Diga-ho aquí!"
+      welcome_to_new_kassi: "Benvingut al nou %{service_name}!"
+      no_reviews: "No hi ha cap comentaris"
+      no_image: "No hi ha cap imatge"
+      filter: ~
+      this_is_private_community: ~
+    invitation_form:
+      email: "Adreça de correu electrònic del teu amic:"
+      message: "Missatge personal:"
+      send_invitation: "Enviar invitació"
+      add_email_addresses_description: ~
+      add_lots_of_email_addresses: ~
+      this_article_link: ~
+      invitation_emails_field_placeholder: ~
+      invitation_message_field_placeholder: ~
+      errors_in_emails: ~
+    list_item:
+      review: ~
+      reviews: ~
+      distance_away: "A %{distance} %{distance_unit} de distància"
+    news_item:
+      show_less: "Menys de"
+      show_more: "Més de"
+    profile_info_empty_notification:
+      add_your_info: "Afegeix la teva informació de contacte"
+      add_a_profile_picture: "Afegeix una fotografia de perfil"
+      you_have_not_added_your_info: "No has afegit informació de contacte. Si us plau fes-ho, així serà més fàcil que els altres contactin amb tu. Afegeix també una imatge de perfil per a que et puguin reconèixer."
+      add_your_info_link: "Afegeix la teva informació ara"
+    recent_listing:
+      please_offer: Oferta
+      comment: comentari
+      comments: comentaris
+    filters:
+      show: ~
+      search: ~
+      map: ~
+      list: ~
+      map_button: ~
+      grid_button: ~
+      list_button: ~
+      all_listing_types: ~
+      all_categories: ~
+    errors:
+      search_engine_not_responding: ~
+  infos:
+    about:
+      default_about_text_title: ~
+      default_about_text: ~
+      click_here_link_text: ~
+    how_to_use:
+      default_title: "Com funciona"
+      default_content: "Aquí pots trobar informació sobre com funciona %{marketplace_name}"
+  landing_page:
+    hero:
+      search: ~
+      signup: ~
+      search_placeholder: ~
+      search_location_placeholder: ~
+    listings:
+      no_listing_image: ~
+  layouts:
+    admin:
+      admin: "Panell d'administració de %{service_name}"
+    branding:
+      powered_by: ~
+      create_own: ~
+      learn_more: ~
+    no_tribe:
+      inbox: ~
+      settings: ~
+      feedback: ~
+    application:
+      join_this_community: ~
+      read_more: ~
+      feedback: "El seu missatge al equip de %{service_name}"
+      dont_use_to_contact_support: ~
+      feedback_forum: "Fòrum de suggeriments"
+      feedback_handle: Suggeriment
+      give_feedback: "Fes un suggeriment"
+      or_check_our: "...o comprova el nostre"
+      send_feedback_to_admin: "Enviar missatge"
+      to_see_what_others_have_suggested: "per veure els suggeriments d'altres usuaris, i votar per les vostres funcionalitats preferides."
+      your_email_address: "Correu electrònic (per contactar amb tu)"
+      connect: ~
+      invite_your_friends: ~
+      invite_your_neighbors: "Invita els teus veïns!"
+      invite_your_friends_description: ~
+      invite_your_friends_invite_only_description: ~
+      join_without_facebook: ~
+      join_without_facebook_link: ~
+    conversations:
+      messages: Missatges
+      notifications: Notificacions
+      received: Rebut
+      sent: Enviat
+    global-header:
+      select_language: ~
+    infos:
+      about: Sobre
+      how_to_use: "Com funciona"
+      info_about_kassi: "Informació sobre %{service_name}"
+      news: Novetats
+      register_details: Privacitat
+      terms: "Termes d'ús"
+    logged_in:
+      admin: Admin
+      go_to_your_profile_page: Perfil
+      hi: Hola
+      login: "Inicia sessió"
+      logout: Surt
+      notifications: Notificacions
+      requests: "Sol·licituds d'amistat"
+      settings: Opcions
+      sign_up: "Crea un compte"
+    logged_in_messages_icon:
+      messages: Missatges
+    logged_in_notifications_icon:
+      notifications: Notificacions
+    mobile_logged_in:
+      admin: Admin
+      go_to_your_profile_page: Perfil
+      hi: Hola
+      login: "Inicia sessió"
+      logout: Surt
+      notifications: Notificacions
+      requests: "Sol·licituds d'amistat"
+      settings: Opcions
+      sign_up: Registre
+    notifications:
+      listing_could_not_be_saved: ~
+      contact_admin_link_text: ~
+      test_welcome_email_delivered_to: ~
+      something_went_wrong: ~
+      community_updated: ~
+      community_update_failed: ~
+      account_creation_succesful_you_still_need_to_confirm_your_email: "Compte creat correctament. A continuació hauràs de confirmar la teva adreça de correu electrònic."
+      community_joined_succesfully_you_still_need_to_confirm_your_email: ~
+      comment_cannot_be_empty: "Els comentaris no poden restar buits."
+      comment_sent: "Comentari enviat"
+      confirmation_link_is_wrong_or_used: "L'enllaç de confirmació ja s'ha utilitzat o s'ha trencat. Intenta iniciar sessió o contacta amb nosaltres si el problema continua."
+      additional_email_confirmed: ~
+      could_not_get_email_from_facebook: ~
+      facebook_email_unconfirmed: ~
+      create_new_listing: ~
+      create_one_here: "Crear-ne un aquí"
+      email_confirmation_sent_to_new_address: ~
+      email_not_found: "No s'ha trobat el correu electrònic dins de la base de dades de %{service_name}."
+      error_with_session: "Error amb la sessió."
+      feedback_considered_spam: "Suggeriment no enviat degut al format. Intenti-ho de nou o utilitzi el fòrum per a suggeriments."
+      feedback_not_saved: "No es pot enviar el suggeriment."
+      feedback_saved: "Moltes gràcies pel teu missatge! Ens posarem en contacte amb tu el més aviat possible."
+      feedback_sent_to: "Comentari enviat a %{target_person}."
+      feedback_skipped: "Suggeriment omès"
+      invitation_cannot_be_sent: "No s'ha pogut enviar la invitació"
+      invitation_cannot_unsubscribe: ~
+      invitation_limit_reached: ~
+      invitation_sent: "Invitació enviada amb èxit"
+      invitation_successfully_unsubscribed: ~
+      inviting_new_users_is_not_allowed_in_this_community: "Convidar a nous usuaris no està permès en aquesta comunitat"
+      login_again: "Si us plau, torna a iniciar sessió"
+      login_failed: "Error. Si us plau comprova que les dades són correctes."
+      account_creation_successful: "Benvingut a %{service_name}, %{person_name}!"
+      account_deleted: ~
+      login_successful: "Benvingut, %{person_name}!"
+      logout_successful: "Ja heu tancat la sessió de %{service_name}. Fins aviat!"
+      news_item_created: "Article creat"
+      news_item_creation_failed: "Error en l'article creat"
+      news_item_update_failed: "Error en l'actualització de l'article"
+      news_item_updated: "Article actualitzat"
+      news_item_deleted: "Article suprimit"
+      offer_accepted: "Oferta acceptada"
+      offer_confirmed: ~
+      offer_closed: "Oferta finalitzada"
+      listing_created_successfully: ~
+      offer_rejected: "Oferta rebutjada"
+      offer_canceled: ~
+      listing_updated_successfully: ~
+      listing_updated_availability_management_enabled: ~
+      listing_updated_availability_management_disabled: ~
+      only_kassi_administrators_can_access_this_area: "Només els administradors de %{service_name} poden accedir aquí"
+      only_listing_author_can_close_a_listing: "Només el creador d'una llista pot tancar-la"
+      only_listing_author_can_edit_a_listing: "Només el creador d'una llista pot editar-la"
+      payment_successful: ~
+      payment_canceled: ~
+      error_in_payment: ~
+      cannot_receive_payment: ~
+      payment_waiting_for_later_accomplishment: ~
+      password_recovery_sent: "Les instruccions per canviar la contrasenya s'han enviat a la teva adreça de correu electrònic."
+      person_activated: "Usuari activat"
+      person_deactivated: "Usuari desactivat"
+      person_updated_successfully: "Informació actualitzada"
+      poll_answered: "Enquesta contestada"
+      poll_could_not_be_answered: "No s'ha pogut respondre l'enquesta"
+      poll_created: "Enquesta creada"
+      poll_creation_failed: "Error en la creació de l'enquesta"
+      poll_update_failed: "Error en l'actualització de l'enquesta"
+      poll_updated: "Enquesta actualitzada"
+      poll_deleted: "Enquesta esborrada"
+      read_more: "Llegeix-ne més"
+      registration_considered_spam: "El registre no funciona, si us plau, envia'ns el teu comentari amb l'assumpte \"email2 error\"."
+      reply_cannot_be_empty: "No pots enviar un missatge buit"
+      reply_sent: "Resposta enviada amb èxit"
+      request_accepted: "Sol·licitud acceptada"
+      request_confirmed: ~
+      request_rejected: "Sol·licitud rebutjada"
+      request_canceled: ~
+      message_sent: "Missatge enviat"
+      message_not_sent: ~
+      this_content_is_not_available_in_this_community: "Aquest contingut no està disponible en aquesta comunitat."
+      unknown_error: "Error desconegut. Si us plau utilitza l'enllaç de suggeriments per donar-nos detalls del que ha succeït."
+      update_error: "S'ha produït un error durant l'actualització de la informació, si us plau intenta-ho de nou."
+      you_are_not_allowed_to_give_feedback_on_this_transaction: "No tens autorització per donar suggeriments en aquest esdeveniment."
+      you_are_not_authorized_to_do_this: "No tens autorització per dur a terme aquesta acció."
+      you_are_not_authorized_to_view_this_content: "No tens autorització per veure aquest contingut"
+      listing_closed: ~
+      send_instructions: ~
+      you_cannot_reply_to_a_closed_offer: "No pots respondre a una oferta finalitzada"
+      you_cannot_send_message_to_yourself: "No pots enviar un missatge"
+      you_followed_listing: "Ara està seguint aquesta llista"
+      you_have_already_given_feedback_about_this_event: "Ja has enviat un suggeriment sobre aquest esdeveniment"
+      you_are_now_member: ~
+      you_are_already_member: ~
+      you_must_log_in_to_create_new_listing: ~
+      additional_email_confirmed_dashboard: ~
+      you_must_log_in_to_give_feedback: "Has d'iniciar una sessió per fer una suggerència"
+      you_must_log_in_to_invite_new_users: "Cal que inicis sessió per convida a nous usuaris"
+      you_must_log_in_to_send_a_comment: "Has d'iniciar una sessió per enviar un nou comentari"
+      you_must_log_in_to_send_a_message: "Has d'iniciar una sessió en %{service_name} per a enviar un missatge a un usuari."
+      you_must_log_in_to_do_a_transaction: ~
+      you_must_log_in_to_view_this_content: "Has d'iniciar una sessión per a veure aquest contingut"
+      you_must_log_in_to_view_this_page: ~
+      you_must_log_in_to_view_your_inbox: "Has d'iniciar una sessión en %{service_name} per a revisar la safata d'entrada"
+      you_must_log_in_to_view_your_settings: "Has d'iniciar una sessió en %{service_name} per a veure la teva configuració"
+      you_must_log_in_to_add_news_item: "Has d'iniciar sesió per afegir un nou article"
+      you_must_log_in_to_change_profile_settings: ~
+      you_must_log_in_to_accept_or_reject: ~
+      you_must_log_in_to_confirm_or_cancel: ~
+      you_need_to_confirm_your_account_first: "Hauràs de confirmar el teu compte abans."
+      you_must_fill_all_the_fields: ~
+      you_unfollowed_listing: "Ja no segueixes aquest anunci"
+      joining_community_failed: ~
+      can_not_delete_email: ~
+      user_does_not_have_email_to_delete: ~
+      email_deleted: ~
+      listing_author_payment_details_missing: ~
+      images_are_processing: ~
+      automatically_logged_out_please_sign_in: ~
+      stripe_you_account_balance_is_not_0: ~
+      visit_admin: ~
+      visit_admin_link: ~
+    settings:
+      account: Compte
+      notifications: Notificacions
+      profile: "Informació de perfil"
+      settings: Opcions
+      paypal_payments: ~
+      stripe_payments: ~
+      payments: ~
+  listings:
+    bubble_listing_not_visible:
+      listing_not_visible: "No tens autorització per veure aquest anunci."
+    comment:
+      wrote: ~
+      send_private_message: "Enviar missatge privat a %{person}"
+      delete: ~
+      are_you_sure: ~
+    comment_form:
+      ask_a_question: ~
+      log_in: "Iniciar sessió"
+      send_comment: "Enviar comentari"
+      to_send_a_comment: "Per a enviar un nou comentari."
+      write_comment: "Escriu un nou comentari:"
+      you_cannot_send_a_new_comment_because_listing_is_closed: ~
+      you_must: "Hauries de"
+      subscribe_to_comments: "Avisa'm dels nous comentaris i actualitzacions"
+    edit:
+      edit_listing: ~
+    edit_links:
+      close_listing: ~
+      edit_listing: "Editar la llista"
+      reopen_listing: ~
+      move_to_top: ~
+      show_in_updates_email: ~
+      show_in_updates_email_loading: Carregant...
+      show_in_updates_email_error: ~
+      show_in_updates_email_success: ~
+    map:
+      open_in_google_maps: ~
+    error:
+      something_went_wrong: ~
+      something_went_wrong_plain: ~
+      create_failed_to_connect_to_booking_service: ~
+      update_failed_to_connect_to_booking_service: ~
+    follow_links:
+      follow: "Segueix aquest anunci"
+      unfollow: "Deixa de segur aquest anunci"
+    form:
+      custom_field_partials:
+        dropdown:
+          select_one___: ~
+      departure_time:
+        at: a
+        departure_time: "Hora de sortida"
+      departure_time_radio_buttons:
+        repeated: "Repetit (afegir temps i dies en el camp \"descripció detallada\")"
+      description:
+        detailed_description: "Descripció detallada"
+        youtube_info: ~
+      destination:
+        destination: Destí
+      form_content:
+        favor: "un servei"
+        housing: Allotjament
+        item: "alguna cosa"
+        offer_something: "Ofereir alguna cosa"
+        request_something: "Demanar alguna cosa"
+        rideshare: "compartir cotxe"
+        i_want_to_offer: "M'agradaria oferir..."
+        i_want_to_request: Necessito...
+      googlemap:
+        googlemap_copy: "Punts finals del mapa"
+        googlemap_description: "Mostra mapa"
+        googlemap_updatemap: "Acualitzar mapa"
+      images:
+        image: Imatge
+        best_result: ~
+        no_file_selected: "No hi ha fitxer seleccionat"
+        remove_image: "Elimina la imatge"
+        select_file: "Tria un fitxer"
+        add_more: ~
+        removing: ~
+        processing: ~
+        loading_image: Carregant...
+        image_uploading_in_progress: ~
+        processing_takes_a_while: ~
+        this_may_take_a_while: ~
+        percentage_loaded: ~
+        uploading_failed: ~
+        image_processing_failed: ~
+        file_too_large: ~
+        accepted_formats: "L'arxiu d'imatge ha d'estar en format GIF, JPG o PNG."
+        images_not_uploaded_confirm: ~
+      location:
+        location: Lloc
+      price:
+        price: ~
+        per: ~
+        per_day: ~
+        mass: ~
+        time: ~
+        long_time: ~
+        after_service_fee_you_will_get: ~
+        no_service_fee_you_will_get_paypal_text: ~
+        no_service_fee_you_will_get_payment_text: ~
+        after_service_fee_you_will_get_payment_text: ~
+        payment_fee_info_link_text: ~
+        delivery: ~
+        shipping: ~
+        shipping_price: ~
+        shipping_price_additional: ~
+        pickup: ~
+      origin:
+        location: Lloc
+        origin: Origen
+      send_button:
+        save_listing: ~
+      share_type:
+        select: ~
+        borrow: Prestar
+        buy: Comprar
+        give_away: Regalar
+        lend: Prestar
+        offer_type: "Tipus d'oferta"
+        receive: "Accepta de forma gratuïta"
+        rent: Lloguer
+        rent_out: Arrendament
+        request_type: "Tipus de sol·licitud"
+        sell: Venta
+        share_for_free: ~
+        accept_for_free: ~
+        trade: Intercanvi
+      tag_list:
+        comma_separate: "(separades per comes)"
+        tags: Etiquetes
+      title:
+        listing_title: ~
+      valid_until:
+        valid_until: "Data de caducitat"
+      valid_until_radio_buttons:
+        for_the_time_being: "De moment"
+      privacy:
+        privacy: Privacitat
+        private: ~
+        public: ~
+    help_texts:
+      help_share_type_title: "Tipus d'oferta o sol·licitud"
+      help_tags_title: Etiquetes
+      help_valid_until_title: "Data de caducitat"
+    index:
+      all_categories: "Totes les categories"
+      all_offer_types: "Tots tipus d'ofertes"
+      all_request_types: "Tots tipus de sol·licitud"
+      category: Categoria
+      did_not_found_what_you_were_looking_for: "No trobes el que busques?"
+      favors: Serveis
+      housing: Allotjament
+      items: Articles
+      list_view: "Mostra la llista"
+      listings: ~
+      map_view: "Mostra mapa"
+      offer_something: "Comparteix-ho amb els demés!"
+      offer_type: "Tipus d'oferta"
+      offers: Ofertes
+      request_something: "Demana alguna cosa!"
+      request_type: "Tipus de sol·licitud"
+      requests: Sol·licituds
+      rideshare: "Compartir cotxe"
+      you_have_something_others_do_not: "Tens alguna cosa que oferir?"
+      feed_title: ~
+    left_panel_link:
+      borrows: Prèstecs
+      buys: Compra
+      favors: Serveis
+      give_aways: Gratuït
+      housings: Allotjament
+      items: Articles
+      lends: Prestant
+      receives: Gratuït
+      rent_outs: Arrendament
+      rents: Lloguer
+      rideshares: "Compartir cotxe"
+      sells: Venta
+      share_for_frees: ~
+      accept_for_frees: ~
+      trades: Intercanvis
+    listing_actions:
+      booking_from: ~
+      booking_to: ~
+      how_paypal_works: ~
+      payment_help: ~
+      unable_load_availability: ~
+      booking_date: ~
+      select_one: ~
+      start_time: ~
+      end_time: ~
+    new:
+      listing: ~
+      selected_category: ~
+      selected_subcategory: ~
+      selected_transaction_type: ~
+      select_category: "Selecciona una categoria"
+      select_subcategory: ~
+      select_transaction_type: ~
+      you_need_to_fill_payout_details_before_accepting: ~
+      contact_admin_link_text: ~
+      community_not_configured_for_payments: ~
+      payment_settings_link: ~
+      community_not_configured_for_payments_admin: ~
+    quantity:
+      hour: ~
+      day: ~
+      night: ~
+      week: ~
+      month: ~
+      custom: ~
+    quantity_placeholder: ~
+    please_comment: Comentari
+    reply_link:
+      listing_closed: ~
+    show:
+      add_your_phone_number: ~
+      add_profile_picture: ~
+      comments: Comentaris
+      contact_by_phone: ~
+      contact: ~
+      favor_offer: "Oferta de serveis"
+      favor_request: "Sol·licitud de servei"
+      inquiry: ~
+      item_offer_trade: ~
+      item_request_trade: ~
+      no_description: "Sense descripció"
+      no_image: "No hi ha cap imatge"
+      no_reviews: ~
+      offer: Oferta
+      listing_created: ~
+      open_until: "Obert fins %{date}"
+      feedback: ~
+      qr_code: "Codi QR"
+      request: Sol·licitud
+      rideshare_offer: "Oferta de trajecte compartit"
+      rideshare_request: "Sol·licitud de trajecte compartit"
+      send_private_message: ~
+      tags: Targetes
+      time: hora
+      times: vegades
+      times_viewed: Vist
+      processing_uploaded_image: ~
+      listing_created_at: ~
+      price:
+        per_quantity_unit: ~
+        per_day: ~
+      delivery: ~
+      shipping: ~
+      shipping_no_price: ~
+      shipping_price_additional: ~
+      pickup: ~
+      pickup_no_price: ~
+      youtube_video_player: ~
+    unit_types:
+      piece: peça
+      hour: hora
+      day: dia
+      night: nit
+      week: setmana
+      month: mes
+    verification_required:
+      verification_required: ~
+  listing_conversations:
+    preauthorize:
+      dates_not_available: ~
+      error_in_checking_availability: ~
+      details: Detalls
+      by: ~
+      payment: Pagament
+      exp: ~
+      you_will_be_charged: ~
+      day: ~
+      days: ~
+      night: ~
+      nights: ~
+      invalid_parameters: ~
+    transaction_agreement_checkbox:
+      read_more: ~
+    stripe_payment:
+      payment: ~
+      pay_with_card: ~
+      address: ~
+      address_country: ~
+      address_name: ~
+      address_city: ~
+      address_state: ~
+      address_street1: ~
+      address_street2: ~
+      address_postal_code: ~
+  mapview:
+    index:
+      all_categories: "Totes les categories"
+      all_offer_types: "Tots els tipus d'ofertes"
+      all_request_types: "Tots els tipus de sol·licituds"
+      category: Categoria
+      did_not_found_what_you_were_looking_for: "No trobes el que busques?"
+      favors: Serveis
+      housing: Allotjament
+      items: Articles
+      list_view: "Mostra la llista"
+      map_view: "Mostra el mapa"
+      offer_something: "Comparteix-ho amb els altres!"
+      offer_type: "Tipus d'oferta"
+      offers: Ofertes
+      request_something: "Demana-ho aquí!"
+      request_type: "Tipus de sol·licitud"
+      requests: Sol·licituds
+      rideshare: "Compartir cotxe"
+      you_have_something_others_do_not: "Tens alguna cosa per oferir?"
+    please_comment: Comentari
+  mercury:
+    content_too_long: ~
+  okl:
+    member_id: "Número d'identificació"
+    member_id_or_email: ~
+  paypal_accounts:
+    payout_info_title: ~
+    paypal_account_email_connected: ~
+    payout_info_paypal: ~
+    paypal_billing_agreement_made: ~
+    commission_permission_needed: ~
+    create_paypal_account_link_text: ~
+    connected_account: ~
+    paypal_receive_funds_info_label_australia_only: ~
+    paypal_receive_funds_info_label: ~
+    paypal_receive_funds_info_australia_only: ~
+    paypal_receive_funds_info: ~
+    upgrade_paypal_account_link_text: ~
+    admin_account_not_connected: ~
+    contact_admin_link_text: ~
+    you_are_ready_to_accept_payments: ~
+    commission: ~
+    not_now: ~
+    new:
+      payout_info_you_need_to_connect: ~
+      payout_info_text: ~
+      contact_admin_link_text: ~
+      admin_account_not_connected: ~
+      paypal_account_email: ~
+      paypal_account_email_placeholder: ~
+      paypal_account_email_info_text: ~
+      create_paypal_account: ~
+      upgrade_paypal_account: ~
+      paypal_account_billing_agreement: ~
+      follow_steps: ~
+      connect_paypal_account_title: ~
+      connect_paypal_account_title_with_step: ~
+      connect_paypal_account_instructions: ~
+      connect_paypal_account: ~
+      paypal_account_billing_agreement_with_step: ~
+      paypal_account_billing_agreement_info_both: ~
+      paypal_account_billing_agreement_info_fixed: ~
+      paypal_account_billing_agreement_info_relative: ~
+      paypal_account_billing_agreement_info_none: ~
+      paypal_info_link_text: ~
+      billing_agreement_description: ~
+      billing_agreement: Autoritzar
+      permissions_not_granted: ~
+      could_not_fetch_redirect_url: ~
+      paypal_not_enabled: ~
+      billing_agreement_canceled: ~
+      billing_agreement_not_accepted: ~
+      billing_agreement_wrong_account: ~
+      something_went_wrong: ~
+      account_not_verified: ~
+      account_restricted: ~
+    paypal_account_connected_title: ~
+    paypal_account_connected: ~
+    change_account: ~
+    missing: ~
+    from_your_payment_settings_link_text: ~
+    redirect_message: ~
+    redirect_link_text: aquí
+    paypal_account_all_set_up: ~
+    can_receive_payments: ~
+    paypal_account_connected_summary: ~
+    paypal_permission_granted_summary: ~
+  paypal:
+    pay_with_paypal: ~
+    checkout_with: ~
+    or_pay_with_paypal: o
+    checkout_with_paypal: ~
+    cancel_succesful: ~
+    transaction:
+      commission_payment_name: ~
+      commission_payment_description: ~
+    wait_while_loading: ~
+    chatting_with_paypal: ~
+  people:
+    edit_links:
+      activate: Activar
+      deactivate: Desactivar
+    help_texts:
+      feedback_description_title: Suggeriment
+      help_invitation_code_title: "Necessites una invitació per unir-te a"
+      terms_title: "Termes d'ús de %{service_name}"
+      invite_only_help_text: ~
+      invite_only_help_text_title: ~
+    inactive_notification:
+      this_person_is_not_active_in_kassi: "Aquest usuari ja no està actiu."
+      inactive_description: "Aquest usuari ha deixat d'utilitzar Kassi. No pots posar-te en contacte amb ell."
+    new:
+      create_new_account: "Crea un compte"
+      email: "Correu electrònic"
+      email_is_in_use: "Aquest correu ja està registrat"
+      email_is_in_use_or_not_allowed: "Aquest correu electrònic no està autoritzat per a aquesta comunitat o ja està sent utilitzat. Si us plau, utilitza una adreça que estigui associada amb aquesta comunitat. Si encara tens problemes per accedir, envia'ns un comentari utilitzant el botó de \"Feedback\" de l'esquerra."
+      email_not_allowed: ~
+      invalid_username_or_email: ~
+      family_name: "Cognoms:"
+      given_name: "Nom:"
+      i_accept_the_terms_and_privacy: ~
+      admin_emails_consent: ~
+      invalid_invitation_code: "El codi d'invitació no és vàlid"
+      invitation_code: "Codi d'invitació:"
+      not_required: ", no és necessari"
+      notification_is_mandatory: ~
+      password_again: "Confirma la contrasenya:"
+      show_my_name_to_others: "Mostra el meu nom real als altres usuaris"
+      sign_up: "Crea un nou compte en %{service_name}"
+      terms: "Termes d'ús"
+      privacy: ~
+      username_is_in_use: "Aquest usuari ja existeix"
+      username_is_invalid: "El nom d'usuari no és vàlid. Els caràcters permesos són lletres, números i guió baix."
+      visible_only_to_you: "visible només per a tu i l'administrador de la comunitat"
+      visible_to_everybody: "Visible per a tothom"
+      create_account_with_facebook: ~
+      OR: O
+      signup_with_email: ~
+      this_field_will_be_publicly_visible: ~
+    profile_feedback:
+      grade: "puntuació:"
+      and_gave_following_feedback: ~
+    profile_listings:
+      show_also_closed: "Mostra com tancada"
+      show_only_open: "Mostra com oberta"
+      no_image: "No hi ha cap imatge"
+    show:
+      contact: ~
+      about_me: "Sobre mi:"
+      add_description: "Digues alguna cosa sobre tu"
+      add_location: "Afegir ubicació"
+      add_phone_number: "Afegir número de telèfon"
+      address: "Ubicació:"
+      as_expected: "Com era d'esperar"
+      edit_profile_info: "Edita la informació"
+      exceeded_expectations: "Expectatives superades"
+      positive: ~
+      hide_description: "Mostrar menys"
+      less_than_expected: "Pitjor de l'esperat"
+      phone_number: "Número de telèfon"
+      show_all_feedback: "Mostra tots els comentaris"
+      show_all_testimonials: "Mostra tots els comentaris"
+      show_full_description: "Veure més"
+      slightly_better_than_expected: "Ha superat les expectatives"
+      slightly_less_than_expected: "Pitjor de l'esperat"
+      what_are_these: "Què són aquests?"
+      review: ~
+      reviews: ~
+      listing: llista
+      listings: llistes
+      open_listing: ~
+      open_listings: ~
+      no_listings: ~
+      no_open_listings: ~
+      no_reviews: ~
+      show_all_listings: "Mostrar totes les llistes"
+      show_all_open_listings: ~
+      show_all_reviews: ~
+    followed_people:
+      you_follow_plural: "Segueixes a %{count} persones"
+      you_follow_singular: "Segueixes a %{count} persones"
+      they_follow_plural: ~
+      they_follow_singular: ~
+      show_all_followed_people: ~
+      no_followed_people: ~
+    follow_button:
+      following: ~
+      follow: ~
+      unfollow: ~
+  sessions:
+    new:
+      create_new_account: "Crear un compte nou"
+      i_forgot_my_password: "Recuperar usuari o contrasenya"
+      login: "Inicia sessió"
+      login_to_kassi: "Inicia sessió a Kassi"
+      connect_your_facebook_to_kassi: ~
+      facebook_account: "Compte de Facebook"
+      log_in_to_link_account: ~
+      you_can_also_create_new_account: ~
+      account_creation_link_text: ~
+      cancle_facebook_connect: ~
+      facebook_cancel_link_text: ~
+      log_in_with_your_facebook_account: ~
+      or_sign_up_with_your_username: ~
+      we_will_not_post_without_asking_you: ~
+    password_forgotten:
+      email: "Correu electrònic"
+      password_recovery_instructions: "Escriu el teu correu electrònic per enviar-te el nom d'usuari i les instruccions per a realitzar el canvi de contrasenya."
+      request_new_password: "Sol·licitar nova contrasenya"
+      change_your_password: ~
+    confirmation_pending:
+      welcome_to_kassi: "Benvingut a Kassi!"
+      check_your_email: "Revisa la safata d'entrada"
+      resend_confirmation_instructions: "Reenviament de les instruccions de confirmació"
+      your_current_email_is: ~
+      change_email: Canvia
+      confirm_your_email: "Si us plau confirma el teu correu electrònic"
+      account_confirmation_instructions: ~
+      account_confirmation_instructions_title_admin: "Confirma la teva adreça de correu electrònic"
+      before_full_access_you_need_to_confirm_email: ~
+      before_confirmation_only_access_admin_dashboard: ~
+      admin_dashboard_link_text: ~
+      account_confirmation_instructions_admin: ~
+      contact_support_link_text: ~
+  settings:
+    account:
+      change: Canviar
+      confirm_new_password: "Confirmar nova contrasenya"
+      delete_account: ~
+      delete_account_button: ~
+      delete_account_confirmation_popup: ~
+      email_addresses: ~
+      new_email: "Nou correu electrònic:"
+      delete_personal_information: ~
+      delete_information_others_involved: ~
+      unfinished_transactions: ~
+      only_admin: ~
+      new_password: "Nova contrasenya"
+      save: Desa
+      these_fields_are_shown_only_to_you: "El nom de l'usuari es mostra en el teu perfil a no ser que hagis donat el teu nom. Qualsevol altra informació està només disponible per a tu."
+      email_already_confirmed: ~
+      email:
+        address_title: ~
+        remove_title: ~
+        remove_confirmation: ~
+        receive_notifications_title_desktop: ~
+        receive_notifications_title_mobile: ~
+        receive_notifications_new_title_mobile: ~
+        add_new_with_plus: ~
+        add_new_cancel: ~
+        confirmation_title_mobile: ~
+        confirmation_title_desktop: ~
+        confirmation_resend: ~
+        status_confirmed: ~
+        status_pending: ~
+    notifications:
+      email_from_admins: ~
+      i_want_to_get_email_notification_when: "Desitjo rebre una notificació de correu electrònic quan..."
+      newsletters: Butlletins
+      community_updates: ~
+      email_about_confirm_reminders: ~
+      email_about_new_comments_to_own_listing: "...algú ha comentat la meva oferta o sol·licitud"
+      email_about_new_messages: "...algú m'envia un missatge"
+      email_about_new_received_testimonials: "...algú em dóna suggeriments"
+      email_about_testimonial_reminders: "...he oblidat fer un suggeriment o donar informació sobre un esdeveniment"
+      email_daily_community_updates: ~
+      email_weekly_community_updates: ~
+      do_not_email_community_updates: ~
+      email_when_conversation_accepted: "...algú ha acceptat la meva oferta o sol·licitud"
+      email_when_conversation_rejected: "...algú ha rebutjat la meva oferta o sol·licitud"
+      email_about_completed_transactions: ~
+      email_about_new_payments: ~
+      email_about_new_listings_by_followed_people: ~
+      unsubscribe_succesful: ~
+      unsubscribe_info_text: ~
+      settings_link: ~
+      homepage_link: ~
+      unsubscribe_unsuccesful: ~
+      unsuccessful_unsubscribe_info_text: ~
+    profile:
+      about_you: "Sobre tu:"
+      city: "Ciutat:"
+      family_name: "Cognoms:"
+      given_name: "Nom:"
+      first_name_with_initial: ~
+      first_name_only: ~
+      display_name: ~
+      display_name_description: ~
+      location_description: "Pots donar la teva ubicació exacta o tan sols el codi postal. Si us plau, afegeix almenys el teu codi postal. També pots escollir una localització des del mapa."
+      profile_picture_description: ~
+      phone_number: "Número de telèfon:"
+      profile_picture: ~
+      postal_code: "Codi postal:"
+      profile_page: "pàgina de perfil"
+      profilemap: "Mostra al mapa"
+      street_address: "Ubicació:"
+      these_fields_are_shown_in_your: "Aquesta informació està disponible per a tots els usuaris"
+      visible_to_everybody: "visible per a tothom"
+      visible_to_registered_users: "visible per als usuaris que han iniciat la sessió"
+      default_in_listing: ~
+      invisible: ~
+      image_is_processing: ~
+      shown_in_your_public_profile: ~
+    save_information: "Desa la informació"
+  shipping_address:
+    shipping_address: ~
+  tag_cloud:
+    tag_used:
+      with_tag: "Amb etiqueta"
+      without_tag: "Sense etiqueta"
+  terms:
+    show:
+      accept_terms: "Accepto els termes d'ús"
+      here: Aquí
+      i_accept_new_terms: "Accepto els nous termes d'ús"
+      i_accept_terms: "Accepto els termes d'ús"
+      terms: "Termes d'ús de Kassi"
+      terms_have_changed: "Els termes d'ús han canviat"
+      you_can_view_the_new_terms: "Pots veure els nous termes d'ús"
+      you_need_to_accept: "Benvingut a Kassi! Aquest és el primer cop que utilitzes el servei. Abans de començar has d'acceptar els"
+      you_need_to_accept_new_terms: "Els termes d'ús de Kassi han canviat. És necessari que acceptis els nous termes d'ús per a continuar utilitzant Kassi. Els nous termes d'ús permeten seguir fent ús del servei un cop ha finalitzat el projecte d'investigació que el va originar."
+  testimonials:
+    index:
+      all_testimonials: "Tots els testimonis"
+      feedback_altogether: "Vots en total: "
+      loading_more_testimonials: "Carregant més testimonis"
+      no_testimonials: "No hi ha testimonis rebuts."
+    new:
+      as_expected: L'esperat
+      exceeded_expectations: "Molt més de l'esperat"
+      give_feedback_to: "Dona un suggeriment a %{person}"
+      grade: "Avalua l'experiència"
+      less_than_expected: "Pitjor de l'esperat"
+      send_feedback: "Enviar suggeriment"
+      slightly_better_than_expected: "Una mica millor de l'esperat"
+      slightly_less_than_expected: "Una mica pitjor de l'esperat"
+      textual_feedback: Suggeriment
+      this_will_be_shown_in_profile: ~
+      positive: ~
+      negative: ~
+      default_textual_feedback: ~
+    testimonial:
+      about_listing: ~
+  date:
+    formats:
+      long_with_abbr_day_name: ~
+    first_day_of_week: ~
+  datepicker:
+    days:
+      sunday: Diumenge
+      monday: Dilluns
+      tuesday: Dimarts
+      wednesday: Dimecres
+      thursday: Dijous
+      friday: Divendres
+      saturday: Dissabte
+    days_short:
+      sunday: Diu
+      monday: Dil
+      tuesday: Dmt
+      wednesday: Dmc
+      thursday: Dij
+      friday: Div
+      saturday: Dis
+    days_min:
+      sunday: dg
+      monday: dl
+      tuesday: dt
+      wednesday: dc
+      thursday: dj
+      friday: dv
+      saturday: ds
+    months:
+      january: Gener
+      february: Febrer
+      march: Març
+      april: Abril
+      may: Maig
+      june: Juny
+      july: Juliol
+      august: Agost
+      september: Setembre
+      october: Octubre
+      november: Novembre
+      december: Desembre
+    months_short:
+      january: Gen
+      february: Feb
+      march: Mar
+      april: Abr
+      may: Mai
+      june: Jun
+      july: Jul
+      august: Ago
+      september: Set
+      october: Oct
+      november: Nov
+      december: Des
+    today: Avui
+    clear: ~
+    format: mm/dd/aaaa
+  time:
+    formats:
+      short: "%e %b %Y al %H:%M"
+      shorter: "%e %b al %H:%M"
+      short_date: ~
+      hours_only: "%H:%M"
+  timestamps:
+    day_ago: "fa un dia"
+    days_ago: "%{count} dies enrere"
+    hour_ago: "fa una hora"
+    hours_ago: "%{count} hores enrere"
+    minute_ago: "fa un minut"
+    minutes_ago: "%{count} minuts enrere"
+    month_ago: "Fa un mes"
+    months_ago: "%{count} mesos enrere"
+    seconds_ago: "fa %{count} segons"
+    year_ago: "fa un any"
+    years_ago: "%{count} anys enrere"
+  transactions:
+    initiate:
+      booked_days: ~
+      booked_nights: ~
+      price_per_day: ~
+      price_per_night: ~
+      price_per_hour: ~
+      price_per_unit: ~
+      quantity: ~
+      subtotal: ~
+      shipping-price: ~
+      stripe-fee: ~
+      start_end_time: ~
+    price_per_quantity: "Preu per %{unit_type}"
+    price: "Preu:"
+    quantity: ~
+    unit_price: ~
+    total: "Total:"
+    total_to_pay: ~
+  unit:
+    day: dia
+    days: dies
+  web:
+    listings:
+      errors:
+        availability:
+          something_went_wrong: ~
+          saving_failed: ~
+        working_hours:
+          required: ~
+          overlaps: ~
+          covers: ~
+      pricing_units:
+        piece: peça
+        hour: hora
+        day: dia
+        night: nit
+        week: setmana
+        month: mes
+      edit_availability_header: ~
+      save_and_close_availability_editing: ~
+      confirm_discarding_unsaved_availability_changes_explanation: ~
+      confirm_discarding_unsaved_availability_changes_question: ~
+      edit_listing_availability: ~
+      working_hours:
+        default_schedule: ~
+        i_am_available_on: ~
+        start_time: ~
+        end_time: ~
+        add_another_time_slot: ~
+        save: ~
+    no_listings:
+      sorry: ~
+      try_other_search_terms: ~
+    listing_card:
+      add_picture: ~
+      no_picture: "No hi ha cap imatge"
+    search:
+      page: Pàgina
+      page_of_pages: ~
+    topbar:
+      menu: ~
+      more: ~
+      search_placeholder: ~
+      search_location_placeholder: ~
+      user: ~
+      inbox: ~
+      profile: ~
+      manage_listings: ~
+      settings: ~
+      logout: ~
+      login: ~
+      signup: ~
+      admin_dashboard: ~
+      language: ~
+    utils:
+      km: ~
+      mi: ~
+    branding:
+      powered_by: ~
+      create_own: ~
+      learn_more: ~
+  will_paginate:
+    previous_label: ~
+    next_label: ~
+    page_gap: ~
+    page_entries_info:
+      multi_page: ~
+      multi_page_html: ~
+    person:
+      community_members_entries_info:
+        multi_page: ~
+        multi_page_html: ~
+  stripe_accounts:
+    admin_account_not_connected: ~
+    contact_admin_link_text: ~
+    you_are_ready_to_accept_payments: ~
+    commission: ~
+    pay_with_stripe: ~
+    add_and_pay: ~
+    card_not_stored: ~
+    missing_payment: ~
+    stripe_bank_connected: ~
+    stripe_can_accept: ~
+    stripe_credit_card: ~
+    paypal: ~
+    paypal_connected: ~
+    paypal_can_accept: ~
+    paypal_connected_give_permission: ~
+    form_new:
+      need_info: ~
+      select_country: ~
+      legal_name: "Nom legal"
+      first_name: ~
+      last_name: ~
+      country: País
+      birth_date: ~
+      ssn_last_4: ~
+      personal_id_number: "NIF/NIE/Número de Passaport"
+      address_country: País
+      address_state: ~
+      address_province: ~
+      address_city: Ciutat
+      address_postal_code: "Codi postal"
+      address_line1: ~
+      tos_link: ~
+      tos_link_title: ~
+      save_details: ~
+      edit: ~
+      cancel: ~
+    form_bank:
+      bank_account_number: ~
+      bank_routing_number: ~
+      bank_routing_1: ~
+      bank_routing_2: ~
+      bank_currency: ~
+      update_also_bank_account: ~
+      messages:
+        account_number: ~
+        routing_number: ~
+        bank_code: ~
+        branch_code: ~
+        transit_number: ~
+        institution_number: ~
+        format_varies_by_bank: ~
+        bsb: ~
+        error_message: ~
+        clearing_code: ~
+        sort_code: ~
+        must_match: ~
+        a_dash: ~
+        digits: ~
+        digits_or_chars: ~
+    form_verification:
+      personal_id_number: ~
+      document: ~
+      send_verification: ~
+      need_verification: ~
+    form_pin:
+      social_insurance_number: ~
+      social_security_number: ~
+      ssn_last_4: ~
+      hong_kong_identity_card: ~
+      singapore_identity_card: ~
+      messages:
+        social_insurance_number: ~
+  payment_settings:
+    title: ~
+    bank_account: ~
+    paypal: ~
+    bank_account_details: ~
+    add_bank_details: "Afegeix detalls bancaris"
+    can_accept_stripe_and_paypal: ~
+    to_accept_paypal: ~
+    connect_paypal: ~
+    wrong_setup: ~
+    invalid_bank_account_number: ~
+    invalid_postal_code: ~

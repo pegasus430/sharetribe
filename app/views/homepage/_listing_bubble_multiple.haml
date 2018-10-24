@@ -1,0 +1,14 @@
+.bubble-navi-container
+  .bubble-navi
+    %a
+      = icon_tag("directleft", ["bubble-navi-left"])
+    .bubble-navi-header
+      %span.buble-navi-selected-item
+        = "1"
+      \/
+      %span.buble-navi-total-items
+        = "2"
+    %a
+      = icon_tag("directright", ["bubble-navi-right"])
+  .bubble-multi-content
+    =render :partial => "homepage/listing_bubble", :collection => @listings, :as => :listing

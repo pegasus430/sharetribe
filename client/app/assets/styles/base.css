@@ -1,0 +1,24 @@
+html {
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background: white;
+  color: #3c3c3c;
+  height: auto;
+  font-family: 'Proxima Nova Soft', Helvetica, sans;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}

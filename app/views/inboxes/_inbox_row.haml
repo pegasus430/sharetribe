@@ -1,0 +1,44 @@
+.row-with-divider.without-margin.conversation-row{:class => conversation[:should_notify] ? "conversation-unread" : ""}
+
+  .col-3
+    .conversation-details-container
+      - avatar = conversation[:other].image.present? ? conversation[:other].image.url(:thumb) : missing_avatar(:thumb)
+      = link_to person_path(conversation[:other]) do
+        = image_tag avatar, :class => "conversation-avatar"
+      .conversation-details
+        .conversation-other-party-name
+          = link_to_unless conversation[:other].deleted, PersonViewUtils.person_display_name(conversation[:other], @current_community), person_path(conversation[:other])
+        .conversation-last-message-at
+          = conversation[:last_activity_ago]
+
+  %div{class: payments_in_use ? "col-6" : "col-9"}
+    = link_to conversation[:path], class:(conversation[:should_notify] ? 'conversation-title-link-unread' : 'conversation-title-link') do
+      - if conversation[:title].present?
+        = conversation[:title]
+      - else
+        %span.conversation-last-message-content-not-available
+          = t("conversations.conversation.message_content_not_available")
+    .conversation-context
+      - if conversation[:listing_url].present?
+        = t("conversations.conversation.about_listing", listing_title: link_to_unless(conversation[:listing_deleted], conversation[:listing_title], conversation[:listing_url])).html_safe
+      - else
+        = t("conversations.conversation.free_message")
+
+  - if payments_in_use
+    .col-3
+
+      -# Only for transactions
+      - status = conversation[:last_transition_to_state]
+      - if status.present? && status != "free"
+        - status_meta = conversation[:transitions].last[:metadata]
+        - is_author = !conversation[:current_is_starter]
+        - waiting_feedback = conversation[:waiting_feedback]
+        - other_name = PersonViewUtils.person_display_name(conversation[:other], @current_community)
+
+        - icon, status_description = conversation_icon_and_status(status, is_author, other_name, waiting_feedback, status_meta)
+
+        .conversation-list-status-container
+          .conversation-list-status-icon
+            = icon
+          .conversation-list-status
+            = status_description

@@ -1,0 +1,14 @@
+#listing_map_canvas.jsmap
+
+- content_for :map_js do
+  :javascript
+    $(document).ready(function() {
+      var source = "listing_origin";
+      googlemapMarkerInit('listing_map_canvas',"listing_origin_loc_attributes","listing_origin",true, #{tribe_latitude}, #{tribe_longitude});
+    });
+
+- if run_js_immediately
+  = yield :map_js
+- else
+  - content_for :extra_javascript do
+    = yield :map_js

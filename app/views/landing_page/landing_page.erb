@@ -1,0 +1,136 @@
+<!doctype html>
+
+<%
+  # We need to render and capture the sections already here, before the <head> element
+  # because we want to add the section specific styles to the <head> element.
+  # If we'd render the sections after the <head> elements, the section specific
+  # styles would be empty
+%>
+<% content_for :sections do %>
+  <% sections.each_with_index do |section, index| %>
+
+    <% s = section["section"] %>
+    <% section_id = "#{s['kind']}__#{s['id']}__#{index}" %>
+    <% second_wo_background = calculate_second_wo_background(s) %>
+
+    <% case s["kind"] %>
+    <% when "hero" %>
+      <%= render partial: "hero", locals: {section_id: section_id, s: s} %>
+    <% when "footer" %>
+      <%= render partial: "footer", locals: {section_id: section_id, s: s} %>
+    <% when "info" %>
+      <%= render partial: "info", locals: {section_id: section_id, s: s, second_wo_background: second_wo_background } %>
+    <% when "categories" %>
+      <%= render partial: "categories", locals: {section_id: section_id, s: s, second_wo_background: second_wo_background} %>
+    <% when "locations" %>
+      <%= render partial: "locations", locals: {section_id: section_id, s: s, second_wo_background: second_wo_background} %>
+    <% when "listings" %>
+      <%= render partial: "listings", locals: {section_id: section_id, s: s, second_wo_background: second_wo_background} %>
+    <% when "video" %>
+      <%= render partial: "video", locals: {section_id: section_id, s: s} %>
+    <% end %>
+
+  <% end # sections#each %>
+<% end # capture %>
+
+<html lang="<%= landing_page_locale %>">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <% unless local_assigns.has_key?(:skip_analytics) && skip_analytics %>
+    <%= render partial: "analytics/google_analytics_script",
+               locals: { feature_flags: feature_flags,
+                         community_id: community_context[:id],
+                         user_is_admin: false,
+                         end_user_analytics: community_context[:end_user_analytics],
+                         google_analytics_key: community_context[:google_analytics_key] } %>
+  <% end %>
+
+  <title><%= page["title"]["value"] %></title>
+
+  <%= render partial: "meta", locals: {cc: community_context, p: page, locale: landing_page_locale, url: landing_page_url } %>
+
+  <%= favicon_link_tag community_context[:favicon] %>
+  <%= favicon_link_tag community_context[:apple_touch_icon], rel: 'apple-touch-icon-precomposed', type: 'image/png' %>
+
+  <% if font_path.present? %>
+    <%= render partial: "layouts/fonts", locals: { font_path: font_path } %>
+  <% end %>
+
+  <style type="text/css">
+    <% # Basic styling %>
+    <%= styles %>
+
+    <% # Styles from section partials. E.g. styles that need marketplace color %>
+    <%= yield :hero_css %>
+    <%= yield :footer_css %>
+    <%= yield :info_css %>
+    <%= yield :categories_css %>
+    <%= yield :listings_css %>
+    <%= yield :video_css %>
+    <%= yield :locations_css %>
+  </style>
+  <%= @current_community.custom_head_script.to_s.html_safe %>
+</head>
+<body onload="BrowserDetectVideoAutoplay()">
+
+  <% if topbar[:enabled] %>
+  <div id="topbar-placeholder" class="topbar-placeholder"> </div>
+  <% end %>
+
+  <%= yield :sections %>
+
+  <% # Add javascript libraries and external javascript code %>
+
+  <% if sections.any? { |s| s["section"]["kind"] == "hero" && (s["section"]["variation"]["value"] == "location_search" || s["section"]["variation"]["value"] == "keyword_and_location_search") } %>
+    <% key_param = community_context.has_key?(:google_maps_key) && community_context[:google_maps_key] ? "&key=#{community_context[:google_maps_key]}" : "" %>
+    <script src="//maps.googleapis.com/maps/api/js?libraries=places<%= key_param %>"></script>
+    <script>
+      <%= javascripts[:location_search] %>
+    </script>
+  <% end %>
+
+  <% if sections.any? { |s| s["section"]["kind"] == "video" && s["section"]["variation"] == "youtube" } %>
+    <script type="text/javascript">
+      <%= render 'landing_page/modernizr_videoautoplay.erb' %>
+      <%= render 'landing_page/browser_detect.erb' %>
+     <% # Detect if JS is enabled. duplicate of what Modernizr is doing, but we plan to get rid of Modernizr at some point. %>
+     document.documentElement.className += ' js-enabled';
+
+     var tag = document.createElement('script');
+     tag.id = 'youtube-player-script';
+     tag.src = 'https://www.youtube.com/iframe_api';
+     var firstScriptTag = document.getElementsByTagName('script')[0];
+     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+     function onYouTubeIframeAPIReady() {
+       <%= yield :youtube_ready_js %>
+     }
+    </script>
+  <% end %>
+
+  <% # Add javascript from sections %>
+
+  <%= yield :javascript %>
+
+  <% if topbar[:enabled]%>
+    <script>
+        window.I18n = {};
+        <%= javascripts[:translations] %>
+    </script>
+
+    <% asset_host = local_assigns.key?(:asset_host) ? asset_host : nil %>
+    <%= stylesheet_link_tag asset_path('app-bundle', type: :stylesheet, host: asset_host) %>
+    <%= javascript_include_tag asset_path('vendor-bundle', type: :javascript, host: asset_host) %>
+    <%= javascript_include_tag asset_path('app-bundle', type: :javascript, host: asset_host) %>
+
+    <%= render partial: "topbar",
+        locals: {props: topbar[:props],
+                 marketplace_context: topbar[:marketplace_context],
+                 props_endpoint: topbar[:props_endpoint],
+                 container_id: "topbar-placeholder"} %>
+  <% end %>
+
+</body>
+</html>

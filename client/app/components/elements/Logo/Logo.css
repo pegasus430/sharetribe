@@ -1,0 +1,20 @@
+.logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: 100%;
+}
+
+.logoText {
+  font-size: var(--fontSizeLogo);
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  font-weight: 800;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,30 @@
+{
+  "please_wait": "Bitte warten...",
+  "validation_messages": {
+    "accept": "Die Bilddatei muss entweder im GIF-, JPG- oder PNG-Format vorliegen.",
+    "creditcard": "Bitte eine gültige Kreditkartennummer eingeben.",
+    "date": "Bitte ein gültiges Datum eingeben.",
+    "dateISO": "Bitte ein gültiges Datum (ISO) eingeben.",
+    "digits": "Bitte nur Ziffern eingeben.",
+    "email": "Bitte eine gültige E-Mail-Adresse angeben.",
+    "equalTo": "Bitte denselben Wert nochmals eingeben.",
+    "max": "Bitte einen Wert kleiner als oder gleich {0} eingeben.",
+    "maxlength": "Bitten nicht mehr als {0} Zeichen eingeben.",
+    "min": "Bitte einen Wert größer als oder gleich {0} eingeben.",
+    "minlength": "Bitte mindestens {0} Zeichen eingeben.",
+    "number": "Bitte eine gültige Zahl eingeben.",
+    "range": "Bitte einen gültigen Wert zwischen {0} und {1} eingeben.",
+    "rangelength": "Bitte einen Wert zwischen {0} und {1} Zeichen Länge eingeben.",
+    "remote": "Bitte dieses Feld korrigieren.",
+    "required": "Dieses Feld ist erforderlich.",
+    "url": "Bitte eine gültige URL eingeben.",
+    "address_validator": "Der Standort wurde nicht gefunden.",
+    "money": "Du musst einen gültigen monetären Wert eintragen.",
+    "night_selected": "Du musst zumindest eine Nacht auswählen.",
+    "availability_range": "Der gewählte Bereich enthält Daten die nicht Verfügbar sind",
+    "min_bound": "Bitte trage einen Wert ein, der kleiner ist als der Höchstwert ({0})",
+    "max_bound": "Bitte trage einen Wert ein, der größer ist als der Mindestwert ({0})",
+    "number_no_decimals": "Bitte trage eine ganze Zahl ein",
+    "number_decimals": "Bitte trage eine gültige Zahl mit einem Punkt (.) oder Komma (,) als Dezimaltrennzeichen ein"
+  }
+}

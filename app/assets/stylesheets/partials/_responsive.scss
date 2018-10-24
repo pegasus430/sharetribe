@@ -1,0 +1,43 @@
+@import "mixins/all";
+
+.visible-tablet {
+  display: none !important;
+
+  @include media(tablet) {
+    display: block !important;
+  }
+}
+
+.visible-tablet-inline {
+  @extend .visible-tablet;
+  @include media(tablet) {
+    display: inline !important;
+  }
+}
+
+.hidden-tablet {
+  @include media(tablet) {
+    display: none !important;
+  }
+}
+
+.visible-desktop {
+  display: none;
+
+  @include media(desktop) {
+    display: block;
+  }
+}
+
+.visible-desktop-inline {
+  @extend .visible-tablet;
+  @include media(tablet) {
+    display: inline;
+  }
+}
+
+.hidden-desktop {
+  @include media(desktop) {
+    display: none !important;
+  }
+}

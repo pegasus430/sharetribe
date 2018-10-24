@@ -1,0 +1,31 @@
+<% bg_styles = background_style_modifiers(s, second_wo_background) %>
+<% content_for :categories_css do %>
+  <%= render 'landing_page/inline_css', s: s, section_id: section_id %>
+<% end %>
+
+<section id="<%= section_id %>" class="categories__section categories__section--<%= bg_styles[:section_style_modifier] %>" style="<%= bg_styles[:background_image_style] %> <%= bg_styles[:background_color_style] %>">
+  <div class="categories__content">
+    <h1 class="categories__title"><%= s["title"] %></h1>
+    <div class="categories__paragraph--markdown">
+      <%= render_markdown(s["paragraph"]) %>
+    </div>
+
+    <div class="categories__categories">
+      <% num_of_categories = s["categories"].length %>
+      <% s["categories"].each do |category| %>
+        <% c = category["category"] || {} # Make template tolerant to nil values %>
+        <div class="categories__category--<%= num_of_categories %>">
+          <a href="<%= c["path"] %>">
+            <div class="<%= section_id %>__categories__category-content categories__category-content" style="background-image: url(<%= category["background_image"]["src"] %>)">
+              <h3 class="categories__category-title"><%= c["title"] %></h3>
+            </div>
+          </a>
+        </div>
+      <% end %>
+    </div>
+
+    <% if s["button_title"] %>
+      <a class="categories__button<%= bg_styles[:button_modifier] %> <%= section_id %>__categories__button<%= bg_styles[:button_modifier] %>" href="<%= s['button_path']['value'] %>"><%= s["button_title"]%></a>
+    <% end %>
+  </div>
+</section>

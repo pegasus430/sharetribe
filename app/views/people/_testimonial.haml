@@ -1,0 +1,18 @@
+.testimonial{:class => "light_#{testimonial.displayed_grade > 2 ? 'green' : 'red' }", :id => "testimonial#{testimonial.id.to_s}"}
+  - listing = testimonial.tx.listing
+  .testimonial-avatar
+    = small_avatar_thumb(testimonial.author)
+  .testimonial-details
+    .testimonial-message
+      - text_with_line_breaks do
+        #{testimonial.text}
+    .testimonial-author
+      = link_to_unless testimonial.author.deleted?, PersonViewUtils.person_display_name(testimonial.author, @current_community), testimonial.author
+      = t("testimonials.testimonial.about_listing")
+      = link_to listing.title, listing
+      = time_ago(testimonial.created_at) + "."
+  .testimonial-icon{:class => testimonial.grade > 0.25 ? 'positive' : 'negative'}
+    - if testimonial.grade > 0.25
+      = icon_tag("like", ["positive"])
+    - else
+      = icon_tag("dislike", ["negative"])

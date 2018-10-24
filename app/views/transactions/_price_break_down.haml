@@ -1,0 +1,92 @@
+.initiate-transaction-totals
+  - if booking
+    .initiate-transaction-per-unit-wrapper
+      %span.initiate-transaction-per-unit-label
+        - if unit_type == :day
+          = t("transactions.initiate.price_per_day")
+        - elsif unit_type == :night
+          = t("transactions.initiate.price_per_night")
+        - elsif unit_type == :hour
+          = t("transactions.initiate.price_per_hour")
+        - else
+          = t("transactions.initiate.price_per_unit")
+      %span.initiate-transaction-per-unit-value
+        = MoneyViewUtils.to_humanized(listing_price)
+
+    .initiate-transaction-booking-wrapper
+      - if per_hour
+        %span.initiate-transaction-booking-label
+          = t('transactions.initiate.booked_hours_label', count: duration)
+        %span.initiate-transaction-booking-value
+          = l start_time.to_date, format: :long_with_abbr_day_name
+          = '-'
+          = t("transactions.initiate.start_end_time",
+            start_time: l(start_time, format: :hours_only),
+            end_time: l(end_time, format: :hours_only))
+          = t("transactions.initiate.duration_in_hours", count: duration)
+      - else
+        %span.initiate-transaction-booking-label
+          - if unit_type == :day
+            = use_new_translation("transactions.initiate.booked_days_label", count: duration).or_fallback_to("transactions.initiate.booked_days")
+          - else
+            = use_new_translation("transactions.initiate.booked_nights_label", count: duration).or_fallback_to("transactions.initiate.booked_nights")
+        %span.initiate-transaction-booking-value
+          = l start_on, format: :long_with_abbr_day_name
+          = "-"
+          - if unit_type == :day
+            = l (end_on - 1.day), format: :long_with_abbr_day_name
+            = "(#{pluralize(duration, t("listing_conversations.preauthorize.day"), t("listing_conversations.preauthorize.days"))})"
+          - else
+            = l end_on, format: :long_with_abbr_day_name
+            = "(#{pluralize(duration, t("listing_conversations.preauthorize.night"), t("listing_conversations.preauthorize.nights"))})"
+
+  - elsif quantity.present? && localized_unit_type.present?
+    .initiate-transaction-per-unit-wrapper
+      %span.initiate-transaction-per-unit-label
+        = t("transactions.price_per_quantity", unit_type: localized_unit_type)
+      %span.initiate-transaction-per-unit-value
+        = MoneyViewUtils.to_humanized(listing_price)
+    - if quantity > 1
+      .initiate-transaction-quantity-wrapper
+        %span.initiate-transaction-quantity-label
+          = localized_selector_label || t("transactions.initiate.quantity")
+        %span.initiate-transaction-quantity-value
+          = quantity
+
+  - if subtotal.present?
+    .initiate-transaction-sum-wrapper
+      %span.initiate-transaction-sum-label
+        = t("transactions.initiate.subtotal")
+      %span.initiate-transaction-sum-value
+        = MoneyViewUtils.to_humanized(subtotal)
+
+  - if shipping_price.present?
+    .initiate-transaction-shipping-price-wrapper
+      %span.initiate-transaction-shipping-price-label
+        = t("transactions.initiate.shipping-price")
+      %span.initiate-transaction-shipping-price-value
+        = MoneyViewUtils.to_humanized(shipping_price)
+
+  - if is_author
+    .initiate-transaction-sum-wrapper
+      %span.initiate-transaction-sum-label
+        = t("transactions.total_to_pay")
+      %span.initiate-transaction-sum-value
+        = MoneyViewUtils.to_humanized(total)
+
+    - if fee.present? && fee > 0
+      .initiate-transaction-sum-wrapper
+        %span.initiate-transaction-sum-label
+          = t("conversations.accept.service_fee_label")
+        %span.initiate-transaction-sum-value
+          = "-#{MoneyViewUtils.to_humanized(fee)}"
+
+  - if total.present?
+    .initiate-transaction-total-wrapper
+      %span.initiate-transaction-total-label
+        - if total_label.present?
+          = total_label
+        - else
+          = t("transactions.total")
+      %span.initiate-transaction-total-value
+        = MoneyViewUtils.to_humanized(is_author ? seller_gets : total)

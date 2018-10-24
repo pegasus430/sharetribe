@@ -1,0 +1,3 @@
+= form.label :description, t('listings.form.description.detailed_description'), :class => "input"
+= render partial: "layouts/info_text", locals: { text: t("listings.form.description.youtube_info") }
+= form.text_area(:description, :maxlength => "5000", :class => "listing_description_textarea")

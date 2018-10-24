@@ -1,0 +1,10 @@
+= render :partial => "layouts/left_hand_navigation", :locals => { :links => about_links }
+
+- content_for :title, t('layouts.infos.register_details')
+
+- content_for :title_header do
+  %h1= t("layouts.infos.info_about_kassi")
+
+.left-navi-section.about-section
+  = render :layout => "layouts/mercury_editable_page", :locals => { :content_type => "privacy_page_content" } do
+    = render :partial => "infos/privacy_content"

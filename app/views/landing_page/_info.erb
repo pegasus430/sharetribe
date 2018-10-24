@@ -1,0 +1,61 @@
+<% bg_styles = background_style_modifiers(s, second_wo_background) %>
+<% content_for :info_css do %>
+  <%= render 'landing_page/inline_css', s: s, section_id: section_id %>
+<% end %>
+
+<section id="<%= section_id %>" class="info__section--<%= bg_styles[:section_style_modifier] %>" style="<%= bg_styles[:background_image_style] %> <%= bg_styles[:background_color_style] %>">
+  <div class="info__content--<%= bg_styles[:variation_modifier] %>">
+    <h1 class="info__title--<%= bg_styles[:variation_modifier] %>"><%= s["title"] %></h1>
+    <% case s["variation"] %>
+    <% when "single_column" %>
+
+      <div class="info__paragraph--markdown">
+        <%= render_markdown_array(s["paragraph"]) %>
+      </div>
+
+      <% if s["button_title"] %>
+        <a class="info__button<%= bg_styles[:button_modifier] %> <%= section_id %>__info__button<%= bg_styles[:button_modifier] %>" href="<%= s["button_path"]["value"] %>"><%= s["button_title"] %></a>
+      <% end %>
+
+    <% when "multi_column" %>
+
+      <%
+        multi_column_modifiers = {
+          2 => "two-columns",
+          3 => "three-columns"
+        }
+
+        multi_column_modifier = multi_column_modifiers[s["columns"].length]
+      %>
+
+      <div class="info__columns">
+        <% s["columns"].each do |c| %>
+          <div class="info__column--<%= multi_column_modifier %>">
+            <div class="info__column-text-content">
+              <% if c["icon"] %>
+                <div class="info__column-icon <%= section_id %>__info__column-icon">
+                  <%= render partial: "icon", locals: { icon: c["icon"] } %>
+                </div>
+              <% end %>
+              <h2 class="info__column-title"><%= c["title"] %></h2>
+
+              <div class="info__column-paragraph--markdown">
+                <%= render_markdown_array(c["paragraph"]) %>
+              </div>
+            </div>
+
+            <% if c["button_title"] %>
+              <a class="info__button<%= bg_styles[:button_modifier] %> <%= section_id %>__info__button<%= bg_styles[:button_modifier] %>" href="<%= c['button_path']['value'] %>"><%= c["button_title"]%></a>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <% if s["button_title"] %>
+        <div class="info__button-container">
+          <a class="info__button<%= bg_styles[:button_modifier] %> <%= section_id %>__info__button<%= bg_styles[:button_modifier] %>" href="<%= s['button_path']['value'] %>"><%= s["button_title"]%></a>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</section>

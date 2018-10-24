@@ -1,0 +1,235 @@
+.menuMobile {
+  &:focus,
+  & :focus {
+    outline: none;
+    color: var(--Menu_textColorFocus);
+  }
+
+  &:focus .menuLabelMobile,
+  &.canvasOpen .menuLabelMobile {
+    color: var(--Menu_textColorFocus);
+  }
+
+  &:focus .menuLabelMobileIcon g,
+  &.canvasOpen .menuLabelMobileIcon g {
+    fill: var(--Menu_textColorFocus);
+  }
+}
+
+.menuLabelMobile {
+  display: inline-block;
+  padding: var(--MobileMenu_labelPaddingVertical) var(--MobileMenu_labelPaddingHorizontal);
+  cursor: pointer;
+  position: relative;
+
+  & .notificationBadge {
+    position: absolute;
+    top: 12px;
+    left: 29px;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 9px;
+
+    @media (--medium-viewport) {
+      display: none;
+    }
+  }
+}
+
+.overlay {
+  display: block;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  height: 0;
+  width: 100vw;
+  background-color: #000;
+  opacity: 0;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: opacity;
+}
+
+.canvasOpen .overlay {
+  height: 100vh;
+  opacity: 0.95;
+}
+
+/* Used in JavaScript to change page behaviour with open menu. */
+.menuMobileOpen {
+  overflow-y: hidden;
+
+  @media (--large-viewport) {
+    overflow-y: initial;
+  }
+}
+
+.offScreenMenu {
+  display: flex;
+  width: var(--MobileMenu_offscreenMenuWidth);
+  height: 100%;
+  max-height: 100%;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: auto;
+  z-index: 10;
+  overflow-x: hidden;
+  overflow-y: auto;
+  will-change: transform;
+  transform: translateX(calc(-1 * var(--MobileMenu_offscreenMenuWidth)));
+  transform-style: preserve-3d;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: transform;
+}
+
+.scrollPane {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.canvasOpen .offScreenMenu {
+  transform: translateX(0);
+  box-shadow: 10px 0 30px 0 rgba(0, 0, 0, 0.15);
+}
+
+.offScreenHeader {
+  display: flex;
+  margin: var(--MenuItem_paddingOffScreenVertical) var(--MenuItem_paddingTopbarHorizontalMin) var(--MenuItem_paddingOffScreenVertical) var(--MenuItem_paddingOffScreenHorizontal);
+  flex-shrink: 0;
+
+  @media (--medium-viewport) {
+    margin-left: var(--MenuItem_paddingOffScreenHorizontalTablet);
+  }
+
+  & a:first-child {
+    padding-left: 0;
+  }
+}
+
+.avatarSpacer {
+  height: var(--MobileMenu_offscreenHeaderItemHeight);
+  width: var(--MobileMenu_offscreenHeaderItemHeight);
+}
+
+.offScreenHeaderNewListingButton span {
+  height: var(--MobileMenu_offscreenHeaderItemHeight);
+  line-height: var(--MobileMenu_offscreenHeaderItemHeight);
+  padding: 0 0 0 0.5em;
+}
+
+.offScreenMain {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.offScreenFooter {
+  background-color: var(--MobileMenu_offscreenFooterBackgroundColor);
+  margin-top: var(--MobileMenu_offscreenFooterMarginTop);
+}
+
+.menuSection {
+  margin-bottom: var(--MenuSection_marginOffScreenBottom);
+
+  @media (--medium-viewport) {
+    margin-bottom: var(--MenuSection_marginOffScreenBottomTablet);
+  }
+
+  & .menuSectionMenuItem {
+    border-bottom: 0;
+  }
+
+  & .menuSectionMenuItemLink {
+    padding: var(--MenuItem_paddingOffScreenVertical) var(--MenuItem_paddingOffScreenHorizontal);
+    letter-spacing: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    @media (--medium-viewport) {
+      padding: var(--MenuItem_paddingOffScreenVertical) var(--MenuItem_paddingOffScreenHorizontalTablet);
+    }
+
+    &:focus,
+    &:hover {
+      color: var(--MenuItem_textColorFocus);
+      background-color: var(--MenuItem_backgroundColorHover);
+    }
+  }
+}
+
+.menuSectionTitle {
+  font-size: var(--MenuSection_fontSizeTitle);
+  position: relative;
+  min-width: 144px;
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  padding: var(--MenuSection_paddingOffScreenVertical) var(--MenuSection_paddingOffScreenHorizontal);
+  color: var(--MenuSection_titleColor);
+  width: 100%;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  @media (--medium-viewport) {
+    padding: var(--MenuSection_paddingOffScreenVertical) var(--MenuSection_paddingOffScreenHorizontalTablet);
+  }
+}
+
+.menuSectionIcon {
+  margin-right: var(--MenuSection_iconMargin);
+  display: flex;
+  align-items: center;
+}
+
+.languages {
+  font-size: var(--LanguagesMobile_fontSize);
+  margin-top: var(--LanguagesMobile_marginTop);
+  padding-bottom: var(--LanguagesMobile_marginBottom);
+
+  @media (--medium-viewport) {
+    font-size: var(--LanguagesMobile_fontSizeTablet);
+    margin-top: var(--LanguagesMobile_marginTopTablet);
+    padding-bottom: var(--LanguagesMobile_marginBottomTablet);
+  }
+}
+
+.languageList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: var(--LanguagesMobile_marginLanguageListLeft);
+  margin-right: var(--LanguagesMobile_marginLanguageListRight);
+  margin-top: var(--LanguagesMobile_marginLanguageListTop);
+
+  & .languageLink {
+    padding-bottom: var(--LanguagesMobile_paddingLanguageVertical);
+    width: calc(50% - (var(--LanguagesMobile_linkGap) / 2));
+  }
+
+  & .languageLink:last-child {
+    padding-bottom: 0;
+  }
+
+  & .languageLink:nth-last-child(2):nth-child(odd) {
+    padding-bottom: 0;
+  }
+
+  @media (--medium-viewport) {
+    margin-left: var(--LanguagesMobile_marginLanguageListLeftTablet);
+    margin-right: var(--LanguagesMobile_marginLanguageListRightTablet);
+    margin-top: var(--LanguagesMobile_marginLanguageListTopTablet);
+  }
+}
+

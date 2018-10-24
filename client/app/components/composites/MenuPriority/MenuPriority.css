@@ -1,0 +1,43 @@
+.menuPriority {
+  display: flex;
+  align-items: center;
+
+  @nest :global(.js-enabled) & {
+    visibility: hidden;
+
+    &.noPriorityLinks,
+    &.isMeasured {
+      visibility: visible;
+    }
+  }
+}
+
+.isMeasured {} /* stylelint-disable-line block-no-empty */
+
+.priorityLinks {
+  overflow: hidden;
+  width: 0;
+  height: var(--MenuPriority_height);
+  position: relative;
+}
+
+.priorityLink {
+  display: inline-block;
+  margin-right: var(--MenuPriority_itemSpacing);
+  color: var(--MenuPriority_textColor);
+  letter-spacing: var(--MenuPriority_letterSpacing);
+  font-size: var(--MenuPriority_fontSize);
+  line-height: var(--MenuPriority_height);
+  white-space: nowrap;
+
+  &:focus,
+  &:hover {
+    color: var(--MenuPriority_textColorHover);
+    outline: none;
+  }
+}
+
+.hiddenLinks {
+  /* Fixes dropdown being below old filter controls and admin panel selectize inputs. */
+  z-index: 2;
+}

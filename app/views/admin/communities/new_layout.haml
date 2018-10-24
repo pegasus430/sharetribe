@@ -1,0 +1,44 @@
+- content_for :extra_javascript do
+  :javascript
+    $(document).ready(function() {
+      window.ST.initializeNewLayoutManager(#{feature_rels.to_json.html_safe});
+    });
+
+- content_for :title_header do
+  %h1
+    = t("layouts.admin.admin")
+    = "-"
+    = t("admin.communities.new_layout.new_layout")
+
+= render :partial => "admin/left_hand_navigation", :locals => { :links => admin_links_for(community) }
+
+.left-navi-section
+  .row
+    .col-12
+      %h2= t("admin.communities.new_layout.new_layout")
+      %p= t("admin.communities.new_layout.description_roadmap_new")
+
+  = form_for community, :url => admin_new_layout_path, :method => :patch do |form|
+    .row
+      .col-6
+      .col-3
+        .centered-column-title
+          = t("admin.communities.new_layout.enabled_for_you")
+      .col-3
+        .centered-column-title
+          = t("admin.communities.new_layout.enabled_for_all")
+
+    - features.map do |feature|
+      .row
+        .col-6
+          %strong
+            = feature[:title]
+        .col-3
+          .checkbox-centered
+            = check_box_tag "enabled_for_user[#{ feature[:name] }]", true, feature[:enabled_for_user], disabled: feature[:required_for_user]
+        .col-3
+          .checkbox-centered
+            = check_box_tag  "enabled_for_community[#{ feature[:name] }]", true, feature[:enabled_for_community], disabled: feature[:required_for_community]
+    .row
+      .col-12
+        = form.button t("admin.communities.settings.update_settings")

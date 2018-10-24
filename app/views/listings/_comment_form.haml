@@ -1,0 +1,15 @@
+- if @listing.closed?
+  = t(".you_cannot_send_a_new_comment_because_listing_is_closed")
+- elsif logged_in?
+  .comment-form
+    = form_for Comment.new, :url => listing_comments_path(:listing_id => @listing.id.to_s) do |f|
+      = f.text_area :content, :class => "listing_comment_content_text_area", :placeholder => t(".ask_a_question")
+      .checkbox-container
+        = check_box_tag "comment[author_follow_status]", "true", :checked => true
+        = label_tag "comment_author_follow_status", t(".subscribe_to_comments"), :class => "comment_checkbox_label"
+      = f.hidden_field :listing_id, :value => @listing.id.to_s
+      = f.button t(".send_comment"), :id => "send_comment_button"
+- else
+  = t(".you_must")
+  = link_to t(".log_in"), login_path
+  = t(".to_send_a_comment")

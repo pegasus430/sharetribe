@@ -1,0 +1,59 @@
+- content_for :javascript do
+  initialize_admin_social_media_form("#{I18n.locale}", "#{@community.id}", "#{t('.invalid_twitter_handle')}", "#{t('.invalid_facebook_connect_id')}", "#{t('.invalid_facebook_connect_secret')}" );
+
+- content_for :title_header do
+  %h1
+    = t("layouts.admin.admin")
+    = "-"
+    = t("admin.communities.social_media.social_media")
+
+= render :partial => "admin/left_hand_navigation", :locals => { :links => admin_links_for(@current_community) }
+
+.left-navi-section
+  %h2= t(".social_media")
+  = form_for @community, :url => social_media_admin_community_path(@community), :method => :put do |form|
+    - if FeatureFlagHelper.feature_enabled?(:social_image)
+      .row
+        %h3= t(".logo")
+        .col-12
+          = render :partial => "layouts/info_text", :locals => { :text => t('.logo_info', :width => 1200, :height => 600)}
+          = render 'layouts/thumbnail', file_field: @community.social_logo.image
+          = form.fields_for :social_logo do |logo_form|
+            = logo_form.file_field(:image, :class => "file_field")
+    .row
+      %h3= t(".twitter_handle")
+    .row
+      .col-6
+        - if display_knowledge_base_articles
+          - twitter_instructions_link = link_to(t("admin.communities.social_media.twitter_instructions_link_text"), "#{knowledge_base_url}/configuration-and-how-to/how-to-configure-your-marketplaces-twitter-handle" )
+          = render :partial => "layouts/info_text", :locals => { :text => t(".twitter_handle_info_text_with_instructions", :instructions_link => twitter_instructions_link).html_safe }
+        - else
+          = render :partial => "layouts/info_text", :locals => { :text => t(".twitter_handle_info_text") }
+      .col-6
+        = form.text_field :twitter_handle, :maxlength => "15", :class => "text_field", :placeholder => t(".twitter_handle_placeholder")
+        -if @community.errors.any?
+          %ul
+            -@community.errors.full_messages.each do |msg|
+              %li=msg
+    .row
+      %h3= t('.facebook_connect')
+      - if display_knowledge_base_articles
+        - facebook_instructions_link = link_to(t("admin.communities.social_media.facebook_instructions_link_text"), "#{knowledge_base_url}/configuration-and-how-to/how-to-configure-facebook-connect" )
+        = render :partial => "layouts/info_text", :locals => { :text => t(".facebook_connect_info_text_with_instructions", :instructions_link => facebook_instructions_link).html_safe}
+      - else
+        = render :partial => "layouts/info_text", :locals => { :text => t(".facebook_connect_info_text").html_safe }
+    .row
+      .checkbox-container
+        = form.check_box :facebook_connect_enabled
+        = form.label :facebook_connect_enabled, t(".enable_facebook_login"), :class => "settings-checkbox-label"
+    .row
+      - disabled_connect = @community.facebook_connect_enabled? ? {} : {disabled: 'disabled'}
+      .col-6
+        = form.label :facebook_connect_id, t(".facebook_connect_id"), {:class => "input"}.merge(disabled_connect)
+        = form.text_field :facebook_connect_id, {:maxlength => "16", :class => "text_field", :placeholder => "1234567890123456"}.merge(disabled_connect)
+      .col-6
+        = form.label :facebook_connect_secret, t(".facebook_connect_secret"), {:class => "input"}.merge(disabled_connect)
+        = form.text_field :facebook_connect_secret, {:maxlength => "32", :class => "text_field", :placeholder => "#{Digest::MD5.hexdigest('1')}"}.merge(disabled_connect)
+
+    .row
+      = form.button t("admin.communities.social_media.save")

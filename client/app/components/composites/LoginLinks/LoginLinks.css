@@ -1,0 +1,19 @@
+.links {
+  height: 100%;
+  font-family: var(--Topbar_fontFamily);
+}
+
+.link {
+  display: inline-block;
+  height: 100%;
+  line-height: var(--Topbar_mobileHeight);
+  padding: 0 0.5em;
+
+  @media (--medium-viewport) {
+    line-height: var(--Topbar_tabletHeight);
+  }
+
+  @media (--large-viewport) {
+    line-height: var(--Topbar_height);
+  }
+}

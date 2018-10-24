@@ -1,0 +1,20 @@
+.avatar {
+  border-radius: 50%;
+  height: 100%;
+}
+
+.link {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+
+.textAvatar {
+  width: 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--Avatar_textColor);
+  background-color: var(--Avatar_backgroundColor);
+}

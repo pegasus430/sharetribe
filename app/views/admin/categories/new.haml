@@ -1,0 +1,18 @@
+- content_for :javascript do
+  initialize_admin_category_form_view("#{I18n.locale}", "#new_category");
+  ST.initializeCategoriesSelectionClickHandlers();
+
+- content_for :title_header do
+  %h1
+    = t("layouts.admin.admin")
+    = "-"
+    = t(".new_listing_category")
+
+= render :partial => "admin/left_hand_navigation", :locals => { :links => admin_links_for(@current_community) }
+
+.left-navi-section
+  = form_for [:admin, @category] do |form|
+    = render :partial => "admin/categories/form/category_name", :locals => { :form => form }
+    = render :partial => "admin/categories/form/category_parent", :locals => { :form => form }
+    = render :partial => "admin/categories/form/category_listing_shapes", :locals => { :form => form, shapes: shapes, selected_shape_ids: selected_shape_ids }
+    = render :partial => "admin/categories/form/buttons", :locals => { :form => form }

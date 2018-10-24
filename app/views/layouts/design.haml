@@ -1,0 +1,14 @@
+- content_for :head do
+  = stylesheet_link_tag 'design'
+
+= render :partial => 'layouts/head'
+
+%body
+  = yield
+
+  = javascript_include_tag 'application'
+
+  = content_for :extra_javascript
+
+  :javascript
+    $(document).ready(function() { initialize_defaults("#{I18n.locale}"); #{yield :javascript} });

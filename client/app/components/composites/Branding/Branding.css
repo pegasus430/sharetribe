@@ -1,0 +1,10 @@
+.brandingContainer {
+  border-top: 1px solid var(--Branding_borderColor);
+  padding: 40px 0;
+  background-color: white;
+}
+
+.brandingContent {
+  color: var(--Branding_textColor);
+  text-align: center;
+}

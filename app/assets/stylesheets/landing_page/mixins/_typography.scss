@@ -1,0 +1,71 @@
+$typography__main-color: #525961;
+
+//
+// Basic fonts
+//
+
+$typography__font-family: 'Proxima Nova Soft', Helvetica, sans;
+
+@mixin typography__regular {
+  font-family: $typography__font-family;
+  font-weight: 400;
+}
+
+@mixin typography__medium {
+  font-family: $typography__font-family;
+  font-weight: 500;
+}
+
+@mixin typography__semibold {
+  font-family: $typography__font-family;
+  font-weight: 600;
+}
+
+@mixin typography__bold {
+  font-family: $typography__font-family;
+  font-weight: 700;
+}
+
+//
+// Section typography
+//
+
+@mixin typography__section-title {
+  @include typography__regular;
+
+  // mobile
+  font-size: 26px;
+  letter-spacing: -0.5px;
+
+  @media #{$tablet} {
+    font-size: 36px;
+    letter-spacing: -0.69px;
+    line-height: 56px;
+  }
+
+  @media #{$desktop} {
+    font-size: 46px;
+    letter-spacing: -0.88px;
+  }
+}
+
+@mixin typography__section-paragraph {
+  @include typography__regular;
+
+  // mobile
+  font-size: 16px;
+  letter-spacing: 0px;
+  line-height: 24px;
+
+  @media #{$tablet} {
+    font-size: 18px;
+    letter-spacing: 0px;
+    line-height: 26px;
+  }
+
+  @media #{$desktop} {
+    font-size: 21px;
+    letter-spacing: 0px;
+    line-height: 32px;
+  }
+}

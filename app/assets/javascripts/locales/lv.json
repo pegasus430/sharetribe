@@ -1,0 +1,30 @@
+{
+  "please_wait": "Lūdzu uzgaidiet...",
+  "validation_messages": {
+    "accept": "Attēla formātam jābūt GIF , JPG vai PNG.",
+    "creditcard": "Lūdzu, ievadiet derīgu kredītkartes verifikācijas numuru",
+    "date": "Lūdzu ievadiet derīgu datumu.",
+    "dateISO": "Lūdzu ievadiet derīgu datumu (ISO).",
+    "digits": "Lūdzu ievadiet tikai skaitļus.",
+    "email": "Lūdzu ievadiet derīgu e-pasta adresi.",
+    "equalTo": "Ievadiet vērtību atkārtoti.",
+    "max": "Ievadiet vērtību mazāku vai vienādu ar {0}",
+    "maxlength": "Ievadiet ne vairāk par {0} simboliem",
+    "min": "Ievadiet vērtību lielāku vai vienādu ar {0}.",
+    "minlength": "Lūdzu ievadiet vismaz {0} simbolus.",
+    "number": "Lūdzu ievadiet derīgu numuru.",
+    "range": "Lūdzu ievadiet vērtību starp {0} un {1}.",
+    "rangelength": "Lūdzu ievadiet vērtību no {0} līdz {1} simbolus garu.",
+    "remote": "Lūdzam labot datus šajā laukā.",
+    "required": "Nepieciešams ievadīt datus šajā laukā.",
+    "url": "Lūdzu, ievadiet aktīvu tīmekļa lapas URL.",
+    "address_validator": "Atrašanās vieta netika atrasta",
+    "money": "Jums jāieraksta derīga naudas vērtība.",
+    "night_selected": "Jums jāizvēlas vismaz vienu nakti",
+    "availability_range": "Izvēlētais termiņš ietver datumus, kas nav pieejami",
+    "min_bound": "Lūdzu, ievadiet vērtību mazāku par maksimālo vērtību ({0})",
+    "max_bound": "Lūdzu ievadiet vērtību lielāku par minimālo vērtību ({0})",
+    "number_no_decimals": "Lūdzu ievadiet veselu skaitli",
+    "number_decimals": "Lūdzu, ievadiet derīgu numuru ar punktu (.) vai komatu (,) kā decimālo atdalītāju"
+  }
+}

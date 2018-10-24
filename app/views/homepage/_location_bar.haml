@@ -1,0 +1,15 @@
+- content_for :extra_javascript do
+  :javascript
+    window.ST.initializeLocationSearch({form: '#homepage-filters', search: '#q', status: '#ls', coordinate: '#lc', boundingbox: '#boundingbox', maxDistance: '#distance_max'});
+
+
+.search-form-input.search-form-text-field.location-search-wrapper
+  = text_field_tag "q", params[:q], :placeholder => (@community_customization && @community_customization.search_placeholder) || t("homepage.index.what_do_you_need")
+  = hidden_field_tag 'lc', params[:lc]
+  = hidden_field_tag 'ls', ''
+  = hidden_field_tag 'boundingbox', params[:boundingbox]
+  = hidden_field_tag 'distance_max', ''
+
+.search-form-input
+  %button.action-button#search-button{type: 'submit'}
+    = icon_tag("search", ["icon-part"])

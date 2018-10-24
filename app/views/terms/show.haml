@@ -1,0 +1,25 @@
+- content_for :javascript do
+  initialize_terms_form();
+
+.centered-section
+  - if session[:consent_changed]
+    %h2
+      = t('.terms_have_changed')
+    %p
+      = t('.you_need_to_accept_new_terms')
+    %p
+      = t('.you_can_view_the_new_terms')
+      = link_to(t(".here"), "#", :id => "terms_link") + "."
+    = form_tag accept_terms_path do
+      = button_tag t('.i_accept_new_terms')
+  - else
+    %h2
+      = t('.accept_terms')
+    %p
+      = t('.you_need_to_accept')
+      = link_to(t(".terms"), "#", :id => "terms_link") + "."
+    = form_tag accept_terms_path do
+      .form_field_container
+        = submit_tag(t('.i_accept_terms'), :class => "send_button_terms")
+
+= render :partial => "people/help_texts", :locals => { :field => "terms" }

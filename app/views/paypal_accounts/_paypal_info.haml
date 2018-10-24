@@ -1,0 +1,18 @@
+.row
+  = t("paypal_accounts.payout_info_paypal", create_paypal_account_link: create_paypal_account_link).html_safe
+  - if commission_required
+    = t("paypal_accounts.commission_permission_needed")
+
+- unless paypal_account_linked
+  .row
+    .alert-text-container
+      .alert-text-icon
+        = icon_tag("alert")
+      %p.alert-text-content
+        -# paypal_accounts.paypal_receive_funds_info_label
+        -# paypal_accounts.paypal_receive_funds_info_label_australia_only
+        %strong= t(receive_funds_info_label_tr_key)
+
+        -# paypal_accounts.paypal_receive_funds_info
+        -# paypal_accounts.paypal_receive_funds_info_australia_only
+        =t(receive_funds_info_tr_key, upgrade_paypal_account_link: upgrade_paypal_account_link).html_safe

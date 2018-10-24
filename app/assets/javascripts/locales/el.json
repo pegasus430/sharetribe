@@ -1,0 +1,30 @@
+{
+  "please_wait": "περίμενε λίγο...",
+  "validation_messages": {
+    "accept": "Το αρχείο εικόνας πρέπει να είναι σε μορφή GIF, JPEG ή PNG.",
+    "creditcard": "Παρακαλούμε δώσε έναν έγκυρο αριθμό πιστωτικής κάρτας.",
+    "date": "Παρακαλούμε δώσε μια έγκυρη ημερομηνία.",
+    "dateISO": "Παρακαλούμε δώσε μια έγκυρη ημερομηνία (ISO).",
+    "digits": "Παρακαλούμε να εισάγεις μόνο ψηφία.",
+    "email": "Παρακαλούμε να δώσεις μια έγκυρη ηλεκτρονική διεύθυνση.",
+    "equalTo": "Παρακαλούμε να εισάγεις το ίδιο ξανά.",
+    "max": "Παρακαλούμε δώσε μια τιμή μικρότερη ή ίση με {0}.",
+    "maxlength": "Παρακαλούμε να εισάγεις το πολύ {0} χαρακτήρες.",
+    "min": "Παρακαλούμε δώσε μια τιμή μεγαλύτερη ή ίση με {0}.",
+    "minlength": "Παρακαλούμε δώσε τουλάχιστον {0} χαρακτήρες.",
+    "number": "Παρακαλούμε δώσε έναν έγκυρο αριθμό.",
+    "range": "Παρακαλούμε δώσε μια τιμή μεταξύ {0} και {1}.",
+    "rangelength": "Παρακαλούμε δώσε μια τιμή με μήκος μεταξύ {0} και {1} χαρακτήρων.",
+    "remote": "Παρακαλούμε διόρθωσε αυτό το πεδίο.",
+    "required": "Αυτό το πεδίο είναι απαραίτητο.",
+    "url": "Παρακαλούμε να εισάγεις ένα έγκυρο URL.",
+    "address_validator": "Η τοποθεσία δεν βρέθηκε.",
+    "money": "Πρέπει να εισάγετε μια έγκυρη χρηματική αξία.",
+    "night_selected": null,
+    "availability_range": null,
+    "min_bound": "Please enter a value less than max value ({0})",
+    "max_bound": "Please enter a value more than min value ({0})",
+    "number_no_decimals": "Please enter a whole number",
+    "number_decimals": "Please enter a valid number with either dot (.) or comma (,) as a decimal separator"
+  }
+}

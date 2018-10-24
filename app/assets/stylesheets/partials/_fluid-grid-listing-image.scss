@@ -1,0 +1,56 @@
+/**
+  Contains styles for listing grid's image part
+*/
+
+@import "mixins/all";
+
+.fluid-thumbnail-grid-image-image-container {
+  position: relative;
+  color: $background;
+
+  &:hover {
+    color: $highlight;
+  }
+
+  @include block-with-aspect-ratio(3/2);
+
+  &.people-listings {
+    @include block-with-aspect-ratio(4/3);
+  }
+}
+
+.fluid-thumbnail-grid-image-title {
+  position: absolute;
+  bottom: 0;
+  padding: lines(0.5);
+  line-height: 1.2em;
+}
+
+.fluid-thumbnail-grid-image-overlay {
+  @include border-top-radius($default-border-radius);
+  @include overlay;
+  @include absolutely-all;
+}
+
+.fluid-thumbnail-grid-image-image {
+  @include border-top-radius($default-border-radius);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.fluid-thumbnail-grid-image-price-container {
+  @include listing-price;
+  font-size: 12px; // Quantity placeholder font-size, so that the ellipsis looks nice
+  max-width: 75%;
+  @include ellipsis;
+}
+
+.fluid-thumbnail-grid-image-price {
+  font-size: 18px; // Bigger size for the price
+}
+
+.fluid-thumbnail-grid-image-type {
+  font-size: 16px;
+}

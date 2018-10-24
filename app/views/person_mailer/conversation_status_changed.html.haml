@@ -1,0 +1,26 @@
+- transaction_url = person_transaction_url(@recipient, @url_params.merge({:id => @transaction.id.to_s}))
+- action_url = person_transaction_url(@recipient, @url_params.merge({:id => @transaction.id}))
+- action_text = t("emails.conversation_status_changed.view_thread")
+- additional_text = ""
+
+%tr
+  %td{:align => "left"}
+    %font{body_font}
+      = t("emails.conversation_status_changed.has_#{@transaction.status}_your_request", :accepter => PersonViewUtils.person_display_name(@transaction.listing.author, @current_community), :listing => @transaction.listing_title)
+      = additional_text
+
+-# TODO: Should we link transition to message?
+-#
+- if @transaction.conversation.last_message.present? && @transaction.conversation.last_message.sender_id != @recipient.id
+  %tr
+    %td{:align => "left", :style => "padding-top: 15px;"}
+      %font{body_font}
+        = t("emails.transaction_confirmed.here_is_a_message_from", :other_party_given_name => PersonViewUtils.person_display_name_for_type(@transaction.other_party(@recipient), "first_name_only"))
+  = render :partial => "quote", :locals => { :quote => @transaction.conversation.last_message.content }
+
+= render :partial => "action_button", :locals => { :text => action_text, :url => action_url}
+
+- if TransactionService::StateMachine.can_transition_to?(@transaction.id, :confirmed) && !@recipient.should_pay?(@transaction, @community)
+  %td{:align => "left", :style => "padding-bottom: 25px;"}
+    %font{body_font}
+      = t("emails.conversation_status_changed.remember_to_confirm", :days_to_automatic_confirmation => @transaction.automatic_confirmation_after_days)

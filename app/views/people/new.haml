@@ -1,0 +1,101 @@
+- content_for :javascript do
+  initialize_signup_form("#{I18n.locale}","#{t("people.new.username_is_in_use")}","#{t("people.new.username_is_invalid")}","#{email_not_accepted_message}", "#{t("people.new.invalid_invitation_code")}", #{@current_community.real_name_required?}, #{@current_community.join_with_invite_only?} );
+
+- content_for :title_header do
+  %h1= t('.sign_up')
+
+.signup-form.centered-section
+
+  - if @community_customization && @community_customization.signup_info_content
+    %p
+      = @community_customization.signup_info_content.html_safe
+  - elsif @current_community.allowed_emails && @current_community.allowed_emails[0] != "/" 
+    %p
+      = t('.email_restriction_instructions',
+            :community_name => @current_community.name(I18n.locale),
+            :allowed_emails => @current_community.allowed_emails,
+            :count => (@current_community.allowed_emails.split(",").count))
+
+  - unless !facebook_connect_in_use? || params[:no_fb]
+    = render :partial => "layouts/facebook_connect_button", :locals => { :button_text => t(".create_account_with_facebook") }
+
+    .signup-horizontal-line
+      .signup-horizontal-line-text=t(".OR")
+
+    %h3=t(".signup_with_email")
+
+  = form_for @service.person, :url => APP_CONFIG.login_domain.to_s + people_path do |form|
+
+    -# Invite code
+    - if @current_community.join_with_invite_only?
+      .inline-label-container
+        = label_tag :invitation_code, t('.invitation_code'), :class => "inline"
+        = link_to(t('common.what_is_this'), "#", :tabindex => "-1", :id => "help_invitation_code_link", :class => "label-info")
+      = text_field_tag "invitation_code", nil, :class => :text_field, :maxlength => "20", :value => (params[:code] || "")
+    - elsif params[:code]
+      = hidden_field_tag "invitation_code", params[:code]
+
+    -# Honey pot: hidden field to detect spammers
+    = form.label :input_again, "You should not see this field, if CSS is working. If you see this, please send feedback!", :class => "unwanted_text_field"
+    = form.text_field :input_again, :class => "unwanted_text_field", :id => "error_regristration_unwanted_email2", :autocomplete => "off"
+
+    -# Email
+    = form.label :email, t('.email')
+    = form.text_field :email, :class => :text_field, :maxlenght => "255"
+
+    -# Name
+    = form.label :given_name, t('.given_name')
+    = form.text_field :given_name, :class => :text_field, :maxlength => "30"
+    = form.label :family_name, t('.family_name')
+    = form.text_field :family_name, :class => :text_field, :maxlength => "30"
+
+    -# Username
+    = form.label :username, username_label
+    = form.text_field :username, :class => :text_field, :maxlength => "20", :id => "person_username1"
+
+    -# Password
+    = form.label :password, t('common.password')
+    = form.password_field :password, :class => :text_field, :maxlength => "255", :id => "person_password1"
+    = form.label :password2, t('.password_again')
+    = form.password_field :password2, :class => :text_field, :maxlength => "255"
+
+    - if @service.has_person_custom_fields?
+      - @service.custom_field_values.each_with_index do |custom_field_value, index|
+        - custom_field = custom_field_value.question
+        - custom_field.with_type do |field_type|
+          - prefix = "person[custom_field_values_attributes][]"
+          .inline-label-container
+            = label "person_custom_fields", index, custom_field.name(I18n.locale),
+              class: 'inline'
+            - if custom_field.public?
+              %small= t('.this_field_will_be_publicly_visible')
+          = hidden_field_tag "#{prefix}[id]", custom_field_value.id
+          = hidden_field_tag "#{prefix}[type]", custom_field_value.type
+          = hidden_field_tag "#{prefix}[custom_field_id]", custom_field_value.custom_field_id
+          = render "settings/custom_fields/#{field_type}", :service => @service,
+            :custom_field => custom_field, index: index,
+            :custom_field_value => custom_field_value,
+            :prefix => prefix
+      .inline-label-container
+
+    -# Terms
+    .outer-checkbox-container
+      .checkbox-container
+        - unless @skip_terms_checkbox
+          %input{:type => "checkbox", :id => "person_terms", :name => "person[terms]"}
+          = form.label :terms, :class => "checkbox" do
+            = raw t('.i_accept_the_terms_and_privacy',
+              terms: link_to(t(".terms"), "#", :tabindex => "-1", :id => "terms_link", :class => "form"),
+              privacy: link_to(t(".privacy"), "#", :tabindex => "-1", :id => "privacy_link", :class => "form"),)
+
+    = form.hidden_field :consent, :value => @current_community.consent
+
+    .outer-checkbox-container
+      .checkbox-container
+        %input{:type => "checkbox", :id => "person_admin_emails_consent", :name => "person[admin_emails_consent]"}
+        = form.label :admin_emails_consent, t('.admin_emails_consent'), :class => 'checkbox'
+
+
+    = button_tag t('.create_new_account')
+
+= render :partial => "help_texts", :collection => ["terms", "help_invitation_code", "privacy"], :as => :field

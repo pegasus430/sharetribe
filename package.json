@@ -1,0 +1,12 @@
+{
+  "repository": "sharetribe/sharetribe",
+  "license": "MIT",
+  "engines": {
+    "node": "7.8"
+  },
+  "scripts": {
+    "postinstall": "cd client && npm install",
+    "clean": "rm -f app/assets/webpack/*"
+  },
+  "cacheDirectories": ["node_modules", "client/node_modules"]
+}

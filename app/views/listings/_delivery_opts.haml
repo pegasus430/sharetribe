@@ -1,0 +1,29 @@
+- if delivery_opts.present?
+  - if is_author
+    .row
+      .col-12
+        .delivery-title= t("listings.show.delivery")
+        %ul
+          - delivery_opts.each do |opts|
+            %li=opts[:price_info]
+
+  - else
+    .row
+      .col-12
+        .delivery-title= t("listings.show.delivery")
+    - if delivery_opts.count == 1
+      .row
+        .col-12
+          %span.shipping-options-label
+            = t("listings.show.#{delivery_opts.first[:name]}_no_price")
+            - if (delivery_opts.first[:name] == :shipping)
+              = price_tag = "(+<span class=\"delivery-price-value\" data-shipping-price=\"#{delivery_opts.first[:price].cents}\" data-per-additional=\"#{Maybe(delivery_opts).first[:shipping_price_additional].cents.or_else(0)}\">#{MoneyViewUtils.to_humanized(delivery_opts.first[:price])}</span>)".html_safe
+    - else
+      - delivery_opts.each do |opts|
+        .row
+          .col-12
+            = radio_button_tag(:delivery, opts[:name], opts[:default])
+            = label_tag("delivery_#{opts[:name]}", class: "delivery-label shipping-options-label") do
+              = t("listings.show.#{opts[:name]}_no_price")
+              - if (opts[:name] == :shipping)
+                = price_tag = "(+<span class=\"delivery-price-value\" data-shipping-price=\"#{opts[:price].cents}\" data-per-additional=\"#{Maybe(opts)[:shipping_price_additional].cents.or_else(0)}\">#{MoneyViewUtils.to_humanized(opts[:price])}</span>)".html_safe

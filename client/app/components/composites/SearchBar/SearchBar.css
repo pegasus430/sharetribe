@@ -1,0 +1,370 @@
+/* The Google Maps Places Autocomplete dropdown box is added in the
+   end of the document body, and we must scope the global style
+   overrides within a class generated from the SearchBar component.
+
+   Classes available for customization can be seen at:
+
+   https://developers.google.com/maps/documentation/javascript/places-autocomplete#style_autocomplete
+*/
+.topLevelBody {
+  /* stylelint-disable selector-class-pattern */
+  & :global(.pac-container[style]) {
+    /* Generated autocompletion has inline styles, thus the ugly override.
+       See: https://css-tricks.com/override-inline-styles-with-css/ */
+    min-width: 15em !important;
+  }
+  /* stylelint-enable selector-class-pattern */
+}
+
+/* Used in JavaScript to toggle the mobile menu. */
+.mobileSearchOpen {} /* stylelint-disable-line block-no-empty */
+
+.root {
+  line-height: 1em;
+}
+
+.form {
+  display: none;
+  height: var(--SearchBar_mobileHeight);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: auto;
+  padding-left: var(--SearchBar_sidePaddingMobile);
+  z-index: var(--SearchBar_formZIndex);
+  transition: height 1s ease-in;
+  font-size: 16px;
+
+  @nest .mobileSearchOpen & {
+    display: flex;
+  }
+
+  @media (--large-viewport) {
+    display: inline-flex;
+    position: relative;
+    height: var(--SearchBar_height);
+    width: var(--SearchBar_narrowWidth);
+    padding-left: var(--SearchBar_sidePadding);
+    top: 0;
+    font-size: var(--baseFontSize);
+  }
+
+  @media (--search-desktop-wide) {
+    width: var(--SearchBar_width);
+  }
+
+  &:hover .focusContainer::before {
+    border-color: var(--SearchBar_borderColorActive);
+  }
+
+  /* When any child element of this form has focus, hilight the whole
+     form using a pseudo element. See: http://stackoverflow.com/a/11167056 */
+  & > *:focus ~ .focusContainer::before {
+    border-color: var(--SearchBar_borderColorActive);
+  }
+}
+
+/* Since we cannot apply focus styles straight to the form when
+   anything within it has focus, we have to create a special container
+   for the focus styles to cover the whole form area. */
+.focusContainer::before {
+  display: none;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid var(--SearchBar_borderColor);
+  z-index: var(--SearchBar_focusContainerZIndex); /* Required to allow mouse event to the inputs/buttons. */
+  transition: border-color 0.1s ease-in;
+
+  @media (--large-viewport) {
+    display: block;
+    border-radius: calc(var(--SearchBar_height) / 2);
+  }
+}
+
+.keywordInput,
+.locationInput {
+  display: inline-block;
+  width: 0;
+  margin: var(--SearchBar_textPaddingMobile) 0;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid var(--SearchBar_mobileInputBorderColor);
+  border-radius: 0;
+  color: var(--SearchBar_mobileTextColor);
+  font-weight: var(--SearchBar_inputFontWeight);
+  z-index: var(--SearchBar_childZIndex);
+  flex-grow: 1;
+  transition: flex-grow 0.25s ease-out, width 0.25s ease-out, color 0.1s ease-in;
+  background-color: transparent;
+  -webkit-font-smoothing: antialiased;
+
+  &:focus {
+    outline: none;
+    flex-grow: 9;
+    border-color: var(--SearchBar_mobileTextColor);
+
+    @media (--large-viewport) {
+      flex-grow: 1;
+    }
+  }
+
+  /* When there is only a single search input, disable width changes and
+     extra spacings. */
+  &:only-of-type {
+    width: 100%;
+    padding: 0;
+    margin-right: calc(var(--SearchBar_mobileHeight) + var(--SearchBar_sidePaddingMobile));
+
+    @media (--large-viewport) {
+      margin-right: var(--SearchBar_height);
+
+      &:focus {
+        margin-right: var(--SearchBar_height);
+      }
+    }
+
+    &:focus {
+      width: 100%;
+
+      & ~ .searchButton {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &::placeholder {
+    color: var(--SearchBar_mobilePlaceholderColor);
+  }
+
+  @media (--large-viewport) {
+    color: var(--SearchBar_textColor);
+    margin: var(--SearchBar_textPadding) 0;
+    border: none;
+
+    &::placeholder {
+      color: var(--SearchBar_textColor);
+      transition: color 0.1s ease-in;
+    }
+
+    @nest .form:hover & {
+      color: var(--SearchBar_textColorActive);
+
+      &::placeholder {
+        color: var(--SearchBar_textColorActive);
+      }
+
+      &:focus {
+        /* focus color should override the active color */
+        color: var(--SearchBar_textColorFocus);
+      }
+    }
+
+    &:focus {
+      outline: none;
+      color: var(--SearchBar_textColorFocus);
+
+      /* Trigger focus styles for the search icon SVG when these inputs have focus. */
+      & ~ .searchButton svg {
+        stroke: var(--SearchBar_iconColorActive);
+      }
+    }
+  }
+}
+
+.keywordInput {
+  margin-right: calc(var(--SearchBar_sidePaddingMobile) / 2);
+
+  @media (--large-viewport) {
+    width: var(--SearchBar_keywordInputWidthNarrow);
+    margin-right: var(--SearchBar_sidePadding);
+  }
+
+  @media (--search-desktop-wide) {
+    width: var(--SearchBar_keywordInputWidth);
+  }
+
+  &:focus {
+    @media (--search-desktop-wide) {
+      width: var(--SearchBar_keywordInputFocusWidth);
+    }
+
+    & ~ .locationInput {
+      margin-right: var(--SearchBar_mobileHeight);
+
+      @media (--large-viewport) {
+        margin-right: var(--SearchBar_height);
+      }
+
+      @media (--search-desktop-wide) {
+        width: calc(100% - var(--SearchBar_keywordInputFocusWidth));
+      }
+    }
+
+    /* Focusing on the keyword input puts the location input under the
+       search button with a shadow effect on the button. */
+    & ~ .searchButton::before {
+      box-shadow: -10px 0 15px -10px #000 inset;
+      content: ' ';
+      position: absolute;
+      top: 0;
+      width: 20px;
+      height: 100%;
+      left: -20px;
+      pointer-events: none;
+
+      @media (--large-viewport) {
+        display: none;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.locationInput {
+  @media (--large-viewport) {
+    width: calc(100% - var(--SearchBar_keywordInputWidthNarrow));
+  }
+
+  @media (--search-desktop-wide) {
+    width: calc(100% - var(--SearchBar_keywordInputWidth));
+  }
+}
+
+/* Additional separating styles are added only when the two inputs are
+   next to each other. */
+.keywordInput + .locationInput {
+  margin-left: calc(var(--SearchBar_sidePaddingMobile) / 2);
+  margin-right: calc(var(--SearchBar_mobileHeight) + var(--SearchBar_sidePaddingMobile));
+
+  @media (--large-viewport) {
+    border-left: 1px solid var(--SearchBar_borderColor);
+    padding-left: var(--SearchBar_sidePadding);
+    margin-left: 0;
+    margin-right: var(--SearchBar_height);
+  }
+}
+
+.searchButton {
+  /* Position absolutely instead of in the flexbox to avoid animation jank. */
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  line-height: 1;
+  border: none;
+  background-color: var(--SearchBar_mobileButtonBackgroundColor);
+  width: var(--SearchBar_mobileHeight);
+  height: var(--SearchBar_mobileHeight);
+  cursor: pointer;
+  z-index: var(--SearchBar_childZIndex);
+
+  &:hover,
+  &:active {
+    background-color: var(--SearchBar_mobileButtonBackgroundColor);
+  }
+
+  @media (--large-viewport) {
+    width: var(--SearchBar_height);
+    height: var(--SearchBar_height);
+    background-color: transparent;
+
+    &:focus {
+      outline: none;
+
+      & svg {
+        outline: 1px solid var(--SearchBar_borderColor);
+        stroke: var(--SearchBar_iconColorFocus);
+      }
+    }
+
+    @nest .form:hover & {
+      & svg {
+        stroke: var(--SearchBar_iconColorActive);
+      }
+
+      &:hover svg,
+      &:focus svg {
+        stroke: var(--SearchBar_iconColorFocus);
+      }
+    }
+
+    &:hover,
+    &:active {
+      background-color: transparent;
+    }
+  }
+
+  & svg {
+    position: absolute;
+    top: calc(var(--SearchBar_mobileHeight) / 2 - var(--SearchBar_iconSize) / 2);
+    left: calc(var(--SearchBar_mobileHeight) / 2 - var(--SearchBar_iconSize) / 2);
+    line-height: 1;
+    width: var(--SearchBar_iconSize);
+    height: var(--SearchBar_iconSize);
+    stroke: var(--SearchBar_mobileTextColor);
+    transition: stroke 0.1s ease-in;
+
+    @media (--large-viewport) {
+      stroke: var(--SearchBar_iconColor);
+      top: calc(var(--SearchBar_height) / 2 - var(--SearchBar_iconSize) / 2);
+      left: calc(var(--SearchBar_height) / 2 - var(--SearchBar_iconSize) / 2);
+    }
+  }
+}
+
+.mobileToggle {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: var(--SearchBar_mobileHeight);
+  height: var(--SearchBar_mobileHeight);
+  background-color: transparent;
+  border: none;
+  stroke: #000;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    background-color: transparent;
+  }
+
+  & svg {
+    width: var(--SearchBar_iconSize);
+    height: var(--SearchBar_iconSize);
+    margin-top: var(--SearchBar_iconTopMarginFix);
+  }
+
+  @media (--large-viewport) {
+    display: none;
+  }
+}
+
+/* CSS triangle pointing to the search toggle icon */
+.mobileToggleArrow {
+  display: none;
+  position: absolute;
+  bottom: -1px;
+  right: calc(var(--SearchBar_mobileHeight) / 2 - var(--SearchBar_mobileTriangleSize));
+  border: var(--SearchBar_mobileTriangleSize) solid transparent;
+
+  /* We must adjust the brightness here to match either the input
+     background or the submit button background when the toggle
+     position changes in the breakpoint. This cannot be done in JS by
+     switching the color since the breakpoints are unknown there. */
+  filter: brightness(80%);
+
+  @media (--medium-viewport) {
+    filter: brightness(100%);
+  }
+
+  @nest .mobileSearchOpen & {
+    display: block;
+  }
+}

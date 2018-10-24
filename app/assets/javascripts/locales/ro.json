@@ -1,0 +1,30 @@
+{
+  "please_wait": "Vă rugăm să așteptați...",
+  "validation_messages": {
+    "accept": "Imaginea trebuie să fie in format GIF, JPG sau PNG.",
+    "creditcard": "Te rugăm să introduci un număr card valid.",
+    "date": "Vă rugăm să introduceți o dată validă.",
+    "dateISO": "Vă rugăm să introduceți o data valida (ISO).",
+    "digits": "Vă rugăm să introduceți numai cifre.",
+    "email": "Vă rugăm să introduceți o adresă de e-mail validă.",
+    "equalTo": "Vă rugăm să introduceți din nou aceleasi valori.",
+    "max": "Vă rugăm să introduceţi o valoare mai mică sau egală cu {0}.",
+    "maxlength": "Vă rugăm sa nu introduceți mai mult de {0} caractere.",
+    "min": "Vă rugăm să introduceți o valoare mai mare sau egală cu {0}",
+    "minlength": "Vă rugăm să introduceți cel putin {0} caractere.",
+    "number": "Vă rugăm să introduceți un număr valid.",
+    "range": "Vă rugăm să introduceți o valoare între {0} și {1}.",
+    "rangelength": "Vă rugăm să introduceți o valoare cuprinsă între {0} și {1} caractere.",
+    "remote": "Vă rugăm să corectați acest câmp.",
+    "required": "Acest câmp este necesar.",
+    "url": "Vă rugam să introduceți o adresă URL validă.",
+    "address_validator": "Locația nu a fost găsită.",
+    "money": "Vă rugăm să introduceți o sumă validă.",
+    "night_selected": "Va rugam sa selectati cel putin o noapte",
+    "availability_range": "Intervalul selectat include date care nu sunt disponibile",
+    "min_bound": "Vă rugăm să introduceți o valoare mai mică decât valoarea maximă ({0})",
+    "max_bound": "Vă rugăm să introduceți o valoare mai mare decât valoarea minimă ({0})",
+    "number_no_decimals": "Vă rugăm să introduceți un număr întreg",
+    "number_decimals": "Va rugam sa introduceti un numar valid cu punct (.) sau virgula (,) ca separator pentru zecimale"
+  }
+}
