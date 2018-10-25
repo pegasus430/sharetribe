@@ -1,0 +1,15 @@
+development:
+    adapter: mysql2
+    database: sharetribe_development
+    encoding: utf8
+    username: root
+    password: root
+    host: localhost
+
+production:
+    adapter: mysql2
+    database: sharetribe_development
+    encoding: utf8
+    username: root
+    password: root
+    host: localhost
